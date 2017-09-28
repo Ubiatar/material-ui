@@ -1,7 +1,7 @@
 {
   "name": "material-ui-build",
   "author": "Material-UI Team",
-  "version": "0.19.3",
+  "version": "0.19.4",
   "description": "React Components that Implement Google's Material Design.",
   "main": "./src/index.js",
   "keywords": [
