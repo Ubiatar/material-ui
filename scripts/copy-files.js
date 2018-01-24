@@ -37,7 +37,7 @@ function createPackageFile() {
 
       const minimalPackage = {
         ...packageDataOther,
-        name: 'material-ui',
+        name: 'ubiatar-material-ui',
         main: './index.js',
         module: './index.es.js',
         private: false,
