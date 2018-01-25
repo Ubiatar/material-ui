@@ -1,6 +1,6 @@
 import warning from 'warning';
 import deepmerge from 'deepmerge'; // < 1kb payload overhead when lodash/merge is > 3kb.
-import indigo from '../colors/indigo';
+import ubiatarPrimary from '../colors/ubiatarPrimary';
 import pink from '../colors/pink';
 import grey from '../colors/grey';
 import red from '../colors/red';
@@ -13,7 +13,7 @@ export const light = {
     // The most important text.
     primary: 'rgba(0, 0, 0, 0.87)',
     // Secondary text.
-    secondary: 'rgba(0, 0, 0, 0.54)',
+    secondary: '#666',
     // Disabled text have even lower visual prominence.
     disabled: 'rgba(0, 0, 0, 0.38)',
     // Text hints.
@@ -85,9 +85,9 @@ function addLightOrDark(intent, direction, shade, tonalOffset) {
 export default function createPalette(palette: Object) {
   const {
     primary = {
-      light: indigo[300],
-      main: indigo[500],
-      dark: indigo[700],
+      light: ubiatarPrimary[300],
+      main: ubiatarPrimary[500],
+      dark: ubiatarPrimary[700],
     },
     secondary = {
       light: pink.A200,

@@ -70,7 +70,7 @@ function PageHome(props) {
   return (
     <div className={classes.root}>
       <Head>
-        <title>Material-UI</title>
+        <title>Ubiatar-Material-UI</title>
       </Head>
       <div className={classes.hero}>
         <div className={classes.content}>
@@ -81,7 +81,7 @@ function PageHome(props) {
           />
           <div className={classes.text}>
             <Typography type="display2" component="h1" color="inherit" gutterBottom>
-              {'Material-UI'}
+              {'Ubiatar-Material-UI'}
             </Typography>
             <Typography type="headline" component="h2" color="inherit" className={classes.headline}>
               {"React components that implement Google's Material Design."}

@@ -13,9 +13,9 @@ export const styles = theme => ({
     lineHeight: '1.4em', // Improve readability for multiline button.
     boxSizing: 'border-box',
     minWidth: 88,
-    minHeight: 36,
+    minHeight: 40,
     padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
-    borderRadius: 2,
+    borderRadius: 4,
     color: theme.palette.text.primary,
     transition: theme.transitions.create(['background-color', 'box-shadow'], {
       duration: theme.transitions.duration.short,

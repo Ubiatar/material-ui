@@ -90,7 +90,7 @@ function AppDrawer(props, context) {
         <Toolbar className={classes.toolbar}>
           <Link className={classes.title} href="/" onClick={onClose}>
             <Typography type="title" gutterBottom color="inherit">
-              Material-UI
+              Ubiatar-Material-UI
             </Typography>
           </Link>
           {process.env.MATERIAL_UI_VERSION ? (
