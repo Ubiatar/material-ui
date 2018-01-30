@@ -80,3 +80,9 @@ export { default as Tooltip } from './Tooltip';
 export { Slide, Grow, Fade, Collapse, Zoom } from './transitions';
 
 export { default as withWidth } from './utils/withWidth';
+
+export { default as DatePicker } from './DatePicker/DatePickerWrapper';
+
+export { default as TimePicker } from './TimePicker/TimePickerWrapper';
+
+export { default as DateTimePicker } from './DateTimePicker/DateTimePickerWrapper';

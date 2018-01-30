@@ -1,6 +1,6 @@
 import React from 'react';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
+import SelectField from '../SelectField';
+import MenuItem from '../MenuItem';
 
 const items = [];
 for (let i = 0; i < 100; i++ ) {
