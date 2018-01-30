@@ -1,10 +1,9 @@
 {
   "name": "ubiatar-material-ui",
-  "private": true,
   "author": "Material-UI Team",
   "version": "1.0.0-beta.32",
   "description": "React components that implement Google's Material Design.",
-  "main": "./src/index.js",
+  "main": "./build/index.js",
   "keywords": [
     "react",
     "react-component",
