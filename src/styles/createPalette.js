@@ -16,6 +16,8 @@ export const light = {
     secondary: '#666',
     // Disabled text have even lower visual prominence.
     disabled: 'rgba(0, 0, 0, 0.38)',
+    // Anchot link color
+    link: '#6cccff',
     // Text hints.
     hint: 'rgba(0, 0, 0, 0.38)',
   },
@@ -47,10 +49,11 @@ export const light = {
 
 export const dark = {
   text: {
-    primary: common.fullWhite,
-    secondary: 'rgba(255, 255, 255, 0.7)',
+    primary: 'rgba(255, 255, 255, 0.8)',
+    secondary: 'rgba(255, 255, 255, 0.6)',
     disabled: 'rgba(255, 255, 255, 0.5)',
-    hint: 'rgba(255, 255, 255, 0.5)',
+    link: '#6cccff',
+    hint: 'rgba(255, 255, 255, 0.4)',
     icon: 'rgba(255, 255, 255, 0.5)',
   },
   divider: 'rgba(255, 255, 255, 0.12)',
@@ -95,7 +98,7 @@ export default function createPalette(palette: Object) {
       dark: pink.A700,
     },
     error = {
-      main: red[500],
+      main: '#ea656c',
     },
     type = 'light',
     contrastThreshold = 3,

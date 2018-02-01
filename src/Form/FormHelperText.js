@@ -5,7 +5,7 @@ import withStyles from '../styles/withStyles';
 
 export const styles = theme => ({
   root: {
-    color: theme.palette.text.secondary,
+    color: theme.palette.text.hint,
     fontFamily: theme.typography.fontFamily,
     fontSize: theme.typography.pxToRem(12),
     textAlign: 'left',

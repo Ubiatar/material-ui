@@ -50,6 +50,9 @@ export default function Types() {
       <Typography type="button" gutterBottom>
         Button
       </Typography>
+      <Typography type="link" href="http://google.it" gutterBottom>
+        Link
+      </Typography>
     </div>
   );
 }

@@ -20,6 +20,7 @@ export const styles = theme => ({
   body1: theme.typography.body1,
   caption: theme.typography.caption,
   button: theme.typography.button,
+  link: theme.typography.link,
   alignLeft: {
     textAlign: 'left',
   },
@@ -88,7 +89,7 @@ function Typography(props) {
     classNameProp,
   );
 
-  const Component = componentProp || (paragraph ? 'p' : headlineMapping[type]) || 'span';
+  const Component = componentProp || (type === 'link' ? 'a' : paragraph ? 'p' : headlineMapping[type]) || 'span';
 
   return <Component className={className} {...other} />;
 }

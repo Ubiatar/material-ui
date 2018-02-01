@@ -113,6 +113,14 @@ export default function createTypography(palette: Object, typography: Object | F
         fontWeight: fontWeightMedium,
         fontFamily,
       },
+      link: {
+        fontSize: pxToRem(fontSize),
+        textDecoration: 'none',
+        fontWeight: fontWeightMedium,
+        fontFamily,
+        color: palette.text.link,
+        display: 'inline'
+      },
     },
     other,
     {
