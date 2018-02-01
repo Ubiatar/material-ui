@@ -55,7 +55,7 @@
     "argos": "argos upload test/regressions/screenshots/chrome --token $ARGOS_TOKEN || true",
     "release": "np --no-publish --any-branch",
     "postrelease": "yarn docs:deploy && npm publish build --tag next",
-    "ubiatar-release": "yarn build && npm version prerelease",
+    "ubiatar-release": "yarn build",
     "publish": "npm publish"
   },
   "peerDependencies": {
