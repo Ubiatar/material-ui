@@ -8,11 +8,16 @@ function round(value) {
 
 export default function createTypography(palette: Object, typography: Object | Function) {
   const {
-    fontFamily = '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontFamily = '"Raleway", "Helvetica", "Arial", sans-serif',
     fontSize = 14, // px
+    fontWeightThin = 100,
+    fontWeightExtraLight = 200,
     fontWeightLight = 300,
     fontWeightRegular = 400,
     fontWeightMedium = 500,
+    fontWeightSemiBold = 600,
+    fontWeightBold = 700,
+    fontWeightExtraBold = 800,
     htmlFontSize = 16, // 16px is the default font-size used by browsers on the html element.
     ...other
   } =
@@ -66,22 +71,22 @@ export default function createTypography(palette: Object, typography: Object | F
         color: palette.text.secondary,
       },
       headline: {
-        fontSize: pxToRem(24),
-        fontWeight: fontWeightRegular,
+        fontSize: pxToRem(35),
+        fontWeight: fontWeightThin,
         fontFamily,
-        lineHeight: `${round(32.5 / 24)}em`,
+        lineHeight: `${round(52.5 / 24)}em`,
         color: palette.text.primary,
       },
       title: {
         fontSize: pxToRem(21),
-        fontWeight: fontWeightMedium,
+        fontWeight: fontWeightLight,
         fontFamily,
         lineHeight: `${round(24.5 / 21)}em`,
         color: palette.text.primary,
       },
       subheading: {
-        fontSize: pxToRem(16),
-        fontWeight: fontWeightRegular,
+        fontSize: pxToRem(23),
+        fontWeight: fontWeightThin,
         fontFamily,
         lineHeight: `${round(24 / 16)}em`,
         color: palette.text.primary,

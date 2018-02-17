@@ -154,6 +154,7 @@ Typography.propTypes = {
     'body1',
     'caption',
     'button',
+    'link'
   ]),
 };
 

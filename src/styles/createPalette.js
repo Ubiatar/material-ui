@@ -27,10 +27,12 @@ export const light = {
   // Consistency between these values is important.
   background: {
     paper: common.white,
+    slider: ubiatarPrimary[300],
     default: grey[50],
     appBar: grey[100],
     chip: grey[300],
     avatar: grey[400],
+    op30: 'rgba(0, 0, 0, .6)'
   },
   // The colors used to style the action elements.
   action: {
@@ -59,10 +61,12 @@ export const dark = {
   divider: 'rgba(255, 255, 255, 0.12)',
   background: {
     paper: grey[800],
+    slider: common.white,
     default: '#303030',
     appBar: grey[900],
     chip: grey[700],
     avatar: grey[600],
+    op30: 'rgba(255, 255, 255, .6)'
   },
   action: {
     active: common.fullWhite,
@@ -91,6 +95,7 @@ export default function createPalette(palette: Object) {
       light: ubiatarPrimary[300],
       main: ubiatarPrimary[500],
       dark: ubiatarPrimary[700],
+      op50: ubiatarPrimary.op50
     },
     secondary = {
       light: pink.A200,

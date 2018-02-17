@@ -10,8 +10,8 @@ export const styles = theme => ({
     alignItems: 'center',
     justifyContent: 'center',
     flexShrink: 0,
-    width: 40,
-    height: 40,
+    width: 52,
+    height: 52,
     fontFamily: theme.typography.fontFamily,
     fontSize: theme.typography.pxToRem(20),
     borderRadius: '50%',
@@ -29,6 +29,15 @@ export const styles = theme => ({
     // Handle non-square image. The property isn't supported by IE11.
     objectFit: 'cover',
   },
+  bordered: {
+    border: '2px solid',
+    borderColor: theme.palette.primary.main
+  },
+  imgBordered: {
+    border: '2px solid',
+    borderColor: 'rgba(0,0,0,0)',
+    borderRadius: '50%'
+  }
 });
 
 function Avatar(props) {
@@ -43,6 +52,7 @@ function Avatar(props) {
     sizes,
     src,
     srcSet,
+    border,
     ...other
   } = props;
 
@@ -50,9 +60,16 @@ function Avatar(props) {
     classes.root,
     {
       [classes.colorDefault]: childrenProp && !src && !srcSet,
+      [classes.bordered]: border
     },
     classNameProp,
   );
+  const imgClassName = classNames(
+    classes.img,
+    {
+      [classes.imgBordered]: border
+    }
+  )
   let children = null;
 
   if (childrenProp) {
@@ -73,7 +90,7 @@ function Avatar(props) {
         src={src}
         srcSet={srcSet}
         sizes={sizes}
-        className={classes.img}
+        className={imgClassName}
         {...imgProps}
       />
     );
@@ -136,10 +153,15 @@ Avatar.propTypes = {
    * The `srcSet` attribute for the `img` element.
    */
   srcSet: PropTypes.string,
+  /**
+   * The `border` attribute set a border around avatar
+   */
+  border: PropTypes.bool,
 };
 
 Avatar.defaultProps = {
   component: 'div',
+  border: false
 };
 
 export default withStyles(styles, { name: 'MuiAvatar' })(Avatar);

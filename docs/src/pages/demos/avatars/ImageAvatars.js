@@ -28,6 +28,7 @@ function ImageAvatars(props) {
         src="/static/images/uxceo-128.jpg"
         className={classNames(classes.avatar, classes.bigAvatar)}
       />
+      <Avatar border alt="Remy Sharp" src="/static/images/remy.jpg" className={classes.avatar} />
     </div>
   );
 }
