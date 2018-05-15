@@ -12,6 +12,8 @@ As with issues, please begin the title with [ComponentName].
 
 When adding new features or modifying existing, please attempt to include tests to confirm the new behaviour. You can read more about our test setup [here](https://github.com/mui-org/material-ui/blob/v1-beta/test/README.md).
 
+When migrating a component to v1-beta, or submitting a new component, please add it to the [lab](https://github.com/mui-org/material-ui/tree/v1-beta/packages/material-ui-lab).
+
 ### Branch Structure
 
 All stable releases are tagged ([view tags](https://github.com/mui-org/material-ui/tags)). At any given time, `v1-beta` represents the latest development version of the library.
@@ -32,7 +34,7 @@ Please create a new branch from an up to date v1-beta on your fork. (Note, urgen
 5. Visit GitHub and make your pull request.
 
 If you have an existing local repository, please update it before you start, to minimise the chance of merge conflicts.
-```js
+```sh
 git remote add upstream git@github.com:mui-org/material-ui.git
 git checkout v1-beta
 git pull upstream v1-beta
@@ -44,7 +46,7 @@ yarn
 
 The documentation site is built with Material-UI and contains examples of all the components.
 To get started:
-```js
+```sh
 yarn
 yarn docs:dev
 ```
@@ -60,7 +62,7 @@ You can also run `yarn prettier` to reformat the code.
 
 Finally, when you submit a pull request, they are run again by Circle CI, but hopefully by then your code is already clean!
 
-## How do I add new a demo in the documentation?
+## How do I add a new demo in the documentation?
 
 ### Let's get started.
 
@@ -69,7 +71,7 @@ For example, let say you want to add new demos for buttons component, then you h
 
 #### 1. Add a new React component file under the related directory.
 
-In this case, I'm gonna add the new file to the following directory:
+In this case, I'm going to add the new file to the following directory:
 ```
 docs/src/pages/demos/buttons/
 ```
@@ -78,7 +80,7 @@ And let's give it a name: `SuperButtons.js`.
 #### 2. Edit the page Markdown file.
 
 The Markdown file is the source for the website documentation. So, whatever you wrote there will be reflected on the website.
-In this case, the file you need to edit is `docs/src/pages/demos/buttons/buttons.md`, and I'm gonna add some description about SuperButtons.
+In this case, the file you need to edit is `docs/src/pages/demos/buttons/buttons.md`, and I'm going to add a description about SuperButtons.
 
 ```diff
 + ### Super buttons
@@ -100,8 +102,8 @@ pages/demos/buttons.js
 Then, you will need to add the following code:
 ```diff
 + 'pages/demos/buttons/SuperButtons.js': {
-+          js: require('docs/src/pages/demos/buttons/SuperButtons').default,
-+          raw: preval`
++   js: require('docs/src/pages/demos/buttons/SuperButtons').default,
++   raw: preval`
 + module.exports = require('fs')
 +  .readFileSync(require.resolve('docs/src/pages/demos/buttons/SuperButtons'), 'utf8')
 +`,
@@ -120,6 +122,7 @@ First, you have to build your local distribution of Material-UI:
 
 ```shell
 # From the root folder of the material-ui project
+cd packages/material-ui
 yarn build
 ```
 

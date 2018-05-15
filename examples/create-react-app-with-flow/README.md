@@ -1,12 +1,9 @@
 # Create React App example with Flow
 
-## Warning
+## flow-typed
 
-An [existing bug in flow regarding the use of higher-order components (HOC)](https://github.com/facebook/flow/issues/5382)
-limits the usefulness of flow by an application.  As of November 27, 2017 we cannot recommend the use of flow
-typing in your application in conjunction with `material-ui`.
-
-This issue is under discussion in [#9312](https://github.com/mui-org/material-ui/issues/9312).
+[flow-typed](https://github.com/flowtype/flow-typed) is a repository of third-party library interface definitions for use with Flow.
+The community is maintaining [the definitions under this project](https://github.com/flowtype/flow-typed/tree/master/definitions/npm/material-ui_v1.x.x).
 
 ## How to use
 
@@ -30,3 +27,4 @@ yarn start
 ## The idea behind the example
 
 This example demonstrate how you can use [Create React App](https://github.com/facebookincubator/create-react-app) with [Flow](https://github.com/facebook/flow).
+

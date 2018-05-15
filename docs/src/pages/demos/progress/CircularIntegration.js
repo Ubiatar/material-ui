@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { withStyles } from 'material-ui/styles';
-import { CircularProgress } from 'material-ui/Progress';
-import green from 'material-ui/colors/green';
-import Button from 'material-ui/Button';
-import CheckIcon from 'material-ui-icons/Check';
-import SaveIcon from 'material-ui-icons/Save';
+import { withStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import green from '@material-ui/core/colors/green';
+import Button from '@material-ui/core/Button';
+import CheckIcon from '@material-ui/icons/Check';
+import SaveIcon from '@material-ui/icons/Save';
 
 const styles = theme => ({
   root: {
@@ -81,14 +81,19 @@ class CircularIntegration extends React.Component {
     return (
       <div className={classes.root}>
         <div className={classes.wrapper}>
-          <Button fab color="primary" className={buttonClassname} onClick={this.handleButtonClick}>
+          <Button
+            variant="fab"
+            color="primary"
+            className={buttonClassname}
+            onClick={this.handleButtonClick}
+          >
             {success ? <CheckIcon /> : <SaveIcon />}
           </Button>
           {loading && <CircularProgress size={68} className={classes.fabProgress} />}
         </div>
         <div className={classes.wrapper}>
           <Button
-            raised
+            variant="raised"
             color="primary"
             className={buttonClassname}
             disabled={loading}

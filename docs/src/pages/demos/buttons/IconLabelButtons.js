@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from 'material-ui/Button';
-import { withStyles } from 'material-ui/styles';
-import Delete from 'material-ui-icons/Delete';
-import FileUpload from 'material-ui-icons/FileUpload';
-import KeyboardVoice from 'material-ui-icons/KeyboardVoice';
-import Icon from 'material-ui/Icon';
-import Save from 'material-ui-icons/Save';
+import classNames from 'classnames';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+import Delete from '@material-ui/icons/Delete';
+import FileUpload from '@material-ui/icons/FileUpload';
+import KeyboardVoice from '@material-ui/icons/KeyboardVoice';
+import Icon from '@material-ui/core/Icon';
+import Save from '@material-ui/icons/Save';
 
 const styles = theme => ({
   button: {
@@ -18,30 +19,33 @@ const styles = theme => ({
   rightIcon: {
     marginLeft: theme.spacing.unit,
   },
+  iconSmall: {
+    fontSize: 20,
+  },
 });
 
 function IconLabelButtons(props) {
   const { classes } = props;
   return (
     <div>
-      <Button className={classes.button} raised color="secondary">
+      <Button className={classes.button} variant="raised" color="secondary">
         Delete
         <Delete className={classes.rightIcon} />
       </Button>
-      <Button className={classes.button} raised color="primary">
+      <Button className={classes.button} variant="raised" color="primary">
         Send
         <Icon className={classes.rightIcon}>send</Icon>
       </Button>
-      <Button className={classes.button} raised color="default">
+      <Button className={classes.button} variant="raised" color="default">
         Upload
         <FileUpload className={classes.rightIcon} />
       </Button>
-      <Button className={classes.button} raised disabled color="secondary">
+      <Button className={classes.button} variant="raised" disabled color="secondary">
         <KeyboardVoice className={classes.leftIcon} />
         Talk
       </Button>
-      <Button className={classes.button} raised dense>
-        <Save className={classes.leftIcon} />
+      <Button className={classes.button} variant="raised" size="small">
+        <Save className={classNames(classes.leftIcon, classes.iconSmall)} />
         Save
       </Button>
     </div>

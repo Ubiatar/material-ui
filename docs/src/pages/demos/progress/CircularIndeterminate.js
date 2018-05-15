@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import { CircularProgress } from 'material-ui/Progress';
-import purple from 'material-ui/colors/purple';
+import { withStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import purple from '@material-ui/core/colors/purple';
 
 const styles = theme => ({
   progress: {
-    margin: `0 ${theme.spacing.unit * 2}px`,
+    margin: theme.spacing.unit * 2,
   },
 });
 

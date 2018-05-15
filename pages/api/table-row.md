@@ -1,5 +1,5 @@
 ---
-filename: /src/Table/TableRow.js
+filename: /packages/material-ui/src/TableRow/TableRow.js
 ---
 
 <!--- This documentation is automatically generated, do not try to edit it. -->
@@ -13,11 +13,11 @@ based on the material table element parent (head, body, etc).
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| children | node |  | Should be valid `&lt;tr>` children such as `TableCell`. |
-| classes | object |  | Useful to extend the style applied to components. |
-| component | union:&nbsp;string&nbsp;&#124;<br>&nbsp;func<br> | 'tr' | The component used for the root node. Either a string to use a DOM element or a component. |
-| hover | bool | false | If `true`, the table row will shade on hover. |
-| selected | bool | false | If `true`, the table row will have the selected shading. |
+| <span class="prop-name">children</span> | <span class="prop-type">node |  | Should be valid &lt;tr> children such as `TableCell`. |
+| <span class="prop-name">classes</span> | <span class="prop-type">object |  | Override or extend the styles applied to the component. See [CSS API](#css-api) below for more details. |
+| <span class="prop-name">component</span> | <span class="prop-type">union:&nbsp;string&nbsp;&#124;<br>&nbsp;func<br> | <span class="prop-default">'tr'</span> | The component used for the root node. Either a string to use a DOM element or a component. |
+| <span class="prop-name">hover</span> | <span class="prop-type">bool | <span class="prop-default">false</span> | If `true`, the table row will shade on hover. |
+| <span class="prop-name">selected</span> | <span class="prop-type">bool | <span class="prop-default">false</span> | If `true`, the table row will have the selected shading. |
 
 Any other properties supplied will be [spread to the root element](/guides/api#spread).
 
@@ -26,13 +26,13 @@ Any other properties supplied will be [spread to the root element](/guides/api#s
 You can override all the class names injected by Material-UI thanks to the `classes` property.
 This property accepts the following keys:
 - `root`
-- `typeHead`
-- `typeFooter`
 - `selected`
 - `hover`
+- `head`
+- `footer`
 
 Have a look at [overriding with classes](/customization/overrides#overriding-with-classes) section
-and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/src/Table/TableRow.js)
+and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/packages/material-ui/src/TableRow/TableRow.js)
 for more detail.
 
 If using the `overrides` key of the theme as documented

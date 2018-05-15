@@ -1,5 +1,5 @@
 ---
-filename: /src/Card/CardActions.js
+filename: /packages/material-ui/src/CardActions/CardActions.js
 ---
 
 <!--- This documentation is automatically generated, do not try to edit it. -->
@@ -12,9 +12,9 @@ filename: /src/Card/CardActions.js
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| children | node |  | The content of the component. |
-| classes | object |  | Useful to extend the style applied to components. |
-| disableActionSpacing | bool | false | If `true`, the card actions do not have additional margin. |
+| <span class="prop-name">children</span> | <span class="prop-type">node |  | The content of the component. |
+| <span class="prop-name">classes</span> | <span class="prop-type">object |  | Override or extend the styles applied to the component. See [CSS API](#css-api) below for more details. |
+| <span class="prop-name">disableActionSpacing</span> | <span class="prop-type">bool | <span class="prop-default">false</span> | If `true`, the card actions do not have additional margin. |
 
 Any other properties supplied will be [spread to the root element](/guides/api#spread).
 
@@ -26,7 +26,7 @@ This property accepts the following keys:
 - `action`
 
 Have a look at [overriding with classes](/customization/overrides#overriding-with-classes) section
-and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/src/Card/CardActions.js)
+and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/packages/material-ui/src/CardActions/CardActions.js)
 for more detail.
 
 If using the `overrides` key of the theme as documented

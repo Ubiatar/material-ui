@@ -15,6 +15,13 @@ module.exports = require('fs')
   .readFileSync(require.resolve('docs/src/pages/demos/buttons/FlatButtons'), 'utf8')
 `,
         },
+        'pages/demos/buttons/OutlinedButtons.js': {
+          js: require('docs/src/pages/demos/buttons/OutlinedButtons').default,
+          raw: preval`
+module.exports = require('fs')
+  .readFileSync(require.resolve('docs/src/pages/demos/buttons/OutlinedButtons'), 'utf8')
+`,
+        },
         'pages/demos/buttons/RaisedButtons.js': {
           js: require('docs/src/pages/demos/buttons/RaisedButtons').default,
           raw: preval`
@@ -36,6 +43,13 @@ module.exports = require('fs')
   .readFileSync(require.resolve('docs/src/pages/demos/buttons/FloatingActionButtonZoom'), 'utf8')
 `,
         },
+        'pages/demos/buttons/ButtonSizes.js': {
+          js: require('docs/src/pages/demos/buttons/ButtonSizes').default,
+          raw: preval`
+module.exports = require('fs')
+  .readFileSync(require.resolve('docs/src/pages/demos/buttons/ButtonSizes'), 'utf8')
+`,
+        },
         'pages/demos/buttons/IconButtons.js': {
           js: require('docs/src/pages/demos/buttons/IconButtons').default,
           raw: preval`
@@ -48,6 +62,13 @@ module.exports = require('fs')
           raw: preval`
 module.exports = require('fs')
   .readFileSync(require.resolve('docs/src/pages/demos/buttons/IconLabelButtons'), 'utf8')
+`,
+        },
+        'pages/demos/buttons/CustomizedButtons.js': {
+          js: require('docs/src/pages/demos/buttons/CustomizedButtons').default,
+          raw: preval`
+module.exports = require('fs')
+  .readFileSync(require.resolve('docs/src/pages/demos/buttons/CustomizedButtons'), 'utf8')
 `,
         },
         'pages/demos/buttons/ButtonBases.js': {

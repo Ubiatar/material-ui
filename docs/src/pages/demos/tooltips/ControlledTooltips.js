@@ -1,7 +1,7 @@
 import React from 'react';
-import DeleteIcon from 'material-ui-icons/Delete';
-import IconButton from 'material-ui/IconButton';
-import Tooltip from 'material-ui/Tooltip';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 
 class ControlledTooltips extends React.Component {
   state = {
@@ -19,14 +19,14 @@ class ControlledTooltips extends React.Component {
   render() {
     return (
       <Tooltip
-        id="tooltip-controlled"
-        title="Delete"
-        onClose={this.handleTooltipClose}
         enterDelay={300}
+        id="tooltip-controlled"
         leaveDelay={300}
+        onClose={this.handleTooltipClose}
         onOpen={this.handleTooltipOpen}
         open={this.state.open}
         placement="bottom"
+        title="Delete"
       >
         <IconButton aria-label="Delete">
           <DeleteIcon />

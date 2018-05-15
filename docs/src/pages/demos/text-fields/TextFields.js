@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import MenuItem from 'material-ui/Menu/MenuItem';
-import TextField from 'material-ui/TextField';
+import TextField from '@material-ui/core/TextField';
 
 const styles = theme => ({
   container: {
@@ -89,7 +89,7 @@ class TextFields extends React.Component {
           margin="normal"
         />
         <TextField
-          id="password"
+          id="password-input"
           label="Password"
           className={classes.textField}
           type="password"

@@ -1,19 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Table, {
-  TableBody,
-  TableCell,
-  TableFooter,
-  TablePagination,
-  TableRow,
-} from 'material-ui/Table';
-import Paper from 'material-ui/Paper';
-import IconButton from 'material-ui/IconButton';
-import FirstPageIcon from 'material-ui-icons/FirstPage';
-import KeyboardArrowLeft from 'material-ui-icons/KeyboardArrowLeft';
-import KeyboardArrowRight from 'material-ui-icons/KeyboardArrowRight';
-import LastPageIcon from 'material-ui-icons/LastPage';
+import { withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableFooter from '@material-ui/core/TableFooter';
+import TablePagination from '@material-ui/core/TablePagination';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import IconButton from '@material-ui/core/IconButton';
+import FirstPageIcon from '@material-ui/icons/FirstPage';
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+import LastPageIcon from '@material-ui/icons/LastPage';
 
 const actionsStyles = theme => ({
   root: {
@@ -159,14 +158,16 @@ class CustomPaginationActionsTable extends React.Component {
               {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(n => {
                 return (
                   <TableRow key={n.id}>
-                    <TableCell>{n.name}</TableCell>
+                    <TableCell component="th" scope="row">
+                      {n.name}
+                    </TableCell>
                     <TableCell numeric>{n.calories}</TableCell>
                     <TableCell numeric>{n.fat}</TableCell>
                   </TableRow>
                 );
               })}
               {emptyRows > 0 && (
-                <TableRow style={{ height: 49 * emptyRows }}>
+                <TableRow style={{ height: 48 * emptyRows }}>
                   <TableCell colSpan={6} />
                 </TableRow>
               )}
@@ -180,7 +181,7 @@ class CustomPaginationActionsTable extends React.Component {
                   page={page}
                   onChangePage={this.handleChangePage}
                   onChangeRowsPerPage={this.handleChangeRowsPerPage}
-                  Actions={TablePaginationActionsWrapped}
+                  ActionsComponent={TablePaginationActionsWrapped}
                 />
               </TableRow>
             </TableFooter>

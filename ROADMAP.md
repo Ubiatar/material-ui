@@ -87,6 +87,24 @@ We think that it should be done the other way around, i.e. providing a low-level
 
 On the other hand, using a smart date library for the DatePicker / TimePicker would probably be much better as date management is tricky and not a core business.
 
+## Breaking changes before v1
+
+It's time to look at the last breaking changes needed before releasing Material-UI v1.
+Users trying out and using v1-beta and giving feedback has been a tremendous help. Thank you!
+
+This feedback has guided the following list of important breaking changes
+that **are needed for the stable version**:
+
+- None
+
+These breaking changes will be spread into different releases over the next few months to make the upgrade path as smooth as possible.
+Not only does the Material-UI project have to be upgraded for each breaking change,
+but we also have to upgrade our own projects.
+**We don't take making breaking changes lightly**, it's very costly with UI components.
+For users, test coverage is hard to raise without tools like [visual regression tests](https://www.argos-ci.com/mui-org/material-ui).
+
+**Let us know** by [commenting on this PR](https://github.com/mui-org/material-ui/pull/10348) what you think we should or shouldn't do, what's important, and what's missing!
+
 ## After stable v1
 
 - **Theming**. We will invest in the theming solution. We would love to see **non Material Design UI** built with Material-UI. [@oliviertassinari](https://github.com/oliviertassinari/) is working on a proof of concept.

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: theme.mixins.gutters({
@@ -10,9 +10,9 @@ const styles = theme => ({
     maxWidth: '100%',
     margin: '0 auto',
   }),
-  [theme.breakpoints.up(900 + theme.spacing.unit * 6)]: {
+  [theme.breakpoints.up('md')]: {
     root: {
-      maxWidth: 900,
+      maxWidth: theme.breakpoints.values.md,
     },
   },
 });

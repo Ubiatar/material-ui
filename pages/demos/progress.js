@@ -29,6 +29,13 @@ module.exports = require('fs')
   .readFileSync(require.resolve('docs/src/pages/demos/progress/CircularDeterminate'), 'utf8')
 `,
         },
+        'pages/demos/progress/CircularStatic.js': {
+          js: require('docs/src/pages/demos/progress/CircularStatic').default,
+          raw: preval`
+module.exports = require('fs')
+  .readFileSync(require.resolve('docs/src/pages/demos/progress/CircularStatic'), 'utf8')
+`,
+        },
         'pages/demos/progress/LinearIndeterminate.js': {
           js: require('docs/src/pages/demos/progress/LinearIndeterminate').default,
           raw: preval`
@@ -55,6 +62,13 @@ module.exports = require('fs')
           raw: preval`
 module.exports = require('fs')
   .readFileSync(require.resolve('docs/src/pages/demos/progress/LinearQuery'), 'utf8')
+`,
+        },
+        'pages/demos/progress/DelayingAppearance.js': {
+          js: require('docs/src/pages/demos/progress/DelayingAppearance').default,
+          raw: preval`
+module.exports = require('fs')
+  .readFileSync(require.resolve('docs/src/pages/demos/progress/DelayingAppearance'), 'utf8')
 `,
         },
       }}

@@ -1,5 +1,5 @@
 ---
-filename: /src/List/ListItemText.js
+filename: /packages/material-ui/src/ListItemText/ListItemText.js
 ---
 
 <!--- This documentation is automatically generated, do not try to edit it. -->
@@ -12,11 +12,12 @@ filename: /src/List/ListItemText.js
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| classes | object |  | Useful to extend the style applied to components. |
-| disableTypography | bool | false | If `true`, the children won't be wrapped by a typography component. For instance, that can be useful to can render an h4 instead of a |
-| inset | bool | false | If `true`, the children will be indented. This should be used if there is no left avatar or left icon. |
-| primary | node | false |  |
-| secondary | node | false |  |
+| <span class="prop-name">children</span> | <span class="prop-type">node |  | Alias for the `primary` property. |
+| <span class="prop-name">classes</span> | <span class="prop-type">object |  | Override or extend the styles applied to the component. See [CSS API](#css-api) below for more details. |
+| <span class="prop-name">disableTypography</span> | <span class="prop-type">bool | <span class="prop-default">false</span> | If `true`, the children won't be wrapped by a typography component. For instance, that can be useful to can render an h4 instead of a |
+| <span class="prop-name">inset</span> | <span class="prop-type">bool | <span class="prop-default">false</span> | If `true`, the children will be indented. This should be used if there is no left avatar or left icon. |
+| <span class="prop-name">primary</span> | <span class="prop-type">node |  |  |
+| <span class="prop-name">secondary</span> | <span class="prop-type">node |  |  |
 
 Any other properties supplied will be [spread to the root element](/guides/api#spread).
 
@@ -32,7 +33,7 @@ This property accepts the following keys:
 - `textDense`
 
 Have a look at [overriding with classes](/customization/overrides#overriding-with-classes) section
-and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/src/List/ListItemText.js)
+and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/packages/material-ui/src/ListItemText/ListItemText.js)
 for more detail.
 
 If using the `overrides` key of the theme as documented

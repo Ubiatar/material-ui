@@ -1,8 +1,8 @@
 /* eslint-disable react/no-danger */
 
 import React from 'react';
-import Button from 'material-ui/Button';
-import Snackbar from 'material-ui/Snackbar';
+import Button from '@material-ui/core/Button';
+import Snackbar from '@material-ui/core/Snackbar';
 import 'isomorphic-fetch';
 
 function getLastSeenNotification() {
@@ -75,12 +75,12 @@ class Notifications extends React.Component {
       <Snackbar
         key={message.id}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-        SnackbarContentProps={{ 'aria-describedby': 'notification-message' }}
+        ContentProps={{ 'aria-describedby': 'notification-message' }}
         message={
           <span id="notification-message" dangerouslySetInnerHTML={{ __html: message.text }} />
         }
         action={
-          <Button dense color="secondary" onClick={this.handleClose}>
+          <Button size="small" color="secondary" onClick={this.handleClose}>
             Close
           </Button>
         }

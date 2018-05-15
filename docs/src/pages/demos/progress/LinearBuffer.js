@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import { LinearProgress } from 'material-ui/Progress';
+import { withStyles } from '@material-ui/core/styles';
+import LinearProgress from '@material-ui/core/LinearProgress';
 
 const styles = {
   root: {
-    width: '100%',
-    marginTop: 30,
+    flexGrow: 1,
   },
 };
 
@@ -24,7 +23,7 @@ class LinearBuffer extends React.Component {
     clearInterval(this.timer);
   }
 
-  timer: number;
+  timer = null;
 
   progress = () => {
     const { completed } = this.state;
@@ -42,9 +41,9 @@ class LinearBuffer extends React.Component {
     const { completed, buffer } = this.state;
     return (
       <div className={classes.root}>
-        <LinearProgress mode="buffer" value={completed} valueBuffer={buffer} />
+        <LinearProgress variant="buffer" value={completed} valueBuffer={buffer} />
         <br />
-        <LinearProgress color="secondary" mode="buffer" value={completed} valueBuffer={buffer} />
+        <LinearProgress color="secondary" variant="buffer" value={completed} valueBuffer={buffer} />
       </div>
     );
   }

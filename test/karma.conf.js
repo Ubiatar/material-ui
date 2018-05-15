@@ -1,6 +1,5 @@
 // @flow weak
 
-const path = require('path');
 const webpack = require('webpack');
 
 const browserStack = {
@@ -13,6 +12,7 @@ const browserStack = {
 module.exports = function setKarmaConfig(config) {
   const baseConfig = {
     basePath: '../',
+    // phantomjs is no longer maintained, we should switch to chrome headless.
     browsers: ['PhantomJS_Sized'],
     // to avoid DISCONNECTED messages on travis
     browserDisconnectTimeout: 120000, // default 2000
@@ -74,20 +74,9 @@ module.exports = function setKarmaConfig(config) {
             loader: 'json-loader',
           },
         ],
-        noParse: [/node_modules\/sinon\//],
-      },
-      resolve: {
-        alias: {
-          'material-ui': path.resolve(__dirname, '../src'),
-          sinon: 'sinon/pkg/sinon.js',
-        },
-        extensions: ['.js', '.json'],
-        modules: [path.join(__dirname, '../'), 'node_modules'],
-      },
-      externals: {
-        jsdom: 'window',
       },
       node: {
+        // Some tests import fs
         fs: 'empty',
       },
     },
@@ -99,7 +88,7 @@ module.exports = function setKarmaConfig(config) {
         base: 'PhantomJS',
         options: {
           viewportSize: {
-            // Matches JSDom size.
+            // Matches jsdom size.
             width: 1024,
             height: 768,
           },

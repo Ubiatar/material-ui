@@ -1,5 +1,5 @@
 ---
-filename: /src/List/ListSubheader.js
+filename: /packages/material-ui/src/ListSubheader/ListSubheader.js
 ---
 
 <!--- This documentation is automatically generated, do not try to edit it. -->
@@ -12,12 +12,12 @@ filename: /src/List/ListSubheader.js
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| children | node |  | The content of the component. |
-| classes | object |  | Useful to extend the style applied to components. |
-| color | enum:&nbsp;'default'&nbsp;&#124;<br>&nbsp;'primary'&nbsp;&#124;<br>&nbsp;'inherit'<br> | 'default' | The color of the component. It's using the theme palette when that makes sense. |
-| component | union:&nbsp;string&nbsp;&#124;<br>&nbsp;func<br> | 'li' | The component used for the root node. Either a string to use a DOM element or a component. |
-| disableSticky | bool | false | If `true`, the List Subheader will not stick to the top during scroll. |
-| inset | bool | false | If `true`, the List Subheader will be indented. |
+| <span class="prop-name">children</span> | <span class="prop-type">node |  | The content of the component. |
+| <span class="prop-name">classes</span> | <span class="prop-type">object |  | Override or extend the styles applied to the component. See [CSS API](#css-api) below for more details. |
+| <span class="prop-name">color</span> | <span class="prop-type">enum:&nbsp;'default'&nbsp;&#124;<br>&nbsp;'primary'&nbsp;&#124;<br>&nbsp;'inherit'<br> | <span class="prop-default">'default'</span> | The color of the component. It supports those theme colors that make sense for this component. |
+| <span class="prop-name">component</span> | <span class="prop-type">union:&nbsp;string&nbsp;&#124;<br>&nbsp;func<br> | <span class="prop-default">'li'</span> | The component used for the root node. Either a string to use a DOM element or a component. |
+| <span class="prop-name">disableSticky</span> | <span class="prop-type">bool | <span class="prop-default">false</span> | If `true`, the List Subheader will not stick to the top during scroll. |
+| <span class="prop-name">inset</span> | <span class="prop-type">bool | <span class="prop-default">false</span> | If `true`, the List Subheader will be indented. |
 
 Any other properties supplied will be [spread to the root element](/guides/api#spread).
 
@@ -32,7 +32,7 @@ This property accepts the following keys:
 - `sticky`
 
 Have a look at [overriding with classes](/customization/overrides#overriding-with-classes) section
-and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/src/List/ListSubheader.js)
+and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/packages/material-ui/src/ListSubheader/ListSubheader.js)
 for more detail.
 
 If using the `overrides` key of the theme as documented

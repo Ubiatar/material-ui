@@ -1,5 +1,5 @@
 ---
-filename: /src/List/ListItemSecondaryAction.js
+filename: /packages/material-ui/src/ListItemSecondaryAction/ListItemSecondaryAction.js
 ---
 
 <!--- This documentation is automatically generated, do not try to edit it. -->
@@ -12,8 +12,8 @@ filename: /src/List/ListItemSecondaryAction.js
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| children | node |  | The content of the component, normally an `IconButton` or selection control. |
-| classes | object |  | Useful to extend the style applied to components. |
+| <span class="prop-name">children</span> | <span class="prop-type">node |  | The content of the component, normally an `IconButton` or selection control. |
+| <span class="prop-name">classes</span> | <span class="prop-type">object |  | Override or extend the styles applied to the component. See [CSS API](#css-api) below for more details. |
 
 Any other properties supplied will be [spread to the root element](/guides/api#spread).
 
@@ -24,7 +24,7 @@ This property accepts the following keys:
 - `root`
 
 Have a look at [overriding with classes](/customization/overrides#overriding-with-classes) section
-and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/src/List/ListItemSecondaryAction.js)
+and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/packages/material-ui/src/ListItemSecondaryAction/ListItemSecondaryAction.js)
 for more detail.
 
 If using the `overrides` key of the theme as documented

@@ -2,20 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import compose from 'recompose/compose';
 import Head from 'next/head';
-import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import withRoot from 'docs/src/modules/components/withRoot';
-import AppFooter from 'docs/src/modules/components/AppFooter';
+import HomeSteps from 'docs/src/modules/components/HomeSteps';
+import HomeBackers from 'docs/src/modules/components/HomeBackers';
+import HomeFooter from 'docs/src/modules/components/HomeFooter';
 import Link from 'docs/src/modules/components/Link';
-import MarkdownElement from 'docs/src/modules/components/MarkdownElement';
 
 const styles = theme => ({
   root: {
     flex: '1 0 100%',
   },
   hero: {
-    minHeight: '95vh',
+    minHeight: '80vh',
     flex: '0 0 auto',
     display: 'flex',
     justifyContent: 'center',
@@ -25,11 +26,10 @@ const styles = theme => ({
     color: theme.palette.primary.contrastText,
   },
   content: {
-    paddingTop: theme.spacing.unit * 8,
     paddingBottom: theme.spacing.unit * 8,
+    paddingTop: theme.spacing.unit * 8,
     [theme.breakpoints.up('sm')]: {
       paddingTop: theme.spacing.unit * 12,
-      paddingBottom: theme.spacing.unit * 10,
     },
   },
   text: {
@@ -53,102 +53,80 @@ const styles = theme => ({
     height: '35vw',
     maxHeight: 200,
   },
-  backers: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing.unit * 2,
-    display: 'flex',
-    justifyContent: 'center',
+  steps: {
+    maxWidth: theme.spacing.unit * 130,
+    margin: 'auto',
   },
-  backersBody: {
-    maxWidth: theme.spacing.unit * 90,
+  step: {
+    padding: `${theme.spacing.unit * 3}px ${theme.spacing.unit * 2}px`,
   },
+  stepIcon: {
+    marginBottom: theme.spacing.unit,
+  },
+  markdownElement: {},
 });
 
-function PageHome(props) {
-  const classes = props.classes;
+class HomePage extends React.Component {
+  componentDidMount() {
+    if (window.location.hash !== '') {
+      window.location.replace(`http://v0.material-ui.com/${window.location.hash}`);
+    }
+  }
 
-  return (
-    <div className={classes.root}>
-      <Head>
-        <title>Ubiatar-Material-UI</title>
-      </Head>
-      <div className={classes.hero}>
-        <div className={classes.content}>
-          <img
-            src="/static/images/material-ui-logo.svg"
-            alt="Material-UI Logo"
-            className={classes.logo}
-          />
-          <div className={classes.text}>
-            <Typography type="display2" component="h1" color="inherit" gutterBottom>
-              {'Ubiatar-Material-UI'}
-            </Typography>
-            <Typography type="headline" component="h2" color="inherit" className={classes.headline}>
-              {"React components that implement Google's Material Design."}
-            </Typography>
-            <Button
-              component={Link}
-              className={classes.button}
-              raised
-              prefetch
-              href="/getting-started/installation"
-              variant="button"
-            >
-              {'Get Started'}
-            </Button>
+  render() {
+    const classes = this.props.classes;
+
+    return (
+      <div className={classes.root}>
+        <Head>
+          <title>Material-UI</title>
+        </Head>
+        <div className={classes.hero}>
+          <div className={classes.content}>
+            <img
+              src="/static/images/material-ui-logo.svg"
+              alt="Material-UI Logo"
+              className={classes.logo}
+            />
+            <div className={classes.text}>
+              <Typography variant="display2" component="h1" color="inherit" gutterBottom>
+                {'Material-UI'}
+              </Typography>
+              <Typography
+                variant="headline"
+                component="h2"
+                color="inherit"
+                className={classes.headline}
+              >
+                {"React components that implement Google's Material Design."}
+              </Typography>
+              <Button
+                component={buttonProps => (
+                  <Link
+                    variant="button"
+                    prefetch
+                    href="/getting-started/installation"
+                    {...buttonProps}
+                  />
+                )}
+                className={classes.button}
+                variant="raised"
+              >
+                {'Get Started'}
+              </Button>
+            </div>
           </div>
         </div>
+        <HomeSteps />
+        <HomeBackers />
+        <HomeFooter />
       </div>
-      <div className={classes.backers}>
-        <MarkdownElement
-          className={classes.backersBody}
-          text={`
-<h2 style="text-align: center;">Supporting Material-UI</h2>
-
-Material-UI is an MIT-licensed open source project.
-It's an independent project with ongoing development made possible entirely
-thanks to the support of these awesome [backers](/discover-more/backers).
-
-<h3 style="text-align: center;">Gold Sponsors</h3>
-
-Gold Sponsors are those who have pledged $500/month and more to Material-UI.
-
-#### via [Patreon](https://www.patreon.com/oliviertassinari)
-
-<table>
-  <tbody>
-    <tr>
-      <td>
-        <a href="https://www.creative-tim.com" target="_blank">
-          <img width="126" src="https://avatars1.githubusercontent.com/u/20172349" alt="0">
-        </a>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-#### via [OpenCollective](https://opencollective.com/material-ui)
-
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/0/website" target="_blank" style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/0/avatar.svg" alt="0" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/1/website" target="_blank" style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/1/avatar.svg" alt="1" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/2/website" target="_blank" style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/2/avatar.svg" alt="2" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/3/website" target="_blank" style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/3/avatar.svg" alt="3" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/4/website" target="_blank" style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/4/avatar.svg" alt="4" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/5/website" target="_blank" style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/5/avatar.svg" alt="5" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/6/website" target="_blank" style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/6/avatar.svg" alt="6" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/7/website" target="_blank" style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/7/avatar.svg" alt="7" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/8/website" target="_blank" style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/8/avatar.svg" alt="8" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/9/website" target="_blank" style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/9/avatar.svg" alt="9" /></a>
-        `}
-        />
-      </div>
-      <AppFooter />
-    </div>
-  );
+    );
+  }
 }
 
-PageHome.propTypes = {
+HomePage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default compose(withRoot, withStyles(styles))(PageHome);
+export default compose(withRoot, withStyles(styles))(HomePage);

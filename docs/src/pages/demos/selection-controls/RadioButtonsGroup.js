@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Radio, { RadioGroup } from 'material-ui/Radio';
-import { FormLabel, FormControl, FormControlLabel, FormHelperText } from 'material-ui/Form';
+import { withStyles } from '@material-ui/core/styles';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 const styles = theme => ({
   root: {
@@ -18,11 +22,11 @@ const styles = theme => ({
 
 class RadioButtonsGroup extends React.Component {
   state = {
-    value: '',
+    value: 'female',
   };
 
-  handleChange = (event, value) => {
-    this.setState({ value });
+  handleChange = event => {
+    this.setState({ value: event.target.value });
   };
 
   render() {
@@ -39,10 +43,15 @@ class RadioButtonsGroup extends React.Component {
             value={this.state.value}
             onChange={this.handleChange}
           >
-            <FormControlLabel value="male" control={<Radio />} label="Male" />
             <FormControlLabel value="female" control={<Radio />} label="Female" />
+            <FormControlLabel value="male" control={<Radio />} label="Male" />
             <FormControlLabel value="other" control={<Radio />} label="Other" />
-            <FormControlLabel value="disabled" disabled control={<Radio />} label="Disabled" />
+            <FormControlLabel
+              value="disabled"
+              disabled
+              control={<Radio />}
+              label="(Disabled option)"
+            />
           </RadioGroup>
         </FormControl>
         <FormControl component="fieldset" required error className={classes.formControl}>
@@ -54,10 +63,15 @@ class RadioButtonsGroup extends React.Component {
             value={this.state.value}
             onChange={this.handleChange}
           >
-            <FormControlLabel value="male" control={<Radio />} label="Male" />
-            <FormControlLabel value="female" control={<Radio />} label="Female" />
-            <FormControlLabel value="other" control={<Radio />} label="Other" />
-            <FormControlLabel value="disabled" disabled control={<Radio />} label="Disabled" />
+            <FormControlLabel value="male" control={<Radio color="primary" />} label="Male" />
+            <FormControlLabel value="female" control={<Radio color="primary" />} label="Female" />
+            <FormControlLabel value="other" control={<Radio color="primary" />} label="Other" />
+            <FormControlLabel
+              value="disabled"
+              disabled
+              control={<Radio />}
+              label="(Disabled option)"
+            />
           </RadioGroup>
           <FormHelperText>You can display an error</FormHelperText>
         </FormControl>

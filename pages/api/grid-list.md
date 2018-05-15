@@ -1,5 +1,5 @@
 ---
-filename: /src/GridList/GridList.js
+filename: /packages/material-ui/src/GridList/GridList.js
 ---
 
 <!--- This documentation is automatically generated, do not try to edit it. -->
@@ -12,12 +12,12 @@ filename: /src/GridList/GridList.js
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| cellHeight | union:&nbsp;number&nbsp;&#124;<br>&nbsp;{0?: undefined}<br> | 180 | Number of px for one cell height. You can set `'auto'` if you want to let the children determine the height. |
-| <span style="color: #31a148">children *</span> | node |  | Grid Tiles that will be in Grid List. |
-| classes | object |  | Useful to extend the style applied to components. |
-| cols | number | 2 | Number of columns. |
-| component | union:&nbsp;string&nbsp;&#124;<br>&nbsp;func<br> | 'ul' | The component used for the root node. Either a string to use a DOM element or a component. |
-| spacing | number | 4 | Number of px for the spacing between tiles. |
+| <span class="prop-name">cellHeight</span> | <span class="prop-type">union:&nbsp;number&nbsp;&#124;<br>&nbsp;enum:&nbsp;'auto'<br><br> | <span class="prop-default">180</span> | Number of px for one cell height. You can set `'auto'` if you want to let the children determine the height. |
+| <span class="prop-name required">children *</span> | <span class="prop-type">node |  | Grid Tiles that will be in Grid List. |
+| <span class="prop-name">classes</span> | <span class="prop-type">object |  | Override or extend the styles applied to the component. See [CSS API](#css-api) below for more details. |
+| <span class="prop-name">cols</span> | <span class="prop-type">number | <span class="prop-default">2</span> | Number of columns. |
+| <span class="prop-name">component</span> | <span class="prop-type">union:&nbsp;string&nbsp;&#124;<br>&nbsp;func<br> | <span class="prop-default">'ul'</span> | The component used for the root node. Either a string to use a DOM element or a component. |
+| <span class="prop-name">spacing</span> | <span class="prop-type">number | <span class="prop-default">4</span> | Number of px for the spacing between tiles. |
 
 Any other properties supplied will be [spread to the root element](/guides/api#spread).
 
@@ -28,7 +28,7 @@ This property accepts the following keys:
 - `root`
 
 Have a look at [overriding with classes](/customization/overrides#overriding-with-classes) section
-and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/src/GridList/GridList.js)
+and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/packages/material-ui/src/GridList/GridList.js)
 for more detail.
 
 If using the `overrides` key of the theme as documented

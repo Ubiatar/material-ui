@@ -1,16 +1,16 @@
 const webpack = require('webpack');
 const pkg = require('./package.json');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
-const { findPages } = require('./docs/src/modules/utils/find');
+const { findPages } = require('./docs/src/modules/utils/find');
 
-process.env.MATERIAL_UI_VERSION = pkg.version;
+process.env.LIB_VERSION = pkg.version;
 
 module.exports = {
   webpack: config => {
     const plugins = config.plugins.concat([
       new webpack.DefinePlugin({
         'process.env': {
-          MATERIAL_UI_VERSION: JSON.stringify(process.env.MATERIAL_UI_VERSION),
+          LIB_VERSION: JSON.stringify(process.env.LIB_VERSION),
         },
       }),
     ]);
@@ -23,15 +23,15 @@ module.exports = {
           generateStatsFile: true,
           // Will be available at `.next/stats.json`
           statsFilename: 'stats.json',
-        })
+        }),
       );
     }
 
     return Object.assign({}, config, {
       plugins,
-      externals: Object.assign({}, config.externals, {
-        fs: 'fs',
-      }),
+      node: {
+        fs: 'empty',
+      },
       module: Object.assign({}, config.module, {
         rules: config.module.rules.concat([
           {
@@ -50,24 +50,25 @@ module.exports = {
     });
   },
   webpackDevMiddleware: config => config,
-  poweredByHeader: false,
+  // next.js also provide a `defaultPathMap` so we could simplify the logic.
+  // However, we keep it in order to prevent any future regression on the `findPages()` side.
   exportPathMap: () => {
-    const pages = findPages();
-    const map = {
-      '/': { page: '/' },
+    const map = {};
+
+    function generateMap(pages) {
+      pages.forEach(page => {
+        if (!page.children) {
+          map[page.pathname] = {
+            page: page.pathname,
+          };
+          return;
+        }
+
+        generateMap(page.children);
+      });
     }
 
-    pages.forEach(lvl0Page => {
-      if (!lvl0Page.children) {
-        return
-      }
-
-      lvl0Page.children.forEach(lvl1Page => {
-        map[lvl1Page.pathname] = {
-          page: lvl1Page.pathname,
-        }
-      })
-    })
+    generateMap(findPages());
 
     return map;
   },

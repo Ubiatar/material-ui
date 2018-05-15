@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import find from 'lodash/find';
+import { withRouter } from 'next/router';
 import { Provider } from 'react-redux';
 import AppWrapper from 'docs/src/modules/components/AppWrapper';
 import initRedux from 'docs/src/modules/redux/initRedux';
@@ -38,7 +39,8 @@ const pages = [
         pathname: '/getting-started/example-projects',
       },
       {
-        pathname: '/getting-started/frequently-asked-questions',
+        pathname: '/getting-started/faq',
+        title: 'Frequently Asked Questions',
       },
       {
         pathname: '/getting-started/comparison',
@@ -50,7 +52,8 @@ const pages = [
     pathname: '/style',
     children: [
       {
-        pathname: '/style/reboot',
+        pathname: '/style/css-baseline',
+        title: 'CSS Baseline',
       },
       {
         pathname: '/style/color',
@@ -79,8 +82,22 @@ const pages = [
         pathname: '/layout/css-in-js',
         title: 'CSS in JS',
       },
+    ],
+  },
+  {
+    pathname: '/utils',
+    children: [
       {
-        pathname: '/layout/portal',
+        pathname: '/utils/modals',
+      },
+      {
+        pathname: '/utils/popovers',
+      },
+      {
+        pathname: '/utils/portal',
+      },
+      {
+        pathname: '/utils/transitions',
       },
     ],
   },
@@ -102,7 +119,7 @@ const pages = [
         pathname: '/customization/themes',
       },
       {
-        pathname: '/customization/theme-default',
+        pathname: '/customization/default-theme',
         title: 'Default Theme',
       },
       {
@@ -116,7 +133,7 @@ const pages = [
     children: [
       {
         pathname: '/guides/api',
-        title: 'API',
+        title: 'API Design Approach',
       },
       {
         pathname: '/guides/minimizing-bundle-size',
@@ -146,9 +163,30 @@ const pages = [
         pathname: '/guides/flow',
       },
       {
+        pathname: '/guides/csp',
+        title: 'Content Security Policy',
+      },
+      {
         pathname: '/guides/right-to-left',
         title: 'Right-to-left',
       },
+    ],
+  },
+  {
+    pathname: '/premium-themes',
+    title: 'Premium Themes',
+  },
+  {
+    pathname: '/lab',
+    children: [
+      {
+        pathname: '/lab/about',
+        title: 'About The Lab',
+      },
+      {
+        pathname: '/lab/speed-dial',
+      },
+      findPages[2].children[1],
     ],
   },
   {
@@ -182,19 +220,24 @@ const pages = [
     ],
   },
   {
+    pathname: '/versions',
+    displayNav: false,
+  },
+  {
     pathname: '/',
+    displayNav: false,
     title: false,
   },
 ];
 
-function findActivePage(currentPages, url) {
+function findActivePage(currentPages, router) {
   const activePage = find(currentPages, page => {
     if (page.children) {
-      return url.pathname.indexOf(page.pathname) === 0;
+      return router.pathname.indexOf(page.pathname) === 0;
     }
 
     // Should be an exact match if no children
-    return url.pathname === page.pathname;
+    return router.pathname === page.pathname;
   });
 
   if (!activePage) {
@@ -202,8 +245,8 @@ function findActivePage(currentPages, url) {
   }
 
   // We need to drill down
-  if (activePage.pathname !== url.pathname) {
-    return findActivePage(activePage.children, url);
+  if (activePage.pathname !== router.pathname) {
+    return findActivePage(activePage.children, router);
   }
 
   return activePage;
@@ -213,14 +256,23 @@ function withRoot(Component) {
   class WithRoot extends React.Component {
     constructor(props, context) {
       super(props, context);
+
       this.redux = initRedux(this.props.reduxServerState || {});
     }
 
     getChildContext() {
+      const { router } = this.props;
+
+      let pathname = router.pathname;
+      if (pathname !== '/') {
+        // The leading / is only added to support static hosting (resolve /index.html).
+        // We remove it to normalize the pathname.
+        pathname = pathname.replace(/\/$/, '');
+      }
+
       return {
-        url: this.props.url ? this.props.url : null,
         pages,
-        activePage: findActivePage(pages, this.props.url),
+        activePage: findActivePage(pages, { ...router, pathname }),
       };
     }
 
@@ -230,11 +282,13 @@ function withRoot(Component) {
       const { pageContext, ...other } = this.props;
 
       return (
-        <Provider store={this.redux}>
-          <AppWrapper pageContext={pageContext}>
-            <Component initialProps={other} />
-          </AppWrapper>
-        </Provider>
+        <React.StrictMode>
+          <Provider store={this.redux}>
+            <AppWrapper pageContext={pageContext}>
+              <Component initialProps={other} />
+            </AppWrapper>
+          </Provider>
+        </React.StrictMode>
       );
     }
   }
@@ -242,11 +296,10 @@ function withRoot(Component) {
   WithRoot.propTypes = {
     pageContext: PropTypes.object,
     reduxServerState: PropTypes.object,
-    url: PropTypes.object,
+    router: PropTypes.object.isRequired,
   };
 
   WithRoot.childContextTypes = {
-    url: PropTypes.object,
     pages: PropTypes.array,
     activePage: PropTypes.object,
   };
@@ -275,7 +328,7 @@ function withRoot(Component) {
     };
   };
 
-  return WithRoot;
+  return withRouter(WithRoot);
 }
 
 export default withRoot;

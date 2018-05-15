@@ -4,7 +4,7 @@ components: FormControl, FormHelperText, Input, InputAdornment, InputLabel, Text
 
 # Text Fields
 
-[Text fields](https://material.io/guidelines/components/text-fields.html) allow users to input text and usually appear in forms.
+[Text fields](https://material.io/design/components/text-fields.html) allow users to input text and usually appear in forms.
 Users may enter text, numbers, or mixed-format types of input.
 
 ## TextField
@@ -15,7 +15,7 @@ The `TextField` wrapper component is a complete form control including a label, 
 
 ## Components
 
-`TextField` is composed of smaller components (`FormControl`, `InputLabel`, `Input`, and `FormHelperText`) that you can leverage directly to significantly customize your form inputs.
+`TextField` is composed of smaller components ([`FormControl`](/api/form-control), [`InputLabel`](/api/input-label), [`Input`](/api/input), and [`FormHelperText`](/api/form-helper-text)) that you can leverage directly to significantly customize your form inputs.
 
 You might also have noticed that some native HTML input properties are missing from the `TextField` component.
 This is on purpose.
@@ -44,16 +44,23 @@ These can be used to add a prefix, a suffix or an action to an input.
 
 ## Formatted inputs
 
-We demonstrate how you could be using third-party libraries to [format your input](https://material.io/guidelines/components/text-fields.html#text-fields-input-types).
-Here, we are using [react-text-mask](https://github.com/text-mask/text-mask) and [react-number-format](https://github.com/s-yadav/react-number-format) libraries.
+You can use third-party libraries to format an input.
+You have to provide a custom implementation of the `<input>` element with the `inputComponent` property.
+
+The following demo uses the [react-text-mask](https://github.com/text-mask/text-mask) and [react-number-format](https://github.com/s-yadav/react-number-format) libraries.
+
 
 {{"demo": "pages/demos/text-fields/FormattedInputs.js"}}
 
 ## Customized inputs
 
-You have been reading our [overrides documentation page](/customization/overrides)
-but you are not confident jumping in?
-Here is an example of how you can change the main color of an input from "primary" to purple.
-There is no limit.
+If you have been reading the [overrides documentation page](/customization/overrides)
+but you are not confident jumping in, here's an example of how you can change the main color of an Input.
 
 {{"demo": "pages/demos/text-fields/CustomizedInputs.js"}}
+
+## With icon
+
+Icons can be specified as prepended or appended.
+
+{{"demo": "pages/demos/text-fields/InputWithIcon.js"}}

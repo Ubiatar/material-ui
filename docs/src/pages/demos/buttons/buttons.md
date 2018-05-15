@@ -4,7 +4,7 @@ components: Button, IconButton, ButtonBase, Zoom
 
 # Buttons
 
-[Buttons](https://material.io/guidelines/components/buttons.html) communicate the action that will occur when the user touches them.
+[Buttons](https://material.io/design/components/buttons.html) communicate the action that will occur when the user touches them.
 
 Material buttons trigger an ink reaction on press.
 They may display text, imagery, or both.
@@ -17,6 +17,13 @@ They may be used in dialogs, toolbars, or inline.
 They do not lift, but fill with color on press.
 
 {{"demo": "pages/demos/buttons/FlatButtons.js"}}
+
+## Outlined Buttons
+Outlined buttons are text-only buttons with medium emphasis.
+They behave like flat buttons but have an outline and are typically used for actions that are important, but
+aren’t the primary action in an app.
+
+{{"demo": "pages/demos/buttons/OutlinedButtons.js"}}
 
 ## Raised Buttons
 
@@ -46,19 +53,33 @@ animation to finish before the new one enters.
 
 {{"demo": "pages/demos/buttons/FloatingActionButtonZoom.js"}}
 
+## Sizes
+
+Fancy larger or smaller buttons? Use the `size` or the `mini` property.
+
+{{"demo": "pages/demos/buttons/ButtonSizes.js"}}
+
 ## Icon Buttons
 
 Icon buttons are commonly found in app bars and toolbars.
 
-Icons are also appropriate for toggle buttons that allow a single choice to be selected or deselected, such as adding or removing a star to an item.
+Icons are also appropriate for toggle buttons that allow a single choice to be selected or
+deselected, such as adding or removing a star to an item.
 
 {{"demo": "pages/demos/buttons/IconButtons.js"}}
 
 ### Buttons with icons and label
 
-Sometimes you might want to have icons for certain button to enhance the UX of the application as humans recognize logos more than plain text. For example, if you have a delete button you can label it with a dustbin icon.
+Sometimes you might want to have icons for certain button to enhance the UX of the application as we recognize logos more easily than plain text. For example, if you have a delete button you can label it with a dustbin icon.
 
 {{"demo": "pages/demos/buttons/IconLabelButtons.js"}}
+
+## Customized Buttons
+
+If you have been reading the [overrides documentation page](/customization/overrides)
+but you are not confident jumping in, here's an example of how you can change the main color of a Button.
+
+{{"demo": "pages/demos/buttons/CustomizedButtons.js"}}
 
 ## Complex Buttons
 
@@ -71,12 +92,12 @@ You can take advantage of this lower level component to build custom interaction
 
 One common use case is to use the button to trigger a navigation to a new page.
 The `ButtonBase` component provides a property to handle this use case: `component`.
-Given that a lot of our interactive elements rely on `ButtonBase`, you should be
+Given that a lot of our interactive components rely on `ButtonBase`, you should be
 able to take advantage of it everywhere:
 
 ```jsx
 import { Link } from 'react-router-dom'
-import Button from 'material-ui/Button';
+import Button from '@material-ui/core/Button';
 
 <Button component={Link} to="/open-collective">
   Link
@@ -87,9 +108,13 @@ or if you want to avoid properties collisions:
 
 ```jsx
 import { Link } from 'react-router-dom'
-import Button from 'material-ui/Button';
+import Button from '@material-ui/core/Button';
 
-<Button component={props => <Link to="/open-collective" {...props} />}>
+const MyLink = props => <Link to="/open-collective" {...props} />
+
+<Button component={MyLink}>
   Link
 </Button>
 ```
+
+*Note: Creating `MyLink` is necessary to prevent unexpected unmounting. You can read more about it [here](/guides/composition#component-property).*

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import Autosuggest from 'react-autosuggest';
 import match from 'autosuggest-highlight/match';
 import parse from 'autosuggest-highlight/parse';
-import TextField from 'material-ui/TextField';
-import Paper from 'material-ui/Paper';
-import { MenuItem } from 'material-ui/Menu';
-import { withStyles } from 'material-ui/styles';
+import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper';
+import MenuItem from '@material-ui/core/MenuItem';
+import { withStyles } from '@material-ui/core/styles';
 
 const suggestions = [
   { label: 'Afghanistan' },
@@ -46,15 +46,13 @@ const suggestions = [
 ];
 
 function renderInput(inputProps) {
-  const { classes, autoFocus, value, ref, ...other } = inputProps;
+  const { classes, ref, ...other } = inputProps;
 
   return (
     <TextField
-      autoFocus={autoFocus}
-      className={classes.textField}
-      value={value}
-      inputRef={ref}
+      fullWidth
       InputProps={{
+        inputRef: ref,
         classes: {
           input: classes.input,
         },
@@ -124,12 +122,12 @@ const styles = theme => ({
   container: {
     flexGrow: 1,
     position: 'relative',
-    height: 200,
+    height: 250,
   },
   suggestionsContainerOpen: {
     position: 'absolute',
+    zIndex: 1,
     marginTop: theme.spacing.unit,
-    marginBottom: theme.spacing.unit * 3,
     left: 0,
     right: 0,
   },
@@ -140,9 +138,6 @@ const styles = theme => ({
     margin: 0,
     padding: 0,
     listStyleType: 'none',
-  },
-  textField: {
-    width: '100%',
   },
 });
 
@@ -189,7 +184,6 @@ class IntegrationAutosuggest extends React.Component {
         getSuggestionValue={getSuggestionValue}
         renderSuggestion={renderSuggestion}
         inputProps={{
-          autoFocus: true,
           classes,
           placeholder: 'Search a country (start with a)',
           value: this.state.value,

@@ -1,5 +1,5 @@
 ---
-filename: /src/IconButton/IconButton.js
+filename: /packages/material-ui/src/IconButton/IconButton.js
 ---
 
 <!--- This documentation is automatically generated, do not try to edit it. -->
@@ -13,13 +13,11 @@ regarding the available icon options.
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| buttonRef | func |  | Use that property to pass a ref callback to the native button component. |
-| children | node |  | The icon element. |
-| classes | object |  | Useful to extend the style applied to components. |
-| color | enum:&nbsp;'default'&nbsp;&#124;<br>&nbsp;'inherit'&nbsp;&#124;<br>&nbsp;'primary'&nbsp;&#124;<br>&nbsp;'secondary'<br> | 'default' | The color of the component. It's using the theme palette when that makes sense. |
-| disabled | bool | false | If `true`, the button will be disabled. |
-| disableRipple | bool | false | If `true`, the ripple will be disabled. |
-| rootRef | func |  | Use that property to pass a ref callback to the root component. |
+| <span class="prop-name">children</span> | <span class="prop-type">node |  | The icon element. |
+| <span class="prop-name">classes</span> | <span class="prop-type">object |  | Override or extend the styles applied to the component. See [CSS API](#css-api) below for more details. |
+| <span class="prop-name">color</span> | <span class="prop-type">enum:&nbsp;'default'&nbsp;&#124;<br>&nbsp;'inherit'&nbsp;&#124;<br>&nbsp;'primary'&nbsp;&#124;<br>&nbsp;'secondary'<br> | <span class="prop-default">'default'</span> | The color of the component. It supports those theme colors that make sense for this component. |
+| <span class="prop-name">disabled</span> | <span class="prop-type">bool | <span class="prop-default">false</span> | If `true`, the button will be disabled. |
+| <span class="prop-name">disableRipple</span> | <span class="prop-type">bool |  | If `true`, the ripple will be disabled. |
 
 Any other properties supplied will be [spread to the root element](/guides/api#spread).
 
@@ -33,10 +31,9 @@ This property accepts the following keys:
 - `colorSecondary`
 - `disabled`
 - `label`
-- `icon`
 
 Have a look at [overriding with classes](/customization/overrides#overriding-with-classes) section
-and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/src/IconButton/IconButton.js)
+and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/packages/material-ui/src/IconButton/IconButton.js)
 for more detail.
 
 If using the `overrides` key of the theme as documented
@@ -45,7 +42,7 @@ you need to use the following style sheet name: `MuiIconButton`.
 
 ## Inheritance
 
-The properties of the [&lt;ButtonBase /&gt;](/api/button-base) component are also available.
+The properties of the [ButtonBase](/api/button-base) component are also available.
 
 ## Demos
 

@@ -1,16 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import {
-  FormLabel,
-  FormControl,
-  FormGroup,
-  FormControlLabel,
-  FormHelperText,
-} from 'material-ui/Form';
-import Checkbox from 'material-ui/Checkbox';
-
-const styles = {};
+import FormLabel from '@material-ui/core/FormLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import Checkbox from '@material-ui/core/Checkbox';
 
 class CheckboxesGroup extends React.Component {
   state = {
@@ -19,8 +13,8 @@ class CheckboxesGroup extends React.Component {
     antoine: true,
   };
 
-  handleChange = name => (event, checked) => {
-    this.setState({ [name]: checked });
+  handleChange = name => event => {
+    this.setState({ [name]: event.target.checked });
   };
 
   render() {
@@ -65,8 +59,4 @@ class CheckboxesGroup extends React.Component {
   }
 }
 
-CheckboxesGroup.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(CheckboxesGroup);
+export default CheckboxesGroup;

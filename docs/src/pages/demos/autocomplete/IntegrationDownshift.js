@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import keycode from 'keycode';
 import Downshift from 'downshift';
-import TextField from 'material-ui/TextField';
-import Paper from 'material-ui/Paper';
-import { MenuItem } from 'material-ui/Menu';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Paper from '@material-ui/core/Paper';
+import MenuItem from '@material-ui/core/MenuItem';
+import Chip from '@material-ui/core/Chip';
 
 const suggestions = [
   { label: 'Afghanistan' },
@@ -44,28 +46,25 @@ const suggestions = [
 ];
 
 function renderInput(inputProps) {
-  const { classes, autoFocus, value, ref, ...other } = inputProps;
+  const { InputProps, classes, ref, ...other } = inputProps;
 
   return (
     <TextField
-      autoFocus={autoFocus}
-      className={classes.textField}
-      value={value}
-      inputRef={ref}
       InputProps={{
+        inputRef: ref,
         classes: {
-          input: classes.input,
+          root: classes.inputRoot,
         },
-        ...other,
+        ...InputProps,
       }}
+      {...other}
     />
   );
 }
 
-function renderSuggestion(params) {
-  const { suggestion, index, itemProps, theme, highlightedIndex, selectedItem } = params;
+function renderSuggestion({ suggestion, index, itemProps, highlightedIndex, selectedItem }) {
   const isHighlighted = highlightedIndex === index;
-  const isSelected = selectedItem === suggestion.label;
+  const isSelected = (selectedItem || '').indexOf(suggestion.label) > -1;
 
   return (
     <MenuItem
@@ -74,32 +73,27 @@ function renderSuggestion(params) {
       selected={isHighlighted}
       component="div"
       style={{
-        fontWeight: isSelected
-          ? theme.typography.fontWeightMedium
-          : theme.typography.fontWeightRegular,
+        fontWeight: isSelected ? 500 : 400,
       }}
     >
       {suggestion.label}
     </MenuItem>
   );
 }
-
-function renderSuggestionsContainer(options) {
-  const { containerProps, children } = options;
-
-  return (
-    <Paper {...containerProps} square>
-      {children}
-    </Paper>
-  );
-}
+renderSuggestion.propTypes = {
+  highlightedIndex: PropTypes.number,
+  index: PropTypes.number,
+  itemProps: PropTypes.object,
+  selectedItem: PropTypes.string,
+  suggestion: PropTypes.shape({ label: PropTypes.string }).isRequired,
+};
 
 function getSuggestions(inputValue) {
   let count = 0;
 
   return suggestions.filter(suggestion => {
     const keep =
-      (!inputValue || suggestion.label.toLowerCase().includes(inputValue.toLowerCase())) &&
+      (!inputValue || suggestion.label.toLowerCase().indexOf(inputValue.toLowerCase()) !== -1) &&
       count < 5;
 
     if (keep) {
@@ -110,60 +104,166 @@ function getSuggestions(inputValue) {
   });
 }
 
-const styles = {
-  container: {
-    flexGrow: 1,
-    height: 200,
-  },
-  textField: {
-    width: '100%',
-  },
-};
+class DownshiftMultiple extends React.Component {
+  state = {
+    inputValue: '',
+    selectedItem: [],
+  };
 
-function IntegrationAutosuggest(props) {
-  const { classes, theme } = props;
+  handleKeyDown = event => {
+    const { inputValue, selectedItem } = this.state;
+    if (selectedItem.length && !inputValue.length && keycode(event) === 'backspace') {
+      this.setState({
+        selectedItem: selectedItem.slice(0, selectedItem.length - 1),
+      });
+    }
+  };
 
-  return (
-    <Downshift
-      render={({
-        getInputProps,
-        getItemProps,
-        isOpen,
-        inputValue,
-        selectedItem,
-        highlightedIndex,
-      }) => (
-        <div className={classes.container}>
-          {renderInput(
-            getInputProps({
+  handleInputChange = event => {
+    this.setState({ inputValue: event.target.value });
+  };
+
+  handleChange = item => {
+    let { selectedItem } = this.state;
+
+    if (selectedItem.indexOf(item) === -1) {
+      selectedItem = [...selectedItem, item];
+    }
+
+    this.setState({
+      inputValue: '',
+      selectedItem,
+    });
+  };
+
+  handleDelete = item => () => {
+    const selectedItem = [...this.state.selectedItem];
+    selectedItem.splice(selectedItem.indexOf(item), 1);
+
+    this.setState({ selectedItem });
+  };
+
+  render() {
+    const { classes } = this.props;
+    const { inputValue, selectedItem } = this.state;
+
+    return (
+      <Downshift inputValue={inputValue} onChange={this.handleChange} selectedItem={selectedItem}>
+        {({
+          getInputProps,
+          getItemProps,
+          isOpen,
+          inputValue: inputValue2,
+          selectedItem: selectedItem2,
+          highlightedIndex,
+        }) => (
+          <div className={classes.container}>
+            {renderInput({
+              fullWidth: true,
               classes,
-              placeholder: 'Search a country (start with a)',
-              id: 'integration-downshift',
-            }),
-          )}
-          {isOpen
-            ? renderSuggestionsContainer({
-                children: getSuggestions(inputValue).map((suggestion, index) =>
+              InputProps: getInputProps({
+                startAdornment: selectedItem.map(item => (
+                  <Chip
+                    key={item}
+                    tabIndex={-1}
+                    label={item}
+                    className={classes.chip}
+                    onDelete={this.handleDelete(item)}
+                  />
+                )),
+                onChange: this.handleInputChange,
+                onKeyDown: this.handleKeyDown,
+                placeholder: 'Select multiple countries',
+                id: 'integration-downshift-multiple',
+              }),
+            })}
+            {isOpen ? (
+              <Paper className={classes.paper} square>
+                {getSuggestions(inputValue2).map((suggestion, index) =>
                   renderSuggestion({
                     suggestion,
                     index,
-                    theme,
+                    itemProps: getItemProps({ item: suggestion.label }),
+                    highlightedIndex,
+                    selectedItem: selectedItem2,
+                  }),
+                )}
+              </Paper>
+            ) : null}
+          </div>
+        )}
+      </Downshift>
+    );
+  }
+}
+
+DownshiftMultiple.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+    height: 250,
+  },
+  container: {
+    flexGrow: 1,
+    position: 'relative',
+  },
+  paper: {
+    position: 'absolute',
+    zIndex: 1,
+    marginTop: theme.spacing.unit,
+    left: 0,
+    right: 0,
+  },
+  chip: {
+    margin: `${theme.spacing.unit / 2}px ${theme.spacing.unit / 4}px`,
+  },
+  inputRoot: {
+    flexWrap: 'wrap',
+  },
+});
+
+function IntegrationDownshift(props) {
+  const { classes } = props;
+
+  return (
+    <div className={classes.root}>
+      <Downshift>
+        {({ getInputProps, getItemProps, isOpen, inputValue, selectedItem, highlightedIndex }) => (
+          <div className={classes.container}>
+            {renderInput({
+              fullWidth: true,
+              classes,
+              InputProps: getInputProps({
+                placeholder: 'Search a country (start with a)',
+                id: 'integration-downshift-simple',
+              }),
+            })}
+            {isOpen ? (
+              <Paper className={classes.paper} square>
+                {getSuggestions(inputValue).map((suggestion, index) =>
+                  renderSuggestion({
+                    suggestion,
+                    index,
                     itemProps: getItemProps({ item: suggestion.label }),
                     highlightedIndex,
                     selectedItem,
                   }),
-                ),
-              })
-            : null}
-        </div>
-      )}
-    />
+                )}
+              </Paper>
+            ) : null}
+          </div>
+        )}
+      </Downshift>
+      <DownshiftMultiple classes={classes} />
+    </div>
   );
 }
 
-IntegrationAutosuggest.propTypes = {
+IntegrationDownshift.propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(IntegrationAutosuggest);
+export default withStyles(styles)(IntegrationDownshift);

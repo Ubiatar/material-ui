@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import ButtonBase from 'material-ui/ButtonBase';
-import Typography from 'material-ui/Typography';
+import { withStyles } from '@material-ui/core/styles';
+import ButtonBase from '@material-ui/core/ButtonBase';
+import Typography from '@material-ui/core/Typography';
 
 const styles = theme => ({
   root: {
@@ -18,19 +18,20 @@ const styles = theme => ({
       width: '100% !important', // Overrides inline-style
       height: 100,
     },
-    '&:hover': {
+    '&:hover, &$focusVisible': {
       zIndex: 1,
-    },
-    '&:hover $imageBackdrop': {
-      opacity: 0.15,
-    },
-    '&:hover $imageMarked': {
-      opacity: 0,
-    },
-    '&:hover $imageTitle': {
-      border: '4px solid currentColor',
+      '& $imageBackdrop': {
+        opacity: 0.15,
+      },
+      '& $imageMarked': {
+        opacity: 0,
+      },
+      '& $imageTitle': {
+        border: '4px solid currentColor',
+      },
     },
   },
+  focusVisible: {},
   imageButton: {
     position: 'absolute',
     left: 0,
@@ -104,6 +105,7 @@ function ButtonBases(props) {
           focusRipple
           key={image.title}
           className={classes.image}
+          focusVisibleClassName={classes.focusVisible}
           style={{
             width: image.width,
           }}
@@ -118,7 +120,7 @@ function ButtonBases(props) {
           <span className={classes.imageButton}>
             <Typography
               component="span"
-              type="subheading"
+              variant="subheading"
               color="inherit"
               className={classes.imageTitle}
             >

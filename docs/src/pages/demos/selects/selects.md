@@ -22,14 +22,20 @@ we allow such pattern.
 The `Select` component can handle multiple selections.
 It's enabled with the `multiple` property.
 
+Like with the single selection, you can pull out the new value by accessing `event.target.value` in the `onChange` callback. It's always an array.
+
 {{"demo": "pages/demos/selects/MultipleSelect.js"}}
 
 ## With a Dialog
 
-While it's not encouraged by the Material Design specification, you can use a select inside a dialog.
+While it's discouraged by the Material Design specification, you can use a select inside a dialog.
 
 {{"demo": "pages/demos/selects/DialogSelect.js"}}
 
 ## Text Fields
 
 The `TextField` wrapper component is a complete form control including a label, input and help text. You can find an example with the select mode [in this section](/demos/text-fields#textfield).
+
+## Controlled open Select
+
+{{"demo": "pages/demos/selects/ControlledOpenSelect.js"}}

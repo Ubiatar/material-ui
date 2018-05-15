@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://material-ui-next.com/" target="_blank"><img width="200" src="/static/brand.png" alt="Material-UI logo"></a></p>
+  <a href="https://material-ui-next.com/" rel="noopener" target="_blank"><img width="200" src="/static/brand.png" alt="Material-UI logo"></a></p>
 </p>
 
 <h1 align="center">Material-UI</h1>
@@ -8,8 +8,8 @@
 
 [React](http://facebook.github.io/react/) components that implement [Google's Material Design](https://www.google.com/design/spec/material-design/introduction.html).
 
-[![npm package](https://img.shields.io/npm/v/material-ui/next.svg)](https://www.npmjs.org/package/material-ui)
-[![npm download](https://img.shields.io/npm/dm/material-ui.svg)](https://www.npmjs.org/package/material-ui)
+[![npm package](https://img.shields.io/npm/v/material-ui/next.svg)](https://www.npmjs.com/package/material-ui)
+[![npm download](https://img.shields.io/npm/dm/material-ui.svg)](https://www.npmjs.com/package/material-ui)
 [![CircleCI](https://img.shields.io/circleci/project/github/mui-org/material-ui/v1-beta.svg)](https://circleci.com/gh/mui-org/material-ui/tree/v1-beta)
 [![Gitter](https://img.shields.io/badge/gitter-join%20chat-f81a65.svg)](https://gitter.im/callemall/material-ui?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Coverage Status](https://img.shields.io/codecov/c/github/mui-org/material-ui/v1-beta.svg)](https://codecov.io/gh/mui-org/material-ui/branch/v1-beta)
@@ -19,22 +19,23 @@
 [![PeerDependencies](https://img.shields.io/david/peer/mui-org/material-ui.svg)](https://david-dm.org/mui-org/material-ui#info=peerDependencies&view=list)
 [![Dependencies](https://img.shields.io/david/mui-org/material-ui.svg)](https://david-dm.org/mui-org/material-ui)
 [![DevDependencies](https://img.shields.io/david/dev/mui-org/material-ui.svg)](https://david-dm.org/mui-org/material-ui#info=devDependencies&view=list)
+[![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/mui-org/material-ui.svg)](http://isitmaintained.com/project/mui-org/material-ui "Average time to resolve an issue")
 
 </div>
 
 ## Installation
 
-Material-UI is available as an [npm package](https://www.npmjs.org/package/material-ui).
+Material-UI is available as an [npm package](https://www.npmjs.com/package/material-ui).
 
 **[Stable channel (v0.x)](http://material-ui.com/)**
 ```sh
-npm install --save material-ui
+npm install material-ui
 ```
 
 **[Pre-release channel (v1-beta)](https://material-ui-next.com/)**
 ([Recommended](#should-i-start-with-v1-beta) for new projects.)
 ```sh
-npm install --save material-ui@next
+npm install material-ui@next
 ```
 
 Please note that `@next` will only point to pre-releases; to get the latest stable release use `@latest` instead.
@@ -64,8 +65,23 @@ Gold Sponsors are those who have pledged $500/month and more to Material-UI.
   <tbody>
     <tr>
       <td align="center" valign="middle">
-        <a href="https://www.creative-tim.com" target="_blank">
-          <img width="126px" src="https://avatars1.githubusercontent.com/u/20172349">
+        <a href="https://www.creative-tim.com?utm_source=material-ui&utm_medium=docs&utm_campaign=homepage" rel="noopener" target="_blank">
+          <img
+            width="126"
+            src="https://avatars1.githubusercontent.com/u/20172349?s=378"
+            alt="0"
+            title="Premium Themes"
+          >
+        </a>
+      </td>
+      <td align="center" valign="middle">
+        <a href="https://bitsrc.io" rel="noopener" target="_blank">
+          <img
+            width="80"
+            src="https://avatars1.githubusercontent.com/u/24789812?s=180"
+            alt="1"
+            title="The fastest way to share code"
+          >
         </a>
       </td>
     </tr>
@@ -74,16 +90,16 @@ Gold Sponsors are those who have pledged $500/month and more to Material-UI.
 
 #### via [OpenCollective](https://opencollective.com/material-ui)
 
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/0/website" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/0/avatar.svg" alt="0" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/1/website" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/1/avatar.svg" alt="1" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/2/website" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/2/avatar.svg" alt="2" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/3/website" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/3/avatar.svg" alt="3" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/4/website" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/4/avatar.svg" alt="4" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/5/website" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/5/avatar.svg" alt="5" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/6/website" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/6/avatar.svg" alt="6" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/7/website" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/7/avatar.svg" alt="7" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/8/website" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/8/avatar.svg" alt="8" /></a>
-<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/9/website" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/9/avatar.svg" alt="9" /></a>
+<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/0/website" rel="noopener" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/0/avatar.svg" alt="0" /></a>
+<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/1/website" rel="noopener" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/1/avatar.svg" alt="1" /></a>
+<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/2/website" rel="noopener" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/2/avatar.svg" alt="2" /></a>
+<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/3/website" rel="noopener" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/3/avatar.svg" alt="3" /></a>
+<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/4/website" rel="noopener" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/4/avatar.svg" alt="4" /></a>
+<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/5/website" rel="noopener" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/5/avatar.svg" alt="5" /></a>
+<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/6/website" rel="noopener" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/6/avatar.svg" alt="6" /></a>
+<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/7/website" rel="noopener" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/7/avatar.svg" alt="7" /></a>
+<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/8/website" rel="noopener" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/8/avatar.svg" alt="8" /></a>
+<a href="https://opencollective.com/material-ui/tiers/gold-sponsors/9/website" rel="noopener" target="_blank"  style="margin-right: 8px;"><img src="https://opencollective.com/material-ui/tiers/gold-sponsors/9/avatar.svg" alt="9" /></a>
 
 ## Usage (v1-beta)
 
@@ -96,7 +112,7 @@ import Button from 'material-ui/Button';
 
 function App() {
   return (
-    <Button raised color="primary">
+    <Button variant="raised" color="primary">
       Hello World
     </Button>
   );
@@ -130,14 +146,13 @@ We are keeping v1 in beta so we can release breaking changes without having them
 ## Questions
 
 For *how-to* questions and other non-issues,
-please use [StackOverflow](http://stackoverflow.com/questions/tagged/material-ui)
-instead of Github issues. There is a StackOverflow tag called "material-ui"
-that you can use to tag your questions.
+please use [StackOverflow](http://stackoverflow.com/questions/tagged/material-ui) instead of Github issues.
+There is a StackOverflow tag called "material-ui" that you can use to tag your questions.
 
 ## Examples
 
 Are you looking for an example project to get started?
-[We host some](https://github.com/mui-org/material-ui/blob/v1-beta/docs/src/pages/getting-started/example-projects.md).
+[We host some](https://material-ui-next.com/getting-started/example-projects/).
 
 ## Documentation
 
@@ -154,7 +169,7 @@ Please read the [changelog](https://github.com/mui-org/material-ui/releases).
 
 ## Roadmap
 
-The future plans and high priority features and enhancements can be found in the [ROADMAP.md](/ROADMAP.md) file.
+The future plans and high priority features and enhancements can be found in the [ROADMAP.md](https://material-ui-next.com/discover-more/roadmap/) file.
 
 ## Thanks
 

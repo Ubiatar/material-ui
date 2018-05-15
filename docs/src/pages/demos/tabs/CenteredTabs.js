@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import Tabs, { Tab } from 'material-ui/Tabs';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
-const styles = theme => ({
+const styles = {
   root: {
     flexGrow: 1,
-    marginTop: theme.spacing.unit * 3,
   },
-});
+};
 
 class CenteredTabs extends React.Component {
   state = {

@@ -1,10 +1,10 @@
 ---
-components: Drawer
+components: Drawer, SwipeableDrawer
 ---
 
 # Drawer
 
-The [Drawer](https://material.io/guidelines/patterns/navigation-drawer.html) slides in from the side.
+The [Drawer](https://material.io/design/components/navigation-drawer.html) slides in from the side.
 It is a common pattern found in Google apps and follows the keylines and metrics for lists.
 
 ## Temporary drawer
@@ -16,13 +16,46 @@ It closes when an item is selected, handled by controlling the `open` prop.
 
 {{"demo": "pages/demos/drawers/TemporaryDrawer.js", "hideEditButton": true}}
 
+## Swipeable Temporary drawer
+
+You can make the drawer swipeable with the `SwipeableDrawer` component.
+
+This component comes with a 2 kB gzipped payload overhead.
+Some low-end mobile devices won't be able to follow the fingers at 60 FPS.
+You can use the `disableBackdropTransition` property to help.
+
+{{"demo": "pages/demos/drawers/SwipeableTemporaryDrawer.js", "hideEditButton": true}}
+
+We are using the following set of properties on this documentation website for optimal usability of the component:
+- iOS is hosted on high-end devices.
+We can enable the backdrop transition without dropping frames.
+The performance will be good enough.
+- iOS has a "swipe to go back" feature that mess
+with the discovery feature. We have to disable it.
+
+```jsx
+const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+<SwipeableDrawer disableBackdropTransition={!iOS} disableDiscovery={iOS} />
+```
+
 ## Permanent drawer
 
 Permanent navigation drawers are always visible and pinned to the left edge, at the same elevation as the content or background. They cannot be closed.
 
-Permanent navigation drawers are the recommended default for desktop.
+Permanent navigation drawers are the **recommended default for desktop**.
+
+### Full-height navigation
+
+Apps focused on information consumption that use a left-to-right hierarchy.
 
 {{"demo": "pages/demos/drawers/PermanentDrawer.js", "hideEditButton": true}}
+
+### Clipped under the app bar
+
+Apps focused on productivity that require balance across the screen.
+
+{{"demo": "pages/demos/drawers/ClippedDrawer.js", "hideEditButton": true}}
 
 ## Persistent drawer
 

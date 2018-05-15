@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import ExpansionPanel, {
-  ExpansionPanelDetails,
-  ExpansionPanelSummary,
-  ExpansionPanelActions,
-} from 'material-ui/ExpansionPanel';
-import Typography from 'material-ui/Typography';
-import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
-import Chip from 'material-ui/Chip';
-import Button from 'material-ui/Button';
-import Divider from 'material-ui/Divider';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Chip from '@material-ui/core/Chip';
+import Button from '@material-ui/core/Button';
+import Divider from '@material-ui/core/Divider';
 
 const styles = theme => ({
   root: {
@@ -33,7 +32,7 @@ const styles = theme => ({
     alignItems: 'center',
   },
   column: {
-    flexBasis: '33.3%',
+    flexBasis: '33.33%',
   },
   helper: {
     borderLeft: `2px solid ${theme.palette.divider}`,
@@ -67,7 +66,7 @@ function DetailedExpansionPanel(props) {
             <Chip label="Barbados" className={classes.chip} onDelete={() => {}} />
           </div>
           <div className={classNames(classes.column, classes.helper)}>
-            <Typography type="caption">
+            <Typography variant="caption">
               Select your destination of choice<br />
               <a href="#sub-labels-and-columns" className={classes.link}>
                 Learn more
@@ -77,8 +76,8 @@ function DetailedExpansionPanel(props) {
         </ExpansionPanelDetails>
         <Divider />
         <ExpansionPanelActions>
-          <Button dense>Cancel</Button>
-          <Button dense color="primary">
+          <Button size="small">Cancel</Button>
+          <Button size="small" color="primary">
             Save
           </Button>
         </ExpansionPanelActions>

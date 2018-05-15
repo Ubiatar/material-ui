@@ -4,23 +4,24 @@ components: FormControl, FormGroup, FormLabel, FormControlLabel, RadioGroup, Che
 
 # Selection Controls
 
-[Selection controls](https://material.io/guidelines/components/selection-controls.html) allow the user to select options.
+[Selection controls](https://material.io/design/components/selection-controls.html) allow the user to select options.
 
-Three types of selection controls are covered in this guidance:
+Three types of selection controls are covered in this section:
 
-- **Checkboxes** allow the selection of multiple options from a set.
-- **Radio buttons** allow the selection of a single option from a set.
-- **Switches** allow a selection to be turned on or off.
+- **[Checkboxes](#checkboxes)** allow the selection of multiple options from a set.
+- **[Radio Buttons](#radio-buttons)** allow the selection of a single option from a set.
+- **[Switches](#switches)** allow a selection to be turned on or off.
 
 ## Checkboxes
 
 Checkboxes allow the user to select multiple options from a set.
-
-If you have multiple options appearing in a list, you can preserve space by using checkboxes instead of on/off switches.
-
-If you have a single option, avoid using a checkbox and use an on/off switch instead.
+If you have multiple options appearing in a list, you can preserve space by using checkboxes instead of on/off switches.If you have a single option, avoid using a checkbox and use an on/off switch instead.
 
 {{"demo": "pages/demos/selection-controls/Checkboxes.js"}}
+
+`Checkbox` can also be used with a label description thanks to the `FormControlLabel` component.
+
+{{"demo": "pages/demos/selection-controls/CheckboxLabels.js"}}
 
 `FormGroup` is a helpful wrapper used to group selection controls components that provides an easier API.
 
@@ -28,9 +29,10 @@ If you have a single option, avoid using a checkbox and use an on/off switch ins
 
 ## Radio Buttons
 
-Radio buttons allow the user to select one option from a set. Use radio buttons for exclusive selection if you think that the user needs to see all available options side-by-side.
+Radio buttons allow the user to select one option from a set. Use radio buttons for exclusive selection if you think that the user needs to see all available options side-by-side;
+otherwise, consider a dropdown, which uses less space than displaying all options.
 
-Otherwise, consider a dropdown, which uses less space than displaying all options.
+Radio buttons should have the most commonly used option selected by default.
 
 `RadioGroup` is a helpful wrapper used to group `Radio` components that provides an easier API, and proper keyboard accessibility to the group.
 
@@ -47,5 +49,10 @@ On/off switches toggle the state of a single settings option. The option that th
 {{"demo": "pages/demos/selection-controls/Switches.js"}}
 
 `Switch` can also be used with a label description thanks to the `FormControlLabel` component.
+
 {{"demo": "pages/demos/selection-controls/SwitchLabels.js"}}
 
+`FormGroup` is a helpful wrapper used to group selection controls components that provides an easier API.
+However, we encourage you to use a [Checkbox](#checkboxes) instead.
+
+{{"demo": "pages/demos/selection-controls/SwitchesGroup.js"}}

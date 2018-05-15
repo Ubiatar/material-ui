@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   // So parent files don't get applied
   root: true,
@@ -20,7 +22,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       webpack: {
-        config: './docs/webpackBaseConfig.js',
+        config: path.join(__dirname, './docs/webpackBaseConfig.js'),
       },
     },
   },
@@ -32,6 +34,7 @@ module.exports = {
     'function-paren-newline': 'off', // Incompatible with prettier
     indent: 'off', // Incompatible with prettier
     'space-before-function-paren': 'off', // Incompatible with prettier
+    'no-confusing-arrow': 'off', // Incompatible with prettier
     'no-mixed-operators': 'off', // Incompatible with prettier
     'consistent-this': ['error', 'self'],
     'max-len': [
@@ -55,6 +58,13 @@ module.exports = {
     'import/unambiguous': 'off', // scripts
     'import/namespace': ['error', { allowComputed: true }],
     'import/no-extraneous-dependencies': 'off',
+    'import/order': [
+      'error',
+      {
+        groups: [['index', 'sibling', 'parent', 'internal', 'external', 'builtin']],
+        'newlines-between': 'never',
+      },
+    ],
 
     'react/jsx-indent': 'off', // Incompatible with prettier
     'react/jsx-closing-bracket-location': 'off', // Incompatible with prettier

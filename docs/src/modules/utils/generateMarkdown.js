@@ -46,7 +46,9 @@ function generatePropDescription(description, type) {
     }
   }
 
-  const parsed = parseDoctrine(description);
+  const parsed = parseDoctrine(description, {
+    sloppy: true,
+  });
 
   // Two new lines result in a newline in the table.
   // All other new lines must be eliminated to prevent markdown mayhem.
@@ -84,7 +86,19 @@ function generatePropDescription(description, type) {
     }
 
     signature += '<br><br>**Signature:**<br>`function(';
-    signature += parsedArgs.map(tag => `${tag.name}: ${tag.type.name}`).join(', ');
+    signature += parsedArgs
+      .map(tag => {
+        if (tag.type.type === 'AllLiteral') {
+          return `${tag.name}: any`;
+        }
+
+        if (tag.type.type === 'OptionalType') {
+          return `${tag.name}?: ${tag.type.expression.name}`;
+        }
+
+        return `${tag.name}: ${tag.type.name}`;
+      })
+      .join(', ');
     signature += `) => ${parsedReturns.type.name}\`<br>`;
     signature += parsedArgs.map(tag => `*${tag.name}:* ${tag.description}`).join('<br>');
     if (parsedReturns.description) {
@@ -109,18 +123,21 @@ function generatePropType(type) {
       return type.raw;
     }
 
+    case 'shape':
+      return `{${Object.keys(type.value)
+        .map(subValue => {
+          return `${subValue}?: ${generatePropType(type.value[subValue])}`;
+        })
+        .join(', ')}}`;
+
     case 'union':
     case 'enum': {
-      let values = type.value.map(v => v.value || v.name).map(value => {
-        if (typeof value === 'string') {
-          return escapeCell(value);
+      let values = type.value.map(type2 => {
+        if (type.name === 'enum') {
+          return escapeCell(type2.value);
         }
 
-        return `{${Object.keys(value)
-          .map(subValue => {
-            return `${subValue}?: ${generatePropType(value[subValue])}`;
-          })
-          .join(', ')}}`;
+        return generatePropType(type2);
       });
 
       // Display one value per line as it's better for visibility.
@@ -158,6 +175,11 @@ function generateProps(reactAPI) {
 
   text = Object.keys(reactAPI.props).reduce((textProps, propRaw) => {
     const prop = getProp(reactAPI.props, propRaw);
+
+    if (typeof prop.description === 'undefined') {
+      throw new Error(`The "${propRaw}"" property is missing a description`);
+    }
+
     const description = generatePropDescription(prop.description, prop.flowType || prop.type);
 
     if (description === null) {
@@ -167,21 +189,26 @@ function generateProps(reactAPI) {
     let defaultValue = '';
 
     if (prop.defaultValue) {
-      defaultValue = escapeCell(prop.defaultValue.value.replace(/\n/g, ''));
+      defaultValue = `<span class="prop-default">${escapeCell(
+        prop.defaultValue.value.replace(/\n/g, ''),
+      )}</span>`;
     }
 
     if (prop.required) {
-      propRaw = `<span style="color: #31a148">${propRaw}\u2009*</span>`;
+      propRaw = `<span class="prop-name required">${propRaw}\u00a0*</span>`;
+    } else {
+      propRaw = `<span class="prop-name">${propRaw}</span>`;
     }
 
-    const type = prop.flowType || prop.type;
-    if (type && type.name === 'custom') {
+    if (prop.type.name === 'custom') {
       if (getDeprecatedInfo(prop.type)) {
         propRaw = `~~${propRaw}~~`;
       }
     }
 
-    textProps += `| ${propRaw} | ${generatePropType(type)} | ${defaultValue} | ${description} |\n`;
+    textProps += `| ${propRaw} | <span class="prop-type">${generatePropType(
+      prop.type,
+    )} | ${defaultValue} | ${description} |\n`;
 
     return textProps;
   }, text);
@@ -228,14 +255,17 @@ function generateInheritance(reactAPI) {
 
   const component = inheritedComponent[1];
   let pathname;
+  let suffix = '';
 
   switch (component) {
-    case 'CSSTransition':
-      pathname = 'https://reactcommunity.org/react-transition-group/#CSSTransition';
+    case 'Transition':
+      suffix = ', from react-transition-group,';
+      pathname = 'https://reactcommunity.org/react-transition-group/#Transition';
       break;
 
-    case 'Transition':
-      pathname = 'https://reactcommunity.org/react-transition-group/#Transition';
+    case 'EventListener':
+      suffix = ', from react-event-listener,';
+      pathname = 'https://github.com/oliviertassinari/react-event-listener';
       break;
 
     default:
@@ -245,7 +275,7 @@ function generateInheritance(reactAPI) {
 
   return `## Inheritance
 
-The properties of the [&lt;${component} /&gt;](${pathname}) component are also available.
+The properties of the [${component}](${pathname}) component${suffix} are also available.
 
 `;
 }
@@ -270,7 +300,7 @@ ${pagesMarkdown.map(page => `- [${pageToTitle(page)}](${page.pathname})`).join('
 `;
 }
 
-export default function generateMarkdown(reactAPI: Object) {
+export default function generateMarkdown(reactAPI) {
   return [
     generateHeader(reactAPI),
     '',

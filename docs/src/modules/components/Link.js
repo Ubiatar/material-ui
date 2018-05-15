@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import compose from 'recompose/compose';
+import { withRouter } from 'next/router';
 import NextLink from 'next/link';
-import { withStyles } from 'material-ui/styles';
-import { capitalizeFirstLetter } from 'material-ui/utils/helpers';
+import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
   root: {
@@ -12,16 +13,16 @@ const styles = theme => ({
       textDecoration: 'underline',
     },
   },
-  variantDefault: {
+  default: {
     color: 'inherit',
   },
-  variantPrimary: {
+  primary: {
     color: theme.palette.primary.main,
   },
-  variantSecondary: {
+  secondary: {
     color: theme.palette.secondary.main,
   },
-  variantButton: {
+  button: {
     '&:hover': {
       textDecoration: 'inherit',
     },
@@ -51,26 +52,23 @@ OnClick.propTypes = {
   onCustomClick: PropTypes.func,
 };
 
-function Link(props, context) {
+function Link(props) {
   const {
     activeClassName,
     children: childrenProp,
-    component: ComponentProp,
     classes,
     className: classNameProp,
-    variant,
+    component: ComponentProp,
     href,
     onClick,
     prefetch,
+    router,
+    variant,
     ...other
   } = props;
 
   let ComponentRoot;
-  const className = classNames(
-    classes.root,
-    classes[`variant${capitalizeFirstLetter(variant)}`],
-    classNameProp,
-  );
+  const className = classNames(classes.root, classes[variant], classNameProp);
   let RootProps;
   let children = childrenProp;
 
@@ -87,12 +85,11 @@ function Link(props, context) {
       prefetch,
       passHref: true,
     };
-    const active = context.url.pathname === href;
     children = (
       <OnClick
         component="a"
         className={classNames(className, {
-          [activeClassName]: active && activeClassName,
+          [activeClassName]: router.pathname === href && activeClassName,
         })}
         onCustomClick={onClick}
         {...other}
@@ -116,12 +113,6 @@ Link.defaultProps = {
   activeClassName: 'active',
 };
 
-Link.contextTypes = {
-  url: PropTypes.shape({
-    pathname: PropTypes.string.isRequired,
-  }).isRequired,
-};
-
 Link.propTypes = {
   activeClassName: PropTypes.string,
   children: PropTypes.node.isRequired,
@@ -131,7 +122,10 @@ Link.propTypes = {
   href: PropTypes.string,
   onClick: PropTypes.func,
   prefetch: PropTypes.bool,
+  router: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
   variant: PropTypes.oneOf(['default', 'primary', 'secondary', 'button']),
 };
 
-export default withStyles(styles)(Link);
+export default compose(withRouter, withStyles(styles))(Link);

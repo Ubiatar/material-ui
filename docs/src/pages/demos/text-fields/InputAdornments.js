@@ -1,31 +1,55 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import IconButton from 'material-ui/IconButton';
-import Input, { InputLabel, InputAdornment } from 'material-ui/Input';
-import { FormControl, FormHelperText } from 'material-ui/Form';
-import Visibility from 'material-ui-icons/Visibility';
-import VisibilityOff from 'material-ui-icons/VisibilityOff';
+import { withStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from 'material-ui/Menu/MenuItem';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 const styles = theme => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
   },
-  formControl: {
+  margin: {
     margin: theme.spacing.unit,
   },
   withoutLabel: {
     marginTop: theme.spacing.unit * 3,
   },
+  textField: {
+    flexBasis: 200,
+  },
 });
+
+const ranges = [
+  {
+    value: '0-20',
+    label: '0 to 20',
+  },
+  {
+    value: '21-50',
+    label: '21 to 50',
+  },
+  {
+    value: '51-100',
+    label: '51 to 100',
+  },
+];
 
 class InputAdornments extends React.Component {
   state = {
     amount: '',
     password: '',
     weight: '',
+    weightRange: '',
     showPassword: false,
   };
 
@@ -37,7 +61,7 @@ class InputAdornments extends React.Component {
     event.preventDefault();
   };
 
-  handleClickShowPasssword = () => {
+  handleClickShowPassword = () => {
     this.setState({ showPassword: !this.state.showPassword });
   };
 
@@ -46,8 +70,32 @@ class InputAdornments extends React.Component {
 
     return (
       <div className={classes.root}>
-        <FormControl fullWidth className={classes.formControl}>
-          <InputLabel htmlFor="amount">Amount</InputLabel>
+        <TextField
+          label="With normal TextField"
+          id="simple-start-adornment"
+          className={classNames(classes.margin, classes.textField)}
+          InputProps={{
+            startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
+          }}
+        />
+        <TextField
+          select
+          label="With Select"
+          className={classNames(classes.margin, classes.textField)}
+          value={this.state.weightRange}
+          onChange={this.handleChange('weightRange')}
+          InputProps={{
+            startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
+          }}
+        >
+          {ranges.map(option => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+        <FormControl fullWidth className={classes.margin}>
+          <InputLabel htmlFor="adornment-amount">Amount</InputLabel>
           <Input
             id="adornment-amount"
             value={this.state.amount}
@@ -56,7 +104,7 @@ class InputAdornments extends React.Component {
           />
         </FormControl>
         <FormControl
-          className={classNames(classes.formControl, classes.withoutLabel)}
+          className={classNames(classes.margin, classes.withoutLabel, classes.textField)}
           aria-describedby="weight-helper-text"
         >
           <Input
@@ -64,11 +112,14 @@ class InputAdornments extends React.Component {
             value={this.state.weight}
             onChange={this.handleChange('weight')}
             endAdornment={<InputAdornment position="end">Kg</InputAdornment>}
+            inputProps={{
+              'aria-label': 'Weight',
+            }}
           />
           <FormHelperText id="weight-helper-text">Weight</FormHelperText>
         </FormControl>
-        <FormControl className={classes.formControl}>
-          <InputLabel htmlFor="password">Password</InputLabel>
+        <FormControl className={classNames(classes.margin, classes.textField)}>
+          <InputLabel htmlFor="adornment-password">Password</InputLabel>
           <Input
             id="adornment-password"
             type={this.state.showPassword ? 'text' : 'password'}
@@ -77,7 +128,8 @@ class InputAdornments extends React.Component {
             endAdornment={
               <InputAdornment position="end">
                 <IconButton
-                  onClick={this.handleClickShowPasssword}
+                  aria-label="Toggle password visibility"
+                  onClick={this.handleClickShowPassword}
                   onMouseDown={this.handleMouseDownPassword}
                 >
                   {this.state.showPassword ? <VisibilityOff /> : <Visibility />}

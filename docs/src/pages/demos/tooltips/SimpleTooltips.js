@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import AddIcon from 'material-ui-icons/Add';
-import Button from 'material-ui/Button';
-import DeleteIcon from 'material-ui-icons/Delete';
-import IconButton from 'material-ui/IconButton';
-import Tooltip from 'material-ui/Tooltip';
+import { withStyles } from '@material-ui/core/styles';
+import AddIcon from '@material-ui/icons/Add';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const styles = theme => ({
   fab: {
@@ -27,15 +27,15 @@ function SimpleTooltips(props) {
           <DeleteIcon />
         </IconButton>
       </Tooltip>
-      <Tooltip id="tooltip-fab" className={classes.fab} title="Add">
-        <Button fab color="primary" aria-label="Add">
+      <Tooltip id="tooltip-fab" title="Add">
+        <Button variant="fab" color="primary" aria-label="Add" className={classes.fab}>
           <AddIcon />
         </Button>
       </Tooltip>
       <br />
       <br />
       <Tooltip title="FAB 'position: absolute;'">
-        <Button fab color="secondary" className={props.classes.absolute}>
+        <Button variant="fab" color="secondary" className={props.classes.absolute}>
           <AddIcon />
         </Button>
       </Tooltip>

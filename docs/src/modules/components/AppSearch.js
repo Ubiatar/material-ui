@@ -1,30 +1,53 @@
 import React from 'react';
+import keycode from 'keycode';
 import compose from 'recompose/compose';
 import pure from 'recompose/pure';
+import EventListener from 'react-event-listener';
 import PropTypes from 'prop-types';
-import withWidth, { isWidthUp } from 'material-ui/utils/withWidth';
-import SearchIcon from 'material-ui-icons/Search';
-import { fade } from 'material-ui/styles/colorManipulator';
-import { withStyles } from 'material-ui/styles';
+import Router from 'next/router';
+import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
+import SearchIcon from '@material-ui/icons/Search';
+import { fade } from '@material-ui/core/styles/colorManipulator';
+import { withStyles } from '@material-ui/core/styles';
 
 let searchTimer;
+let initialized = false;
 
 function initDocsearch() {
-  searchTimer = setInterval(() => {
-    if (window.docsearch && document.querySelector('#docsearch-input')) {
-      clearInterval(searchTimer);
-      window.docsearch({
-        apiKey: '1d8534f83b9b0cfea8f16498d19fbcab',
-        indexName: 'material-ui',
-        inputSelector: '#docsearch-input',
-        debug: false, // Set debug to true if you want to inspect the dropdown
-      });
-    }
-  }, 100);
-}
+  if (!process.browser) {
+    return;
+  }
 
-function removeDocsearch() {
   clearInterval(searchTimer);
+  searchTimer = setInterval(() => {
+    const docsearchInput = document.querySelector('#docsearch-input');
+
+    if (!window.docsearch || !docsearchInput) {
+      return;
+    }
+
+    if (initialized === docsearchInput) {
+      clearInterval(searchTimer);
+      return;
+    }
+
+    initialized = docsearchInput;
+    clearInterval(searchTimer);
+    window.docsearch({
+      apiKey: '1d8534f83b9b0cfea8f16498d19fbcab',
+      indexName: 'material-ui',
+      inputSelector: '#docsearch-input',
+      handleSelected: (input, event, suggestion) => {
+        const url = suggestion.url
+          .replace(/^https:\/\/material-ui-next\.com/, '')
+          .replace(/\/#/, '#')
+          .replace(/\/$/, '');
+        Router.push(url);
+      },
+      // Set debug to true if you want to inspect the dropdown.
+      debug: true,
+    });
+  }, 100);
 }
 
 const styles = theme => ({
@@ -34,8 +57,29 @@ const styles = theme => ({
       '& .algolia-docsearch-suggestion--category-header-lvl0': {
         color: theme.palette.text.primary,
       },
+      '& .algolia-docsearch-suggestion .algolia-docsearch-suggestion--subcategory-column': {
+        opacity: 1,
+        padding: '5.33px 10.66px',
+        textAlign: 'right',
+        width: '30%',
+        '&:before': {
+          display: 'block',
+        },
+        '&:after': {
+          display: 'none',
+        },
+      },
+      '& .algolia-docsearch-suggestion .algolia-docsearch-suggestion--content': {
+        float: 'right',
+        padding: '5.33px 0 5.33px 10.66px',
+        width: '70%',
+        '&:before': {
+          display: 'block',
+        },
+      },
       '& .algolia-docsearch-suggestion--subcategory-column-text': {
         color: theme.palette.text.secondary,
+        fontWeight: theme.typography.fontWeightRegular,
       },
       '& .algolia-docsearch-suggestion--highlight': {
         color: theme.palette.type === 'light' ? '#174d8c' : '#acccf1',
@@ -63,7 +107,7 @@ const styles = theme => ({
       },
     },
   },
-  wrapper: {
+  root: {
     fontFamily: theme.typography.fontFamily,
     position: 'relative',
     marginRight: theme.spacing.unit * 2,
@@ -108,24 +152,43 @@ const styles = theme => ({
   },
 });
 
-function AppSearch(props) {
-  const { classes, width } = props;
+class AppSearch extends React.Component {
+  handleKeyDown = event => {
+    if (
+      ['/', 's'].indexOf(keycode(event)) !== -1 &&
+      document.activeElement.nodeName.toLowerCase() === 'body' &&
+      document.activeElement !== this.input
+    ) {
+      event.preventDefault();
+      this.input.focus();
+    }
+  };
 
-  if (!isWidthUp('sm', width)) {
-    removeDocsearch();
-    return null;
-  }
+  input = null;
 
-  initDocsearch();
+  render() {
+    const { classes, width } = this.props;
 
-  return (
-    <div className={classes.wrapper}>
-      <div className={classes.search}>
-        <SearchIcon />
+    if (isWidthUp('sm', width)) {
+      initDocsearch();
+    }
+
+    return (
+      <div className={classes.root} style={{ display: isWidthUp('sm', width) ? 'block' : 'none' }}>
+        <EventListener target="window" onKeyDown={this.handleKeyDown} />
+        <div className={classes.search}>
+          <SearchIcon />
+        </div>
+        <input
+          id="docsearch-input"
+          ref={node => {
+            this.input = node;
+          }}
+          className={classes.input}
+        />
       </div>
-      <input id="docsearch-input" className={classes.input} />
-    </div>
-  );
+    );
+  }
 }
 
 AppSearch.propTypes = {
@@ -133,10 +196,4 @@ AppSearch.propTypes = {
   width: PropTypes.string.isRequired,
 };
 
-export default compose(
-  withStyles(styles, {
-    name: 'AppSearch',
-  }),
-  withWidth(),
-  pure,
-)(AppSearch);
+export default compose(withStyles(styles), withWidth(), pure)(AppSearch);

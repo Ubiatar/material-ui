@@ -1,5 +1,5 @@
 ---
-filename: /src/Dialog/DialogActions.js
+filename: /packages/material-ui/src/DialogActions/DialogActions.js
 ---
 
 <!--- This documentation is automatically generated, do not try to edit it. -->
@@ -12,8 +12,9 @@ filename: /src/Dialog/DialogActions.js
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| children | node |  | The content of the component. |
-| classes | object |  | Useful to extend the style applied to components. |
+| <span class="prop-name">children</span> | <span class="prop-type">node |  | The content of the component. |
+| <span class="prop-name">classes</span> | <span class="prop-type">object |  | Override or extend the styles applied to the component. See [CSS API](#css-api) below for more details. |
+| <span class="prop-name">disableActionSpacing</span> | <span class="prop-type">bool | <span class="prop-default">false</span> | If `true`, the dialog actions do not have additional margin. |
 
 Any other properties supplied will be [spread to the root element](/guides/api#spread).
 
@@ -23,10 +24,9 @@ You can override all the class names injected by Material-UI thanks to the `clas
 This property accepts the following keys:
 - `root`
 - `action`
-- `button`
 
 Have a look at [overriding with classes](/customization/overrides#overriding-with-classes) section
-and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/src/Dialog/DialogActions.js)
+and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/packages/material-ui/src/DialogActions/DialogActions.js)
 for more detail.
 
 If using the `overrides` key of the theme as documented

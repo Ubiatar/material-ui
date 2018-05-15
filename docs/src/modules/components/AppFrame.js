@@ -4,33 +4,24 @@ import { connect } from 'react-redux';
 import compose from 'recompose/compose';
 import NProgress from 'nprogress';
 import Router from 'next/router';
-import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import IconButton from 'material-ui/IconButton';
-import Tooltip from 'material-ui/Tooltip';
-import MenuIcon from 'material-ui-icons/Menu';
-import LightbulbOutline from 'material-ui-icons/LightbulbOutline';
-import LightbublFull from 'docs/src/modules/components/LightbublFull';
-import FormatTextdirectionLToR from 'material-ui-icons/FormatTextdirectionLToR';
-import FormatTextdirectionRToL from 'material-ui-icons/FormatTextdirectionRToL';
-import Github from 'docs/src/modules/components/GitHub';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+import MenuIcon from '@material-ui/icons/Menu';
+import LightbulbOutline from '@material-ui/icons/LightbulbOutline';
+import LightbublFull from '@material-ui/docs/svgIcons/LightbublFull';
+import NProgressBar from '@material-ui/docs/NProgressBar';
+import FormatTextdirectionLToR from '@material-ui/icons/FormatTextdirectionLToR';
+import FormatTextdirectionRToL from '@material-ui/icons/FormatTextdirectionRToL';
+import Github from '@material-ui/docs/svgIcons/GitHub';
 import AppDrawer from 'docs/src/modules/components/AppDrawer';
 import AppSearch from 'docs/src/modules/components/AppSearch';
 import Notifications from 'docs/src/modules/components/Notifications';
 import { pageToTitle } from 'docs/src/modules/utils/helpers';
 import actionTypes from 'docs/src/modules/redux/actionTypes';
-
-// Disaply a progress bar between route transitions
-NProgress.configure({
-  template: `
-    <div class="bar" role="bar">
-      <dt></dt>
-      <dd></dd>
-    </div>
-  `,
-});
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -45,55 +36,6 @@ Router.onRouteChangeError = () => {
 };
 
 const styles = theme => ({
-  '@global': {
-    '#nprogress': {
-      pointerEvents: 'none',
-      '& .bar': {
-        position: 'fixed',
-        background:
-          theme.palette.type === 'light' ? theme.palette.common.black : theme.palette.common.white,
-        borderRadius: 1,
-        zIndex: theme.zIndex.tooltip,
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: 2,
-      },
-      '& dd, & dt': {
-        position: 'absolute',
-        top: 0,
-        height: 2,
-        boxShadow: `${
-          theme.palette.type === 'light' ? theme.palette.common.black : theme.palette.common.white
-        } 1px 0 6px 1px`,
-        borderRadius: '100%',
-        animation: 'nprogress-pulse 2s ease-out 0s infinite',
-      },
-      '& dd': {
-        opacity: 0.6,
-        width: 20,
-        right: 0,
-        clip: 'rect(-6px,22px,14px,10px)',
-      },
-      '& dt': {
-        opacity: 0.6,
-        width: 180,
-        right: -80,
-        clip: 'rect(-6px,90px,14px,-6px)',
-      },
-    },
-    '@keyframes nprogress-pulse': {
-      '30%': {
-        opacity: 0.6,
-      },
-      '60%': {
-        opacity: 0,
-      },
-      to: {
-        opacity: 0.6,
-      },
-    },
-  },
   root: {
     display: 'flex',
     alignItems: 'stretch',
@@ -138,8 +80,12 @@ class AppFrame extends React.Component {
     mobileOpen: false,
   };
 
-  handleDrawerToggle = () => {
-    this.setState({ mobileOpen: !this.state.mobileOpen });
+  handleDrawerOpen = () => {
+    this.setState({ mobileOpen: true });
+  };
+
+  handleDrawerClose = () => {
+    this.setState({ mobileOpen: false });
   };
 
   handleTogglePaletteType = () => {
@@ -162,6 +108,11 @@ class AppFrame extends React.Component {
 
   render() {
     const { children, classes, uiTheme } = this.props;
+
+    if (!this.context.activePage) {
+      throw new Error('Missing activePage.');
+    }
+
     const title =
       this.context.activePage.title !== false ? pageToTitle(this.context.activePage) : null;
 
@@ -180,18 +131,19 @@ class AppFrame extends React.Component {
 
     return (
       <div className={classes.root}>
+        <NProgressBar />
         <AppBar className={appBarClassName}>
           <Toolbar>
             <IconButton
               color="inherit"
               aria-label="open drawer"
-              onClick={this.handleDrawerToggle}
+              onClick={this.handleDrawerOpen}
               className={navIconClassName}
             >
               <MenuIcon />
             </IconButton>
             {title !== null && (
-              <Typography className={classes.title} type="title" color="inherit" noWrap>
+              <Typography className={classes.title} variant="title" color="inherit" noWrap>
                 {title}
               </Typography>
             )}
@@ -223,7 +175,7 @@ class AppFrame extends React.Component {
                 )}
               </IconButton>
             </Tooltip>
-            <Tooltip id="appbar-github" title="Material-UI GitHub repo" enterDelay={300}>
+            <Tooltip id="appbar-github" title="GitHub repository" enterDelay={300}>
               <IconButton
                 component="a"
                 color="inherit"
@@ -239,7 +191,8 @@ class AppFrame extends React.Component {
         <AppDrawer
           className={classes.drawer}
           disablePermanent={disablePermanent}
-          onClose={this.handleDrawerToggle}
+          onClose={this.handleDrawerClose}
+          onOpen={this.handleDrawerOpen}
           mobileOpen={this.state.mobileOpen}
         />
         {children}

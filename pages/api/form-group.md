@@ -1,5 +1,5 @@
 ---
-filename: /src/Form/FormGroup.js
+filename: /packages/material-ui/src/FormGroup/FormGroup.js
 ---
 
 <!--- This documentation is automatically generated, do not try to edit it. -->
@@ -14,9 +14,9 @@ For the `Radio`, you should be using the `RadioGroup` component instead of this 
 
 | Name | Type | Default | Description |
 |:-----|:-----|:--------|:------------|
-| children | node |  | The content of the component. |
-| classes | object |  | Useful to extend the style applied to components. |
-| row | bool | false | Display group of elements in a compact row. |
+| <span class="prop-name">children</span> | <span class="prop-type">node |  | The content of the component. |
+| <span class="prop-name">classes</span> | <span class="prop-type">object |  | Override or extend the styles applied to the component. See [CSS API](#css-api) below for more details. |
+| <span class="prop-name">row</span> | <span class="prop-type">bool | <span class="prop-default">false</span> | Display group of elements in a compact row. |
 
 Any other properties supplied will be [spread to the root element](/guides/api#spread).
 
@@ -28,7 +28,7 @@ This property accepts the following keys:
 - `row`
 
 Have a look at [overriding with classes](/customization/overrides#overriding-with-classes) section
-and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/src/Form/FormGroup.js)
+and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/packages/material-ui/src/FormGroup/FormGroup.js)
 for more detail.
 
 If using the `overrides` key of the theme as documented
