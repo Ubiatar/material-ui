@@ -1,7 +1,7 @@
 {
   "name": "ubiatar-material-ui",
   "author": "Material-UI Team",
-  "version": "1.0.0-beta.52",
+  "version": "1.0.0-beta.59",
   "description": "React components that implement Google's Material Design.",
   "keywords": [
     "react",
@@ -51,6 +51,7 @@
     "jss-vendor-prefixer": "^7.0.0",
     "keycode": "^2.1.9",
     "lodash": "^4.2.0",
+    "moment-range": "^4.0.1",
     "normalize-scroll-left": "^0.1.2",
     "prop-types": "^15.6.0",
     "react-event-listener": "^0.5.1",

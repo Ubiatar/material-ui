@@ -52,8 +52,7 @@
     "monorepo:release": "yarn lerna exec yarn build && ./node_modules/.bin/lerna publish --skip-npm",
     "release": "np --no-publish --any-branch",
     "postrelease": "yarn docs:deploy && npm publish build --tag next",
-    "ubiatar-release": "yarn build",
-    "publish": "npm publish"
+    "ubiatar-release": "cd ./packages/material-ui && npm version prerelease && cd ../material-ui-icons && npm version prerelease && cd ../../ && yarn lerna exec yarn build && cd ./packages/material-ui/build && npm publish && cd ../../material-ui-icons/build && npm publish"
   },
   "peerDependencies": {
     "react": "*",

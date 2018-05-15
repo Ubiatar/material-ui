@@ -4,7 +4,7 @@ import withStyles from '../styles/withStyles';
 import withTheme from '../styles/withTheme';
 import Paper from '../Paper';
 import Tabs from '../Tabs';
-import Tab from '../Tabs/Tab';
+import Tab from '../Tab';
 import * as viewType from '../constants/date-picker-view';
 
 const viewToTabIndex = (openView) => {

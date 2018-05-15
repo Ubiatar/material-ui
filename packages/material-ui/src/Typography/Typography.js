@@ -89,7 +89,7 @@ function Typography(props) {
     classNameProp,
   );
 
-  const Component = componentProp || (type === 'link' ? 'a' : paragraph ? 'p' : headlineMapping[variant]) || 'span';
+  const Component = componentProp || (variant === 'link' ? 'a' : paragraph ? 'p' : headlineMapping[variant]) || 'span';
 
   return <Component className={className} {...other} />;
 }
