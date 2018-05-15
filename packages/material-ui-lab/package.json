@@ -14,13 +14,13 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mui-org/material-ui.git"
+    "url": "https://github.com/Ubiatar/material-ui.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mui-org/material-ui/issues"
+    "url": "https://github.com/Ubiatar/material-ui/issues"
   },
-  "homepage": "https://github.com/mui-org/material-ui/tree/v1-beta/packages/material-ui-lab",
+  "homepage": "https://github.com/Ubiatar/material-ui/tree/v1-beta/packages/material-ui-lab",
   "scripts": {
     "test": "yarn test:unit",
     "test:unit": "cd ../../ && ./node_modules/.bin/cross-env NODE_ENV=test ./node_modules/.bin/mocha packages/material-ui-lab/src/{,**/}*.test.js",
