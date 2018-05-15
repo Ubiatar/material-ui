@@ -1,6 +1,6 @@
 import React from 'react';
 import pure from 'recompose/pure';
-import SvgIcon from '@material-ui/core/SvgIcon';
+import SvgIcon from 'ubiatar-material-ui/SvgIcon';
 
 const SvgIconCustom = typeof global !== 'undefined' && global.__MUI_SvgIcon__ || SvgIcon;
 
