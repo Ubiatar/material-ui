@@ -12,15 +12,7 @@ function getTheme(uiTheme) {
     direction: uiTheme.direction,
     nprogress: {
       color: uiTheme.paletteType === 'light' ? '#000' : '#fff',
-    },
-    palette: {
-      primary: blue,
-      secondary: {
-        // Darken so we reach the AA contrast ratio level.
-        main: darken(pink.A400, 0.08),
-      },
-      type: uiTheme.paletteType,
-    },
+    }
   });
 
   // Expose the theme as a global variable so people can play with it.

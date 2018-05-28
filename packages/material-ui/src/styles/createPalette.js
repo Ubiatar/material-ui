@@ -1,6 +1,7 @@
 import warning from 'warning';
 import deepmerge from 'deepmerge'; // < 1kb payload overhead when lodash/merge is > 3kb.
 import ubiatarPrimary from '../colors/ubiatarPrimary';
+import ubiatarDarkPrimary from '../colors/ubiatarDarkPrimary';
 import pink from '../colors/pink';
 import grey from '../colors/grey';
 import red from '../colors/red';
@@ -29,7 +30,7 @@ export const light = {
     paper: common.white,
     slider: ubiatarPrimary[300],
     default: grey[50],
-    appBar: grey[100],
+    appBar: common.white,
     chip: grey[300],
     avatar: grey[400],
     op30: 'rgba(0, 0, 0, .6)'
@@ -100,9 +101,9 @@ export default function createPalette(palette: Object) {
       op50: ubiatarPrimary.op50
     },
     secondary = {
-      light: pink.A200,
-      main: pink.A400,
-      dark: pink.A700,
+      light: ubiatarDarkPrimary[300],
+      main: ubiatarDarkPrimary[500],
+      dark: ubiatarDarkPrimary[700]
     },
     error = {
       light: '#ea656c',

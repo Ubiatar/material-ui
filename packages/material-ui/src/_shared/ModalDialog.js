@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import withStyles from '../styles/withStyles';
 import Button from '../Button';
-import Dialog from '../Dialog/Dialog';
-import DialogActions from '../Dialog/DialogActions';
-import DialogContent from '../Dialog/DialogContent';
+import Dialog from '../Dialog';
+import DialogActions from '../DialogActions';
+import DialogContent from '../DialogContent';
 
 const dialogWidth = 310;
 const styles = {

@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import Icon from '../Icon';
-import InputAdornment from '../Input/InputAdornment';
+import InputAdornment from '../InputAdornment';
 import TextField from '../TextField';
 import IconButton from '../IconButton';
 import withStyles from '../styles/withStyles';

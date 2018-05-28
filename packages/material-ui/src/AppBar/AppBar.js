@@ -8,8 +8,7 @@ import { capitalize } from '../utils/helpers';
 import Paper from '../Paper';
 
 export const styles = theme => {
-  const backgroundColorDefault =
-    theme.palette.type === 'light' ? theme.palette.grey[100] : theme.palette.grey[900];
+  const backgroundColorDefault = theme.palette.background.appBar;
 
   return {
     root: {

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {withStyles} from 'material-ui/styles';
-import Slider, {Rail, Handles, Handle} from 'material-ui/Slider';
+import {withStyles} from '@material-ui/core/styles';
+import Slider, {Rail, Handles, Handle} from '@material-ui/core/Slider';
 
 const styles = theme => ({
   button: {

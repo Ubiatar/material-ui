@@ -16,7 +16,7 @@ export const styles = theme => ({
   },
   icon: {
     boxShadow: theme.shadows[1],
-    backgroundColor: 'currentColor',
+    backgroundColor: theme.palette.primary.main,
     width: 20,
     height: 20,
     borderRadius: '50%',
@@ -35,6 +35,7 @@ export const styles = theme => ({
     transform: 'translateX(14px)',
     '& + $bar': {
       opacity: 0.5,
+      backgroundColor: theme.palette.primary.main,
     },
   },
   colorPrimary: {
@@ -176,7 +177,7 @@ Switch.propTypes = {
 };
 
 Switch.defaultProps = {
-  color: 'secondary',
+  color: 'default',
 };
 
 export default withStyles(styles, { name: 'MuiSwitch' })(Switch);

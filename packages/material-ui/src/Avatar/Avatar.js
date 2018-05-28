@@ -35,9 +35,10 @@ export const styles = theme => ({
     borderColor: theme.palette.primary.main
   },
   imgBordered: {
-    border: '2px solid',
-    borderColor: 'rgba(0,0,0,0)',
-    borderRadius: '50%'
+    borderRadius: '50%',
+    width: 'calc(100% - 4px)',
+    height: 'calc(100% - 4px)',
+    background: theme.palette.primary.main
   }
 });
 

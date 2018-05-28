@@ -1,7 +1,7 @@
 {
   "name": "ubiatar-material-ui-icons",
   "author": "Material-UI Team",
-  "version": "1.0.0-beta.59",
+  "version": "1.0.0-beta.68",
   "description": "Material Design Svg Icons converted to Material-UI React components.",
   "main": "./build/index.js",
   "keywords": [
@@ -45,10 +45,10 @@
   },
   "devDependencies": {
     "material-design-icons": "^3.0.0",
-    "ubiatar-material-ui": "^1.0.0-beta.52",
     "mkdirp": "^0.5.0",
     "mustache": "^2.0.0",
     "temp": "^0.8.3",
+    "ubiatar-material-ui": "^1.0.0-beta.59",
     "yargs": "^11.0.0"
   },
   "sideEffects": false,

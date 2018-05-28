@@ -38,7 +38,9 @@
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "ubiatar-material-ui": "^1.0.0-beta.51"
+  },
   "devDependencies": {
     "@material-ui/icons": "^1.0.0-beta.35",
     "@material-ui/core": "^1.0.0-beta.33"
