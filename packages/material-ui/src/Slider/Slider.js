@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { TextField, Typography } from '../'
 import RCSlider, { Handles } from 'react-compound-slider'
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -6,19 +7,35 @@ import withStyles from '../styles/withStyles';
 import { capitalize } from '../utils/helpers';
 
 export const styles = theme => ({
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center'
+  },
   root: {
     userSelect: 'none',
     position: 'relative',
     width: '100%',
     minWidth: 100,
-    height: 6,
+    height: 2,
     backgroundColor: theme.palette.background.op30,
-    borderRadius: 3
+    borderRadius: 1
+  },
+  label: {
+    marginRight: '1.5em'
+  },
+  textField: {
+    marginLeft: '1.5em',
+    width: '8em'
+  },
+  input: {
+    textAlign: 'center'
   },
   handle: {
     position: 'absolute',
     marginLeft: -15,
-    marginTop: -8,
+    marginTop: -9,
     zIndex: 2,
     width: 20,
     height: 20,
@@ -56,51 +73,105 @@ const Handle = ({ // your handle component
   )
 }
 
-function Slider(props) {
-  const {
-    values,
-    mode,
-    step,
-    domain,
-    classes,
-    className: classNameProp,
-    color, ...other
-  } = props;
+class Slider extends Component {
+  state = {
+    textValue: 0
+  }
 
-  const className = classNames(
-    'material-Sliders',
-    classes.root,
-    {
-      [classes[`color${capitalize(color)}`]]: color !== 'inherit',
-    },
-    classNameProp,
-  );
+  componentDidMount () {
+    this.setState({
+      textValue: this.props.values[0]
+    })
+  }
 
-  return (
-    <RCSlider
-      className={className}
-      domain={domain}  // [min, max]
-      step={step}
-      mode={mode} // 1 = allow-crossing of handles, 2 = no crossing
-      values={values} // one value would be a value slider, two a range slider, etc
-      {...other}
-    >
-      <Handles>
-        {({ handles, getHandleProps }) => (
-          <div className="slider-handles">
-            {handles.map(handle => (
-              <Handle
-                key={handle.id}
-                handle={handle}
-                getHandleProps={getHandleProps}
-                className={classes.handle}
-              />
-            ))}
-          </div>
-        )}
-      </Handles>
-    </RCSlider>
-  );
+  componentWillReceiveProps (props) {
+    this.setState({
+      textValue: props.values[0]
+    })
+  }
+
+  render () {
+    const {
+      label,
+      hasInput,
+      values,
+      mode,
+      step,
+      domain,
+      decimals,
+      onUpdate,
+      classes,
+      className: classNameProp,
+      color, ...other
+    } = this.props;
+
+    const className = classNames(
+      'material-Sliders',
+      classes.root,
+      {
+        [classes[`color${capitalize(color)}`]]: color !== 'inherit',
+      },
+      classNameProp,
+    );
+
+    const {
+      textValue
+    } = this.state
+
+    const toText = (value, decimals) => (parseInt(value, 10) / Math.pow(10, decimals)).toString()
+
+    const toValues = (ev, decimals) => [parseInt(parseFloat(ev.target.value) * Math.pow(10, decimals), 10)]
+
+    return (
+      <div className={classes.container}>
+        {
+          label && <Typography className={classes.label}>{label}</Typography>
+        }
+        <RCSlider
+          className={className}
+          domain={domain}  // [min, max]
+          step={step}
+          mode={mode} // 1 = allow-crossing of handles, 2 = no crossing
+          values={values} // one value would be a value slider, two a range slider, etc
+          onUpdate={onUpdate}
+          {...other}
+        >
+          <Handles>
+            {({ handles, getHandleProps }) => (
+              <div className="slider-handles">
+                {handles.map(handle => (
+                  <Handle
+                    key={handle.id}
+                    handle={handle}
+                    getHandleProps={getHandleProps}
+                    className={classes.handle}
+                  />
+                ))}
+              </div>
+            )}
+          </Handles>
+        </RCSlider>
+        {
+          hasInput && <TextField
+            InputProps={{
+              classes: {
+                root: classes.input,
+                input: classes.input,
+              },
+            }}
+            value={toText(textValue, decimals)}
+            onChange={ev => this.setState({
+              textValue: toValues(ev, decimals)[0]
+            })}
+            onBlur={ev => onUpdate(toValues(ev, decimals))}
+            onKeyPress={ev => ev.charCode === 13 && onUpdate(toValues(ev, decimals))}
+            type="number"
+            className={classes.textField}
+          />
+        }
+      </div>
+    );
+  }
 }
 
 Slider.propTypes = {
@@ -121,6 +192,9 @@ Slider.propTypes = {
    * The color of the component. It's using the theme palette when that makes sense.
    */
   color: PropTypes.oneOf(['inherit', 'secondary', 'action', 'disabled', 'error', 'primary']),
+  label: PropTypes.string,
+  hasInput: PropTypes.bool,
+  decimals: PropTypes.number
 };
 
 Slider.defaultProps = {
@@ -128,7 +202,10 @@ Slider.defaultProps = {
   values: [10],
   mode: 2,
   step: 1,
-  domain: [0, 100]
+  domain: [0, 100],
+  label: null,
+  hasInput: false,
+  decimals: 0
 };
 
 Slider.muiName = 'Slider';
