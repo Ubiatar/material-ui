@@ -36,6 +36,8 @@ class Demo extends React.Component {
             domain={[5, 5000]}
             decimals={2}
             hasInput
+            handleColor='primary'
+            trackColor='secondary'
           />
         </Paper>
       </div>
