@@ -14,13 +14,19 @@ export const styles = theme => ({
   display2: theme.typography.display2,
   display1: theme.typography.display1,
   headline: theme.typography.headline,
+  headlineSmall: theme.typography.headlineSmall,
   title: theme.typography.title,
   subheading: theme.typography.subheading,
+  body4: theme.typography.body4,
+  body3: theme.typography.body3,
   body2: theme.typography.body2,
   body1: theme.typography.body1,
   caption: theme.typography.caption,
   button: theme.typography.button,
   link: theme.typography.link,
+  highbold: theme.typography.highbold,
+
+
   alignLeft: {
     textAlign: 'left',
   },
@@ -89,7 +95,7 @@ function Typography(props) {
     classNameProp,
   );
 
-  const Component = componentProp || (variant === 'link' ? 'a' : paragraph ? 'p' : headlineMapping[variant]) || 'span';
+  const Component = componentProp || (paragraph ? 'p' : headlineMapping[variant]) || 'span';
 
   return <Component className={className} {...other} />;
 }
@@ -149,13 +155,17 @@ Typography.propTypes = {
     'display2',
     'display1',
     'headline',
+    'headlineSmall',
     'title',
     'subheading',
+    'body3',
     'body2',
     'body1',
     'caption',
     'button',
-    'link'
+    'link',
+    'highbold',
+    'body4',
   ]),
 };
 
@@ -169,10 +179,16 @@ Typography.defaultProps = {
     display2: 'h1',
     display1: 'h1',
     headline: 'h1',
+    headlineSmall: 'h2',
     title: 'h2',
     subheading: 'h3',
+    body4: 'p',
+    body3: 'p',
     body2: 'aside',
     body1: 'p',
+    link: 'a',
+    highbold: 'h4',
+
   },
   noWrap: false,
   paragraph: false,

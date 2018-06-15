@@ -64,7 +64,7 @@ export default function createTypography(palette: Object, typography: Object | F
         color: palette.text.secondary,
       },
       display1: {
-        fontSize: pxToRem(34),
+        fontSize: pxToRem(36),
         fontWeight: fontWeightRegular,
         fontFamily,
         lineHeight: `${round(41 / 34)}em`,
@@ -77,6 +77,20 @@ export default function createTypography(palette: Object, typography: Object | F
         lineHeight: `${round(52.5 / 24)}em`,
         color: palette.text.primary,
       },
+      headlineSmall: {
+        fontSize: pxToRem(28),
+        fontWeight: fontWeightBold,
+        fontFamily,
+        lineHeight: `${round(52.5 / 24)}em`,
+        color: palette.text.primary,
+      },
+      highbold: {
+        fontSize: pxToRem(20),
+        fontWeight: fontWeightBold,
+        fontFamily,
+        lineHeight: `${round(52.5 / 24)}em`,
+        color: palette.text.primary,
+      },
       title: {
         fontSize: pxToRem(21),
         fontWeight: fontWeightLight,
@@ -85,10 +99,24 @@ export default function createTypography(palette: Object, typography: Object | F
         color: palette.text.primary,
       },
       subheading: {
-        fontSize: pxToRem(23),
-        fontWeight: fontWeightThin,
+        fontSize: pxToRem(24),
+        fontWeight: fontWeightRegular,
         fontFamily,
         lineHeight: `${round(24 / 16)}em`,
+        color: palette.text.primary,
+      },
+      body4: {
+        fontSize: pxToRem(21),
+        fontWeight: fontWeightRegular,
+        fontFamily,
+        lineHeight: `${round(24 / 14)}em`,
+        color: palette.text.primary,
+      },
+      body3: {
+        fontSize: pxToRem(18),
+        fontWeight: fontWeightRegular,
+        fontFamily,
+        lineHeight: `${round(24 / 14)}em`,
         color: palette.text.primary,
       },
       body2: {
@@ -113,7 +141,7 @@ export default function createTypography(palette: Object, typography: Object | F
         color: palette.text.secondary,
       },
       button: {
-        fontSize: pxToRem(14),
+        fontSize: pxToRem(16),
         textTransform: 'uppercase',
         fontWeight: fontWeightMedium,
         fontFamily,
@@ -122,7 +150,7 @@ export default function createTypography(palette: Object, typography: Object | F
       link: {
         fontSize: pxToRem(fontSize),
         textDecoration: 'none',
-        fontWeight: fontWeightMedium,
+        fontWeight: fontWeightBold,
         fontFamily,
         color: palette.text.link,
         display: 'inline'
