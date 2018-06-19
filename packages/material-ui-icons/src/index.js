@@ -427,6 +427,7 @@ export { default as ImportContacts } from './ImportContacts';
 export { default as ImportExport } from './ImportExport';
 export { default as Inbox } from './Inbox';
 export { default as IndeterminateCheckBox } from './IndeterminateCheckBox';
+export { default as index } from './index';
 export { default as Info } from './Info';
 export { default as InfoOutline } from './InfoOutline';
 export { default as Input } from './Input';
