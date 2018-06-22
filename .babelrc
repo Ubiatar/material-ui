@@ -1,26 +1,115 @@
 {
-  "presets": ["./tools/material-ui-babel-preset-es2015", "stage-1", "react"],
-  "plugins": [
-    ["transform-replace-object-assign", "simple-assign"],
-    "transform-dev-warning"
-  ],
+  "presets": ["./scripts/material-ui-babel-preset", "@babel/preset-stage-1", "@babel/preset-react"],
+  "plugins": ["@babel/plugin-transform-object-assign", "@babel/transform-runtime"],
   "env": {
-    "test": {
-      "sourceMaps": "both"
+    "coverage": {
+      "plugins": [
+        "istanbul",
+        "@babel/plugin-transform-flow-strip-types",
+        [
+          "module-resolver",
+          {
+            "root": ["./"],
+            "alias": {
+              "@material-ui/core": "./packages/material-ui/src",
+              "@material-ui/icons": "./packages/material-ui-icons/src"
+            }
+          }
+        ]
+      ]
+    },
+    "development": {
+      "sourceMaps": "both",
+      "plugins": ["@babel/plugin-transform-flow-strip-types"]
+    },
+    "docs-development": {
+      "presets": ["next/babel"],
+      "plugins": [
+        "./scripts/material-ui-babel-preval",
+        [
+          "module-resolver",
+          {
+            "alias": {
+              "@material-ui/core": "./packages/material-ui/src",
+              "@material-ui/docs": "./packages/material-ui-docs/src",
+              "@material-ui/icons": "./packages/material-ui-icons/src",
+              "@material-ui/lab": "./packages/material-ui-lab/src",
+              "docs": "./docs",
+              "pages": "./pages"
+            }
+          }
+        ],
+        "@babel/plugin-transform-flow-strip-types"
+      ]
     },
     "docs-production": {
+      "presets": ["next/babel"],
       "plugins": [
-        ["transform-replace-object-assign", "simple-assign"],
-        "transform-react-remove-prop-types",
+        "./scripts/material-ui-babel-preval",
+        [
+          "module-resolver",
+          {
+            "alias": {
+              "@material-ui/core": "./packages/material-ui/src",
+              "@material-ui/docs": "./packages/material-ui-docs/src",
+              "@material-ui/icons": "./packages/material-ui-icons/src",
+              "@material-ui/lab": "./packages/material-ui-lab/src",
+              "docs": "./docs",
+              "pages": "./pages"
+            }
+          }
+        ],
         "transform-react-constant-elements",
-        "transform-react-inline-elements"
+        "transform-dev-warning",
+        "@babel/plugin-transform-flow-strip-types",
+        ["react-remove-properties", { "properties": ["data-mui-test"] }],
+        ["transform-react-remove-prop-types", { "mode": "remove" }]
       ]
     },
-    "release": {
+    "es": {
       "plugins": [
-        "transform-runtime",
-        ["transform-react-remove-prop-types", {"mode": "wrap"}]
+        "transform-react-constant-elements",
+        "transform-dev-warning",
+        "@babel/plugin-transform-flow-strip-types",
+        ["react-remove-properties", { "properties": ["data-mui-test"] }],
+        [
+          "transform-react-remove-prop-types",
+          {
+            "mode": "wrap"
+          }
+        ]
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-constant-elements",
+        "transform-dev-warning",
+        "@babel/plugin-transform-flow-strip-types",
+        ["react-remove-properties", { "properties": ["data-mui-test"] }],
+        [
+          "transform-react-remove-prop-types",
+          {
+            "mode": "wrap"
+          }
+        ]
+      ]
+    },
+    "test": {
+      "sourceMaps": "both",
+      "plugins": [
+        "@babel/plugin-transform-flow-strip-types",
+        [
+          "module-resolver",
+          {
+            "root": ["./"],
+            "alias": {
+              "@material-ui/core": "./packages/material-ui/src",
+              "@material-ui/icons": "./packages/material-ui-icons/src"
+            }
+          }
+        ]
       ]
     }
-  }
+  },
+  "ignore": ["scripts/material-ui-babel-preset.js", "scripts/*.js"]
 }

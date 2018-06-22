@@ -1,20 +1,20 @@
-node_modules
-npm-debug.log
-build
-coverage
-.eslintcache
-
-# Exclude compiled files
-/lib
-icon-builder/js
-icon-builder/jsx
-
-# Exclude IDE project folders
+# The best pattern people should follow is ignoring the editors' files in their
+# global .gitignore configuration file.
+# However, in order to prevent issues. We also ignore editors' files here.
 .idea
-*.sublime-project
-*.sublime-workspace
-jsconfig.json
+.vscode
 
-# OS files
+*.log
 .DS_STORE
-yarn.lock
+/.eslintcache
+/.next
+/.nyc_output
+/coverage
+/docs/export
+/packages/material-ui-codemod/lib
+/test/regressions/screenshots
+/test/selenium-output
+/tmp
+build
+node_modules
+package-lock.json

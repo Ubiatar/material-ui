@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import PropTypes from 'prop-types';
+import React, {Component, PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 import shallowEqual from 'recompose/shallowEqual';
 import autoPrefix from '../utils/autoPrefix';
@@ -78,7 +77,7 @@ class CircleRipple extends Component {
       opacity, // eslint-disable-line no-unused-vars
       style,
       touchGenerated, // eslint-disable-line no-unused-vars
-      ...other
+      ...other,
     } = this.props;
 
     const {prepareStyles} = this.context.muiTheme;
