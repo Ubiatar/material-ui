@@ -50,7 +50,7 @@
     "flow": "flow --show-all-errors",
     "argos": "argos upload test/regressions/screenshots/chrome --token $ARGOS_TOKEN || true",
     "monorepo:release": "yarn lerna exec yarn build && ./node_modules/.bin/lerna publish --skip-npm",
-    "ubiatar-release": "cd ./packages/material-ui && cd ../material-ui-icons && cd ../../ && yarn lerna exec yarn build && cd ./packages/material-ui/build && npm version prerelease && npm publish && cd ../../material-ui-icons/build && npm version prerelease && npm publish"
+    "ubiatar-release": "cd ./packages/material-ui && npm version prerelease && cd ../material-ui-icons && npm version prerelease && cd ../../ && yarn lerna exec yarn build  && cd ./packages/material-ui/build && npm publish"
   },
   "peerDependencies": {
     "react": "*",

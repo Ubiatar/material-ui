@@ -72,9 +72,9 @@ export default function createTypography(palette: Object, typography: Object | F
       },
       headline: {
         fontSize: pxToRem(35),
-        fontWeight: fontWeightThin,
+        fontWeight: fontWeightLight,
         fontFamily,
-        lineHeight: `${round(52.5 / 24)}em`,
+        lineHeight: `${round(41 / 34)}em`,
         color: palette.text.primary,
       },
       headlineSmall: {
@@ -85,10 +85,10 @@ export default function createTypography(palette: Object, typography: Object | F
         color: palette.text.primary,
       },
       highbold: {
-        fontSize: pxToRem(20),
+        fontSize: pxToRem(21),
         fontWeight: fontWeightBold,
         fontFamily,
-        lineHeight: `${round(52.5 / 24)}em`,
+        lineHeight: `${round(52.5 / 50)}em`,
         color: palette.text.primary,
       },
       title: {
@@ -109,7 +109,7 @@ export default function createTypography(palette: Object, typography: Object | F
         fontSize: pxToRem(21),
         fontWeight: fontWeightRegular,
         fontFamily,
-        lineHeight: `${round(24 / 14)}em`,
+        lineHeight: `${round(52.5 / 50)}em`,
         color: palette.text.primary,
       },
       body3: {

@@ -8,151 +8,156 @@ import { fade } from '../styles/colorManipulator';
 import ButtonBase from '../ButtonBase';
 import { capitalize } from '../utils/helpers';
 
-export const styles = theme => ({
-  root: {
-    ...theme.typography.button,
-    lineHeight: '1.4em', // Improve readability for multiline button.
-    boxSizing: 'border-box',
-    minWidth: 88,
-    minHeight: 40,
-    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 2}px`,
-    borderRadius: 4,
-    color: theme.palette.text.primary,
-    transition: theme.transitions.create(['background-color', 'box-shadow'], {
-      duration: theme.transitions.duration.short,
-    }),
-    '&:hover': {
-      textDecoration: 'none',
-      backgroundColor: fade(theme.palette.text.primary, theme.palette.action.hoverOpacity),
-      // Reset on touch devices, it doesn't add specificity
-      '@media (hover: none)': {
-        backgroundColor: 'transparent',
+export const styles = theme => {
+  return {
+    root: {
+      ...theme.typography.button,
+      lineHeight: '1.4em', // Improve readability for multiline button.
+      boxSizing: 'border-box',
+      minWidth: 150,
+      height: 50,
+      //minHeight: 40,
+      padding: `${theme.spacing.unit}px ${theme.spacing.unit * 3}px`,
+      borderRadius: 4,
+      color: theme.palette.text.primary,
+      transition: theme.transitions.create(['background-color', 'box-shadow'], {
+        duration: theme.transitions.duration.short,
+      }),
+      '&:hover': {
+        textDecoration: 'none',
+        backgroundColor: fade(theme.palette.text.primary, theme.palette.action.hoverOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: 'transparent',
+        },
+        '&$disabled': {
+          backgroundColor: 'transparent',
+        },
       },
       '&$disabled': {
-        backgroundColor: 'transparent',
+        color: theme.palette.action.disabled,
       },
     },
-    '&$disabled': {
-      color: theme.palette.action.disabled,
+    label: {
+      width: '100%',
+      display: 'inherit',
+      alignItems: 'inherit',
+      justifyContent: 'inherit',
     },
-  },
-  label: {
-    width: '100%',
-    display: 'inherit',
-    alignItems: 'inherit',
-    justifyContent: 'inherit',
-  },
-  flatPrimary: {
-    color: theme.palette.primary.main,
-    '&:hover': {
-      backgroundColor: fade(theme.palette.primary.main, theme.palette.action.hoverOpacity),
-      // Reset on touch devices, it doesn't add specificity
-      '@media (hover: none)': {
-        backgroundColor: 'transparent',
+    flatPrimary: {
+      color: theme.palette.primary.main,
+      '&:hover': {
+        backgroundColor: fade(theme.palette.primary.main, theme.palette.action.hoverOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: 'transparent',
+        },
       },
     },
-  },
-  flatSecondary: {
-    color: theme.palette.secondary.main,
-    '&:hover': {
-      backgroundColor: fade(theme.palette.secondary.main, theme.palette.action.hoverOpacity),
-      // Reset on touch devices, it doesn't add specificity
-      '@media (hover: none)': {
-        backgroundColor: 'transparent',
+    flatSecondary: {
+      color: theme.palette.secondary.main,
+      '&:hover': {
+        backgroundColor: fade(theme.palette.secondary.main, theme.palette.action.hoverOpacity),
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: 'transparent',
+        },
       },
     },
-  },
-  outlined: {
-    border: `1px solid ${
-      theme.palette.type === 'light' ? 'rgba(0, 0, 0, 0.23)' : 'rgba(255, 255, 255, 0.23)'
-    }`,
-    borderRadius: 4,
-  },
-  colorInherit: {
-    color: 'inherit',
-  },
-  raised: {
-    color: theme.palette.getContrastText(theme.palette.grey[300]),
-    backgroundColor: theme.palette.grey[300],
-    boxShadow: theme.shadows[2],
-    '&$focusVisible': {
-      boxShadow: theme.shadows[6],
+    outlined: {
+      border: `1px solid ${
+        theme.palette.type === 'light' ? 'rgba(0, 0, 0, 0.23)' : 'rgba(255, 255, 255, 0.23)'
+        }`,
+      borderRadius: 4,
     },
-    '&:active': {
-      boxShadow: theme.shadows[8],
+    colorInherit: {
+      color: 'inherit',
     },
-    '&$disabled': {
-      color: theme.palette.action.disabled,
-      boxShadow: theme.shadows[0],
-      backgroundColor: theme.palette.action.disabledBackground,
-    },
-    '&:hover': {
-      backgroundColor: theme.palette.grey.A100,
-      // Reset on touch devices, it doesn't add specificity
-      '@media (hover: none)': {
-        backgroundColor: theme.palette.grey[300],
+    raised: {
+      color: theme.palette.primary.main,
+      backgroundColor: theme.palette.grey[300],
+      //backgroundColor: '#E4EFF5',
+      fontWeight: 700,
+      boxShadow: theme.shadows[2],
+      '&$focusVisible': {
+        boxShadow: theme.shadows[6],
+      },
+      '&:active': {
+        boxShadow: theme.shadows[8],
       },
       '&$disabled': {
+        color: theme.palette.action.disabled,
+        boxShadow: theme.shadows[0],
         backgroundColor: theme.palette.action.disabledBackground,
       },
-    },
-  },
-  raisedPrimary: {
-    color: theme.palette.primary.contrastText,
-    backgroundColor: theme.palette.primary.main,
-    '&:hover': {
-      backgroundColor: theme.palette.primary.dark,
-      // Reset on touch devices, it doesn't add specificity
-      '@media (hover: none)': {
-        backgroundColor: theme.palette.primary.main,
+      '&:hover': {
+        backgroundColor: theme.palette.grey.A100,
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: theme.palette.grey[300],
+        },
+        '&$disabled': {
+          backgroundColor: theme.palette.action.disabledBackground,
+        },
       },
     },
-  },
-  raisedSecondary: {
-    color: theme.palette.secondary.contrastText,
-    backgroundColor: theme.palette.secondary.main,
-    '&:hover': {
-      backgroundColor: theme.palette.secondary.dark,
-      // Reset on touch devices, it doesn't add specificity
-      '@media (hover: none)': {
-        backgroundColor: theme.palette.secondary.main,
+    raisedPrimary: {
+      color: theme.palette.primary.contrastText,
+      backgroundColor: theme.palette.primary.main,
+      '&:hover': {
+        backgroundColor: theme.palette.primary.dark,
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: theme.palette.primary.main,
+        },
       },
     },
-  },
-  focusVisible: {},
-  disabled: {},
-  fab: {
-    borderRadius: '50%',
-    padding: 0,
-    minWidth: 0,
-    width: 56,
-    fontSize: 24,
-    height: 56,
-    boxShadow: theme.shadows[6],
-    '&:active': {
-      boxShadow: theme.shadows[12],
+    raisedSecondary: {
+      color: theme.palette.secondary.contrastText,
+      backgroundColor: theme.palette.secondary.main,
+      '&:hover': {
+        backgroundColor: theme.palette.secondary.dark,
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
+          backgroundColor: theme.palette.secondary.main,
+        },
+      },
     },
-  },
-  mini: {
-    width: 40,
-    height: 40,
-  },
-  sizeSmall: {
-    padding: `${theme.spacing.unit - 1}px ${theme.spacing.unit}px`,
-    minWidth: theme.spacing.unit * 8,
-    minHeight: 32,
-    fontSize: theme.typography.pxToRem(13),
-  },
-  sizeLarge: {
-    padding: `${theme.spacing.unit}px ${theme.spacing.unit * 3}px`,
-    minWidth: theme.spacing.unit * 14,
-    minHeight: 40,
-    fontSize: theme.typography.pxToRem(15),
-  },
-  fullWidth: {
-    width: '100%',
-  },
-});
+    focusVisible: {},
+    disabled: {},
+    fab: {
+      borderRadius: '50%',
+      padding: 0,
+      minWidth: 0,
+      width: 56,
+      fontSize: 24,
+      height: 56,
+      boxShadow: theme.shadows[6],
+      '&:active': {
+        boxShadow: theme.shadows[12],
+      },
+    },
+    mini: {
+      width: 40,
+      height: 40,
+    },
+    sizeSmall: {
+      padding: `${theme.spacing.unit - 1}px ${theme.spacing.unit}px`,
+      minWidth: theme.spacing.unit * 8,
+      minHeight: 32,
+      fontSize: theme.typography.pxToRem(13),
+    },
+    sizeLarge: {
+      padding: `${theme.spacing.unit}px ${theme.spacing.unit * 3}px`,
+      minWidth: theme.spacing.unit * 14,
+      minHeight: 40,
+      fontSize: theme.typography.pxToRem(15),
+    },
+    fullWidth: {
+      width: '100%',
+    },
+  };
+};
 
 function Button(props) {
   const {

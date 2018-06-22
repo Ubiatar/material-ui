@@ -14,6 +14,7 @@ export const styles = theme => ({
   root: {
     justifyContent: 'center',
     alignItems: 'center',
+    padding: '30px'
   },
   paper: {
     display: 'flex',

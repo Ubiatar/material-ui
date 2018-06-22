@@ -6,7 +6,7 @@ import Typography from '../Typography';
 
 export const styles = theme => ({
   root: {
-    margin: 0,
+    margin: '0 auto',
     padding: `${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px \
       20px ${theme.spacing.unit * 3}px`,
     flex: '0 0 auto',
@@ -18,7 +18,7 @@ function DialogTitle(props) {
 
   return (
     <div data-mui-test="DialogTitle" className={classNames(classes.root, className)} {...other}>
-      {disableTypography ? children : <Typography variant="title">{children}</Typography>}
+      {disableTypography ? children : <Typography variant="highbold">{children}</Typography>}
     </div>
   );
 }

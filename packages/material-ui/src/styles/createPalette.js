@@ -33,7 +33,7 @@ export const light = {
     appBar: common.white,
     chip: grey[300],
     avatar: grey[400],
-    op30: 'rgba(0, 0, 0, .6)'
+    op30: 'rgba(0, 0, 0, .6)',
   },
   // The colors used to style the action elements.
   action: {
@@ -68,7 +68,7 @@ export const dark = {
     appBar: grey[900],
     chip: grey[700],
     avatar: grey[600],
-    op30: 'rgba(255, 255, 255, .6)'
+    op30: 'rgba(255, 255, 255, .6)',
   },
   action: {
     active: common.white,
@@ -98,17 +98,22 @@ export default function createPalette(palette: Object) {
       light: ubiatarPrimary[300],
       main: ubiatarPrimary[500],
       dark: ubiatarPrimary[700],
-      op50: ubiatarPrimary.op50
+      op50: ubiatarPrimary.op50,
     },
     secondary = {
       light: ubiatarDarkPrimary[300],
       main: ubiatarDarkPrimary[500],
-      dark: ubiatarDarkPrimary[700]
+      dark: ubiatarDarkPrimary[700],
+    },
+    terziary = {
+      light: '#ccc',
+      main: '#ccc',
+      dark: '#ccc',
     },
     error = {
       light: '#ea656c',
       main: '#ea656c',
-      dark: '#ea656c'
+      dark: '#ea656c',
     },
     type = 'light',
     contrastThreshold = 3,
@@ -169,6 +174,8 @@ export default function createPalette(palette: Object) {
       primary,
       // The colors used to represent secondary interface elements for a user.
       secondary,
+      // The colors used to represent terziary interface elements for a user.
+      terziary,
       // The colors used to represent interface elements that the user should be made aware of.
       error,
       // The grey colors.

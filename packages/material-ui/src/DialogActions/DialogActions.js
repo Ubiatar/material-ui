@@ -9,13 +9,15 @@ export const styles = theme => ({
   root: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     flex: '0 0 auto',
     margin: `${theme.spacing.unit}px ${theme.spacing.unit / 2}px`,
+    padding: `0 ${theme.spacing.unit * 3}px \
+      20px ${theme.spacing.unit * 3}px`,
   },
   action: {
-    margin: `0 ${theme.spacing.unit / 2}px`,
-    minWidth: 64,
+    //margin: `0 ${theme.spacing.unit / 2}px`,
+    minWidth: 150,
   },
 });
 
