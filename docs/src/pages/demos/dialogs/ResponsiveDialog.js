@@ -41,9 +41,6 @@ class ResponsiveDialog extends React.Component {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Disagree
-            </Button>
             <Button onClick={this.handleClose} color="primary" autoFocus>
               Agree
             </Button>

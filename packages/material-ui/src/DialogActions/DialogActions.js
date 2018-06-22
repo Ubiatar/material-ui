@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import withStyles from '../styles/withStyles';
@@ -16,8 +16,11 @@ export const styles = theme => ({
       20px ${theme.spacing.unit * 3}px`,
   },
   action: {
-    //margin: `0 ${theme.spacing.unit / 2}px`,
+    // margin: `0 ${theme.spacing.unit / 2}px`,
     minWidth: 150,
+  },
+  flexEnd: {
+    justifyContent: 'flex-end',
   },
 });
 
@@ -25,7 +28,12 @@ function DialogActions(props) {
   const { disableActionSpacing, children, classes, className, ...other } = props;
 
   return (
-    <div className={classNames(classes.root, className)} {...other}>
+    <div
+      className={classNames(classes.root, className, {
+        [classes.flexEnd]: Children.toArray(children).length === 1,
+      })}
+      {...other}
+    >
       {disableActionSpacing ? children : cloneChildrenWithClassName(children, classes.action)}
     </div>
   );
