@@ -17,6 +17,9 @@ export const styles = theme => ({
   headlineSmall: theme.typography.headlineSmall,
   title: theme.typography.title,
   subheading: theme.typography.subheading,
+  smallTitle: theme.typography.smallTitle,
+  body6: theme.typography.body6,
+  body5: theme.typography.body5,
   body4: theme.typography.body4,
   body3: theme.typography.body3,
   body2: theme.typography.body2,
@@ -161,6 +164,10 @@ Typography.propTypes = {
     'headlineSmall',
     'title',
     'subheading',
+    'smallTitle',
+    'body6',
+    'body5',
+    'body4',
     'body3',
     'body2',
     'body1',
@@ -168,7 +175,7 @@ Typography.propTypes = {
     'button',
     'link',
     'highbold',
-    'body4',
+
   ]),
 };
 
@@ -185,6 +192,8 @@ Typography.defaultProps = {
     headlineSmall: 'h2',
     title: 'h2',
     subheading: 'h3',
+    body6: 'h5',
+    body5: 'p',
     body4: 'p',
     body3: 'p',
     body2: 'aside',

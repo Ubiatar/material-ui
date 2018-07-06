@@ -57,10 +57,10 @@ class SimpleModal extends React.Component {
           onClose={this.handleClose}
         >
           <div style={getModalStyle()} className={classes.paper}>
-            <Typography variant="title" id="modal-title">
+            <Typography variant="highbold" id="modal-title">
               Text in a modal
             </Typography>
-            <Typography variant="subheading" id="simple-modal-description">
+            <Typography variant="body4" id="simple-modal-description">
               Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
             </Typography>
             <SimpleModalWrapped />

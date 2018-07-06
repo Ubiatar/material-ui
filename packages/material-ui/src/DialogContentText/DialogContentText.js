@@ -18,7 +18,7 @@ function DialogContentText(props) {
   return (
     <Typography
       component="p"
-      variant="subheading"
+      variant="body4"
       className={classNames(classes.root, className)}
       {...other}
     >

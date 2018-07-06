@@ -16,6 +16,7 @@ export const styles = theme => {
       boxSizing: 'border-box',
       minWidth: 150,
       height: 50,
+      fontWeight: 700,
       //minHeight: 40,
       padding: `${theme.spacing.unit}px ${theme.spacing.unit * 3}px`,
       borderRadius: 4,

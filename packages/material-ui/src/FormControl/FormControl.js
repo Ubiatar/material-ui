@@ -18,8 +18,8 @@ export const styles = theme => ({
     border: 0,
   },
   marginNormal: {
-    marginTop: theme.spacing.unit * 2,
-    marginBottom: theme.spacing.unit,
+    marginTop: theme.spacing.unit * 5,
+    marginBottom: 0,
   },
   marginDense: {
     marginTop: theme.spacing.unit,

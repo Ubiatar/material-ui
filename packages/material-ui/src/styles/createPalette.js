@@ -12,7 +12,7 @@ export const light = {
   // The colors used to style the text.
   text: {
     // The most important text.
-    primary: 'rgba(0, 0, 0, 0.87)',
+    primary: '#2B2A3B',
     // Secondary text.
     secondary: '#666',
     // Disabled text have even lower visual prominence.

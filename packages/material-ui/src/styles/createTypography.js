@@ -25,7 +25,7 @@ export default function createTypography(palette: Object, typography: Object | F
 
   const coef = fontSize / 14;
   function pxToRem(value) {
-    return `${value / htmlFontSize * coef}rem`;
+    return `${(value / htmlFontSize) * coef}rem`;
   }
 
   return deepmerge(
@@ -71,7 +71,7 @@ export default function createTypography(palette: Object, typography: Object | F
         color: palette.text.secondary,
       },
       headline: {
-        fontSize: pxToRem(35),
+        fontSize: pxToRem(36),
         fontWeight: fontWeightLight,
         fontFamily,
         lineHeight: `${round(41 / 34)}em`,
@@ -88,7 +88,7 @@ export default function createTypography(palette: Object, typography: Object | F
         fontSize: pxToRem(21),
         fontWeight: fontWeightBold,
         fontFamily,
-        lineHeight: `${round(52.5 / 50)}em`,
+        lineHeight: `${round(24 / 16)}em`,
         color: palette.text.primary,
       },
       title: {
@@ -100,35 +100,55 @@ export default function createTypography(palette: Object, typography: Object | F
       },
       subheading: {
         fontSize: pxToRem(24),
-        fontWeight: fontWeightRegular,
+        fontWeight: fontWeightLight,
         fontFamily,
         lineHeight: `${round(24 / 16)}em`,
         color: palette.text.primary,
       },
-      body4: {
-        fontSize: pxToRem(21),
+      smallTitle: {
+        fontSize: pxToRem(18),
+        fontWeight: fontWeightBold,
+        fontFamily,
+        lineHeight: `${round(41 / 34)}em`,
+        color: palette.text.primary,
+      },
+      body6: {
+        fontSize: pxToRem(18),
         fontWeight: fontWeightRegular,
         fontFamily,
         lineHeight: `${round(52.5 / 50)}em`,
         color: palette.text.primary,
       },
-      body3: {
-        fontSize: pxToRem(18),
+      body5: {
+        fontSize: pxToRem(16),
+        fontWeight: fontWeightMedium,
+        fontFamily,
+        lineHeight: `${round(52.5 / 50)}em`,
+        color: palette.text.primary,
+      },
+      body4: {
+        fontSize: pxToRem(16),
         fontWeight: fontWeightRegular,
         fontFamily,
-        lineHeight: `${round(24 / 14)}em`,
+        lineHeight: `${round(24 / 16)}em`,
         color: palette.text.primary,
+      },
+      body3: {
+        fontSize: pxToRem(16),
+        fontWeight: fontWeightBold,
+        fontFamily,
+        lineHeight: `${round(24 / 14)}em`,
       },
       body2: {
         fontSize: pxToRem(14),
-        fontWeight: fontWeightMedium,
+        fontWeight: fontWeightBold,
         fontFamily,
         lineHeight: `${round(24 / 14)}em`,
-        color: palette.text.primary,
+        color: palette.text.secondary,
       },
       body1: {
         fontSize: pxToRem(14),
-        fontWeight: fontWeightRegular,
+        fontWeight: fontWeightLight,
         fontFamily,
         lineHeight: `${round(20.5 / 14)}em`,
         color: palette.text.primary,
@@ -153,7 +173,7 @@ export default function createTypography(palette: Object, typography: Object | F
         fontWeight: fontWeightBold,
         fontFamily,
         color: palette.text.link,
-        display: 'inline'
+        display: 'inline',
       },
     },
     other,

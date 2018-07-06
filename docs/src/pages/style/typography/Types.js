@@ -40,11 +40,23 @@ function Types(props) {
       <Typography variant="headlineSmall" gutterBottom>
         HeadlineSmall
       </Typography>
+      <Typography variant="subheading" gutterBottom>
+        Subheading
+      </Typography>
       <Typography variant="title" gutterBottom>
         Title
       </Typography>
-      <Typography variant="subheading" gutterBottom>
-        Subheading
+      <Typography variant="highbold" gutterBottom align="left">
+        highbold
+      </Typography>
+      <Typography variant="smallTitle" gutterBottom>
+        smallTitle
+      </Typography>
+      <Typography variant="body6" gutterBottom>
+        Body 6
+      </Typography>
+      <Typography variant="body5" gutterBottom>
+        Body 5
       </Typography>
       <Typography variant="body4" gutterBottom>
         Body 4
@@ -57,9 +69,6 @@ function Types(props) {
       </Typography>
       <Typography variant="body1" gutterBottom align="left">
         Body 1
-      </Typography>
-      <Typography variant="highbold" gutterBottom align="left">
-        highbold
       </Typography>
       <Typography variant="caption" gutterBottom align="center">
         Caption
@@ -75,6 +84,15 @@ function Types(props) {
       </Typography>
       <Typography variant="button" gutterBottom>
         Button
+      </Typography>
+      <Typography color='primary' variant="body4" gutterBottom align="left">
+        PRIMARY
+      </Typography>
+      <Typography color='secondary' variant="body4" gutterBottom align="left">
+        SECONDARY
+      </Typography>
+      <Typography color='terziary' variant="body4" gutterBottom align="left">
+        TERZIARY
       </Typography>
     </div>
   );

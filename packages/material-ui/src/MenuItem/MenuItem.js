@@ -8,7 +8,7 @@ import ListItem from '../ListItem';
 
 export const styles = theme => ({
   root: {
-    ...theme.typography.subheading,
+    ...theme.typography.body4,
     height: theme.spacing.unit * 3,
     boxSizing: 'content-box',
     width: 'auto',
