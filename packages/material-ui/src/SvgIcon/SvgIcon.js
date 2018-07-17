@@ -29,6 +29,9 @@ export const styles = theme => ({
   colorError: {
     color: theme.palette.error.main,
   },
+  colorSuccess: {
+    color: theme.palette.success.main,
+  },
   colorDisabled: {
     color: theme.palette.action.disabled,
   },

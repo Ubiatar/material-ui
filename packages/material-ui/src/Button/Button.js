@@ -130,9 +130,9 @@ export const styles = theme => {
       borderRadius: '50%',
       padding: 0,
       minWidth: 0,
-      width: 56,
+      width: 50,
       fontSize: 24,
-      height: 56,
+      height: 50,
       boxShadow: theme.shadows[6],
       '&:active': {
         boxShadow: theme.shadows[12],

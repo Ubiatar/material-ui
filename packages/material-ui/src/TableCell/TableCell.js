@@ -11,12 +11,12 @@ export const styles = theme => ({
     verticalAlign: 'inherit',
     // Workaround for a rendering bug with spanned columns in Chrome 62.0.
     // Removes the alpha (sets it to 1), and lightens or darkens the theme color.
-    borderBottom: `1px solid
-    ${
-      theme.palette.type === 'light'
-        ? lighten(fade(theme.palette.divider, 1), 0.88)
-        : darken(fade(theme.palette.divider, 1), 0.8)
-    }`,
+    //borderBottom: `1px solid
+    //${
+    //  theme.palette.type === 'light'
+    //    ? lighten(fade(theme.palette.divider, 1), 0.88)
+    //    : darken(fade(theme.palette.divider, 1), 0.8)
+    //}`,
     textAlign: 'left',
     padding: `${theme.spacing.unit / 2}px ${theme.spacing.unit * 7}px ${theme.spacing.unit /
       2}px ${theme.spacing.unit * 3}px`,
@@ -26,12 +26,12 @@ export const styles = theme => ({
   },
   head: {
     color: theme.palette.text.secondary,
-    fontSize: theme.typography.pxToRem(12),
-    fontWeight: theme.typography.fontWeightMedium,
+    fontSize: theme.typography.pxToRem(14),
+    fontWeight: theme.typography.fontWeightBold,
   },
   body: {
     color: theme.palette.text.primary,
-    fontSize: theme.typography.pxToRem(13),
+    fontSize: theme.typography.pxToRem(14),
     fontWeight: theme.typography.fontWeightRegular,
   },
   footer: {

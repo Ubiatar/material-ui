@@ -7,7 +7,7 @@ export const styles = theme => ({
   root: {
     color: 'inherit',
     display: 'table-row',
-    height: 48,
+    height: 50,
     verticalAlign: 'middle',
     // We disable the focus ring for mouse, touch and keyboard users.
     outline: 'none',
@@ -27,10 +27,10 @@ export const styles = theme => ({
   selected: {},
   hover: {},
   head: {
-    height: 56,
+    height: 55,
   },
   footer: {
-    height: 56,
+    height: 55,
   },
 });
 

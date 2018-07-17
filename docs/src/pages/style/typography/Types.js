@@ -43,6 +43,9 @@ function Types(props) {
       <Typography variant="subheading" gutterBottom>
         Subheading
       </Typography>
+      <Typography variant="subheadingBold" gutterBottom>
+        SubheadingBold
+      </Typography>
       <Typography variant="title" gutterBottom>
         Title
       </Typography>

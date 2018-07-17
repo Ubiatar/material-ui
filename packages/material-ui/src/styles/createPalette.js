@@ -21,6 +21,8 @@ export const light = {
     link: '#6cccff',
     // Text hints.
     hint: 'rgba(0, 0, 0, 0.38)',
+    //Accept or Success
+    success: '#53A182',
   },
   // The color used to divide different elements.
   divider: 'rgba(0, 0, 0, 0.12)',
@@ -45,7 +47,7 @@ export const light = {
     // The color of a selected action.
     selected: 'rgba(0, 0, 0, 0.14)',
     // The color of a disabled action.
-    disabled: 'rgba(0, 0, 0, 0.26)',
+    disabled: 'rgba(0, 0, 0, 0.10)',
     // The background color of a disabled action.
     disabledBackground: 'rgba(0, 0, 0, 0.12)',
   },
@@ -53,7 +55,7 @@ export const light = {
 
 export const dark = {
   text: {
-    primary: 'rgba(255, 255, 255, 0.8)',
+    primary: 'rgba(255, 255, 255, 1)',
     secondary: 'rgba(255, 255, 255, 0.6)',
     disabled: 'rgba(255, 255, 255, 0.5)',
     link: '#6cccff',
@@ -114,6 +116,11 @@ export default function createPalette(palette: Object) {
       light: '#ea656c',
       main: '#ea656c',
       dark: '#ea656c',
+    },
+    success = {
+      light: '#53A182',
+      main: '#53A182',
+      dark: '#53A182',
     },
     type = 'light',
     contrastThreshold = 3,
@@ -178,6 +185,8 @@ export default function createPalette(palette: Object) {
       terziary,
       // The colors used to represent interface elements that the user should be made aware of.
       error,
+      // The colors used to represent positive interface elements.
+      success,
       // The grey colors.
       grey,
       // Used by `getContrastText()` to maximize the contrast between the background and

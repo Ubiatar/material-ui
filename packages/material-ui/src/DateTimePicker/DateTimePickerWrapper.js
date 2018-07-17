@@ -137,7 +137,7 @@ export class DateTimePickerWrapper extends PickerBase {
 
 const styles = {
   dialogContent: {
-    width: 310,
+    width: 360,
   },
 };
 

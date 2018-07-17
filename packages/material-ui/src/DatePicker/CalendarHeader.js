@@ -28,7 +28,7 @@ export const CalendarHeader = (props) => {
           {rtl ? rightArrowIcon : leftArrowIcon}
         </IconButton>
 
-        <Typography type="body1">
+        <Typography type="smallTitle">
           {utils.getCalendarHeaderText(currentMonth)}
         </Typography>
 

@@ -48,7 +48,7 @@ export default function createTypography(palette: Object, typography: Object | F
       },
       display3: {
         fontSize: pxToRem(56),
-        fontWeight: fontWeightRegular,
+        fontWeight: fontWeightLight,
         fontFamily,
         letterSpacing: '-.02em',
         lineHeight: `${round(73 / 56)}em`,
@@ -96,6 +96,13 @@ export default function createTypography(palette: Object, typography: Object | F
         fontWeight: fontWeightLight,
         fontFamily,
         lineHeight: `${round(24.5 / 21)}em`,
+        color: palette.text.primary,
+      },
+      subheadingBold: {
+        fontSize: pxToRem(24),
+        fontWeight: fontWeightBold,
+        fontFamily,
+        lineHeight: `${round(24 / 16)}em`,
         color: palette.text.primary,
       },
       subheading: {

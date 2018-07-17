@@ -10,6 +10,7 @@ export const styles = theme => ({
     padding: `${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px \
       20px ${theme.spacing.unit * 3}px`,
     flex: '0 0 auto',
+    textAlign: 'center',
   },
 });
 
