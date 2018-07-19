@@ -84,6 +84,8 @@ function FormControlLabel(props, context) {
       <Typography
         component="span"
         className={classNames(classes.label, { [classes.disabled]: disabled })}
+        variant="body2"
+        color="secondary"
       >
         {label}
       </Typography>
