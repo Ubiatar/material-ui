@@ -64,9 +64,9 @@ export const dark = {
   },
   divider: 'rgba(255, 255, 255, 0.12)',
   background: {
-    paper: grey[800],
+    paper: ubiatarDarkPrimary[500],
     slider: common.white,
-    default: '#303030',
+    default: ubiatarDarkPrimary[600],
     appBar: grey[900],
     chip: grey[700],
     avatar: grey[600],
