@@ -149,13 +149,16 @@ export const styles = theme => {
       fontSize: theme.typography.pxToRem(13),
     },
     sizeLarge: {
-      padding: `${theme.spacing.unit}px ${theme.spacing.unit * 3}px`,
-      minWidth: theme.spacing.unit * 14,
+      padding: `${theme.spacing.unit}px ${theme.spacing.unit * 5}px`,
+      minWidth: theme.spacing.unit * 18,
       minHeight: 40,
       fontSize: theme.typography.pxToRem(15),
     },
     fullWidth: {
       width: '100%',
+    },
+    rounded: {
+      borderRadius: 25,
     },
   };
 };
@@ -173,6 +176,7 @@ function Button(props) {
     mini,
     size,
     variant,
+    rounded,
     ...other
   } = props;
 
@@ -194,6 +198,7 @@ function Button(props) {
       [classes[`size${capitalize(size)}`]]: size !== 'medium',
       [classes.disabled]: disabled,
       [classes.fullWidth]: fullWidth,
+      [classes.rounded]: rounded,
     },
     classNameProp,
   );
@@ -265,6 +270,7 @@ Button.propTypes = {
    * If `true`, and `variant` is `'fab'`, will use mini floating action button styling.
    */
   mini: PropTypes.bool,
+  rounded: PropTypes.bool,
   /**
    * The size of the button.
    * `small` is equivalent to the dense button styling.
@@ -286,6 +292,7 @@ Button.defaultProps = {
   disableFocusRipple: false,
   fullWidth: false,
   mini: false,
+  rounded: false,
   size: 'medium',
   type: 'button',
   variant: 'flat',

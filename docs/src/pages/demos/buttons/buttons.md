@@ -32,6 +32,10 @@ They may be used inline. They lift and display ink reactions on press.
 
 {{"demo": "pages/demos/buttons/RaisedButtons.js"}}
 
+This is the rounded version
+
+{{"demo": "pages/demos/buttons/RoundedRaisedButtons.js"}}
+
 ## Floating Action Buttons
 
 A floating action button represents the primary action in an application.

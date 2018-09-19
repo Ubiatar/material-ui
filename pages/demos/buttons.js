@@ -29,6 +29,13 @@ module.exports = require('fs')
   .readFileSync(require.resolve('docs/src/pages/demos/buttons/RaisedButtons'), 'utf8')
 `,
         },
+        'pages/demos/buttons/RoundedRaisedButtons.js': {
+          js: require('docs/src/pages/demos/buttons/RoundedRaisedButtons').default,
+          raw: preval`
+module.exports = require('fs')
+  .readFileSync(require.resolve('docs/src/pages/demos/buttons/RoundedRaisedButtons'), 'utf8')
+`,
+        },
         'pages/demos/buttons/FloatingActionButtons.js': {
           js: require('docs/src/pages/demos/buttons/FloatingActionButtons').default,
           raw: preval`
