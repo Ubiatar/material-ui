@@ -62,6 +62,7 @@ function TextField(props) {
     onFocus,
     placeholder,
     required,
+    rounded,
     rows,
     rowsMax,
     select,
@@ -86,6 +87,7 @@ function TextField(props) {
       fullWidth={fullWidth}
       multiline={multiline}
       name={name}
+      rounded={rounded}
       rows={rows}
       rowsMax={rowsMax}
       type={type}
@@ -111,7 +113,7 @@ function TextField(props) {
       {...other}
     >
       {label && (
-        <InputLabel htmlFor={id} {...InputLabelProps}>
+        <InputLabel htmlFor={id} rounded={rounded} {...InputLabelProps}>
           {label}
         </InputLabel>
       )}
@@ -238,6 +240,7 @@ TextField.propTypes = {
   /**
    * Number of rows to display when multiline option is set to true.
    */
+  rounded: PropTypes.bool,
   rows: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /**
    * Maximum number of rows to display when multiline option is set to true.
@@ -268,6 +271,7 @@ TextField.propTypes = {
 
 TextField.defaultProps = {
   required: false,
+  rounded: false,
   select: false,
 };
 

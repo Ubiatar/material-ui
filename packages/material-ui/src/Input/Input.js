@@ -188,6 +188,18 @@ export const styles = theme => {
       '-moz-appearance': 'textfield',
       '-webkit-appearance': 'textfield',
     },
+    rounded: {
+      border: `1px solid ${bottomLineColor}`,
+      borderRadius: '1.1875em',
+      paddingLeft: `${theme.spacing.unit + 5}px`,
+      paddingRight: `${theme.spacing.unit + 5}px`,
+      '&:after': {
+        display: 'none',
+      },
+      '&:before': {
+        display: 'none',
+      },
+    },
   };
 };
 
@@ -380,6 +392,7 @@ class Input extends React.Component {
       onKeyUp,
       placeholder,
       readOnly,
+      rounded,
       rows,
       rowsMax,
       startAdornment,
@@ -401,6 +414,7 @@ class Input extends React.Component {
         [classes.formControl]: muiFormControl,
         [classes.multiline]: multiline,
         [classes.underline]: !disableUnderline,
+        [classes.rounded]: rounded,
       },
       classNameProp,
     );
@@ -595,6 +609,7 @@ Input.propTypes = {
    * @ignore
    */
   readOnly: PropTypes.bool,
+  rounded: PropTypes.bool,
   /**
    * Number of rows to display when multiline option is set to true.
    */
@@ -627,6 +642,7 @@ Input.defaultProps = {
   disableUnderline: false,
   fullWidth: false,
   multiline: false,
+  rounded: false,
   type: 'text',
 };
 

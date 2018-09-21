@@ -21,6 +21,13 @@ export const styles = theme => ({
     // Compensation for the `Input.inputDense` style.
     transform: `translate(0, ${theme.spacing.unit * 2.5 + 1}px) scale(1)`,
   },
+  rounded: {
+    transform: `translate(14px, ${theme.spacing.unit * 3 + 1}px) scale(1)`,
+  },
+  shrinkRounded: {
+    transform: 'translate(14px, 1.5px) scale(0.75)',
+    transformOrigin: 'top left',
+  },
   shrink: {
     transform: 'translate(0, 1.5px) scale(0.75)',
     transformOrigin: 'top left',
@@ -41,6 +48,7 @@ function InputLabel(props, context) {
     disableAnimation,
     FormLabelClasses,
     margin: marginProp,
+    rounded,
     shrink: shrinkProp,
     ...other
   } = props;
@@ -62,7 +70,9 @@ function InputLabel(props, context) {
     {
       [classes.formControl]: muiFormControl,
       [classes.animated]: !disableAnimation,
-      [classes.shrink]: shrink,
+      [classes.rounded]: rounded,
+      [classes.shrink]: !rounded && shrink,
+      [classes.shrinkRounded]: rounded && shrink,
       [classes.marginDense]: margin === 'dense',
     },
     classNameProp,
@@ -118,6 +128,7 @@ InputLabel.propTypes = {
    * if `true`, the label will indicate that the input is required.
    */
   required: PropTypes.bool,
+  rounded: PropTypes.bool,
   /**
    * If `true`, the label is shrunk.
    */
@@ -126,6 +137,7 @@ InputLabel.propTypes = {
 
 InputLabel.defaultProps = {
   disableAnimation: false,
+  rounded: false,
 };
 
 InputLabel.contextTypes = {
