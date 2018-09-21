@@ -189,10 +189,11 @@ export const styles = theme => {
       '-webkit-appearance': 'textfield',
     },
     rounded: {
+      lineHeight: '2.1875em',
       border: `1px solid ${bottomLineColor}`,
-      borderRadius: '1.1875em',
-      paddingLeft: `${theme.spacing.unit + 5}px`,
-      paddingRight: `${theme.spacing.unit + 5}px`,
+      borderRadius: '2.1875em',
+      paddingLeft: 21,
+      paddingRight: 21,
       '&:after': {
         display: 'none',
       },
@@ -423,7 +424,7 @@ class Input extends React.Component {
       classes.input,
       {
         [classes.disabled]: disabled,
-        [classes.inputType]: type !== 'text',
+        [classes.inputType]: type !== 'text' && !rounded,
         [classes.inputTypeSearch]: type === 'search',
         [classes.inputMultiline]: multiline,
         [classes.inputMarginDense]: margin === 'dense',
