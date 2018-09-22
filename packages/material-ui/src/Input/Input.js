@@ -55,8 +55,6 @@ export const styles = theme => {
     opacity: light ? 0.42 : 0.5,
   };
 
-  console.log(theme.palette.borders)
-
   return {
     root: {
       // Mimics the default input display property used by browsers for an input.
@@ -195,6 +193,9 @@ export const styles = theme => {
       borderRadius: '2.1875em',
       paddingLeft: 21,
       paddingRight: 21,
+      '&:focus': {
+        border: `1px solid ${theme.palette.primary.main}`,
+      },
       '&:after': {
         display: 'none',
       },
