@@ -16,6 +16,7 @@ function FlatButtons(props) {
   const { classes } = props;
   return (
     <div>
+      <Button color={['secondary', 'primary']} className={classes.button}>Default gradient</Button>
       <Button className={classes.button}>Default</Button>
       <Button color="primary" className={classes.button}>
         Primary

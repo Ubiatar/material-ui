@@ -16,6 +16,9 @@ function RoundedRaisedButtons(props) {
   const { classes } = props;
   return (
     <div>
+      <Button color={['primary', 'secondary']} variant="raised" className={classes.button} rounded>
+        Default
+      </Button>
       <Button variant="raised" className={classes.button} rounded>
         Default
       </Button>
