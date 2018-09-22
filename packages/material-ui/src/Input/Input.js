@@ -126,10 +126,22 @@ export const styles = theme => {
     fullWidth: {
       width: '100%',
     },
+    rounded: {
+      '&:after': {
+        display: 'none',
+      },
+      '&:before': {
+        display: 'none',
+      },
+    },
+    multilineRounded: {
+      padding: 0,
+      minHeight: 50,
+    },
     input: {
       font: 'inherit',
       color: 'currentColor',
-      padding: `${theme.spacing.unit - 2}px 0 ${theme.spacing.unit - 1}px`,
+      padding: `${theme.spacing.unit - 2}px 0`,
       border: 0,
       boxSizing: 'content-box',
       verticalAlign: 'middle',
@@ -187,14 +199,16 @@ export const styles = theme => {
       '-moz-appearance': 'textfield',
       '-webkit-appearance': 'textfield',
     },
-    rounded: {
-      lineHeight: '2.1875em',
+    inputRounded: {
       border: `1px solid ${theme.palette.borders.input}`,
-      borderRadius: '2.1875em',
-      paddingLeft: 21,
-      paddingRight: 21,
+      borderRadius: 25,
+      padding: '15px 21px 14px',
+      '&:hover': {
+        borderWidth: 2,
+        padding: '14px 20px 13px',
+      },
       '&:focus': {
-        border: `1px solid ${theme.palette.primary.main}`,
+        borderColor: theme.palette.primary.main,
       },
       '&:after': {
         display: 'none',
@@ -202,6 +216,10 @@ export const styles = theme => {
       '&:before': {
         display: 'none',
       },
+    },
+    inputMultilineRounded: {
+      boxSizing: 'border-box',
+      minHeight: 50,
     },
   };
 };
@@ -418,6 +436,7 @@ class Input extends React.Component {
         [classes.multiline]: multiline,
         [classes.underline]: !disableUnderline,
         [classes.rounded]: rounded,
+        [classes.multilineRounded]: rounded &&  multiline,
       },
       classNameProp,
     );
@@ -430,6 +449,8 @@ class Input extends React.Component {
         [classes.inputTypeSearch]: type === 'search',
         [classes.inputMultiline]: multiline,
         [classes.inputMarginDense]: margin === 'dense',
+        [classes.inputRounded]: rounded,
+        [classes.inputMultilineRounded]: rounded &&  multiline,
       },
       inputPropsClassName,
     );
