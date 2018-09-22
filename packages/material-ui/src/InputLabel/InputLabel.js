@@ -22,7 +22,7 @@ export const styles = theme => ({
     transform: `translate(0, ${theme.spacing.unit * 2.5 + 1}px) scale(1)`,
   },
   rounded: {
-    transform: `translate(20px, 33px) scale(1)`,
+    transform: 'translate(20px, 33px) scale(1)',
   },
   shrinkRounded: {
     transform: 'translate(20px, 1.5px) scale(0.75)',

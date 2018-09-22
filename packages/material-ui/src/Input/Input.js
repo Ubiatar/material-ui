@@ -54,7 +54,8 @@ export const styles = theme => {
   const placeholderVisible = {
     opacity: light ? 0.42 : 0.5,
   };
-  const bottomLineColor = light ? 'rgba(0, 0, 0, 0.42)' : 'rgba(255, 255, 255, 0.7)';
+
+  console.log(theme.palette.borders)
 
   return {
     root: {
@@ -100,7 +101,7 @@ export const styles = theme => {
         transform: 'scaleX(1)', // error is always underlined in red
       },
       '&:before': {
-        borderBottom: `1px solid ${bottomLineColor}`,
+        borderBottom: `1px solid ${theme.palette.borders.input}`,
         left: 0,
         bottom: 0,
         // Doing the other way around crash on IE11 "''" https://github.com/cssinjs/jss/issues/242
@@ -117,7 +118,7 @@ export const styles = theme => {
         borderBottom: `2px solid ${theme.palette.text.primary}`,
       },
       '&$disabled:before': {
-        borderBottom: `1px dotted ${bottomLineColor}`,
+        borderBottom: `1px dotted ${theme.palette.borders.input}`,
       },
     },
     error: {},
@@ -190,7 +191,7 @@ export const styles = theme => {
     },
     rounded: {
       lineHeight: '2.1875em',
-      border: `1px solid ${bottomLineColor}`,
+      border: `1px solid ${theme.palette.borders.input}`,
       borderRadius: '2.1875em',
       paddingLeft: 21,
       paddingRight: 21,
