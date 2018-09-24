@@ -141,6 +141,9 @@ export const styles = theme => {
         borderWidth: 2,
         padding: '14px 20px 13px',
       },
+      '&:focus': {
+        borderColor: theme.palette.primary.main,
+      },
     },
     multilineRounded: {
       padding: '15px 21px 14px',
@@ -209,9 +212,6 @@ export const styles = theme => {
     },
     inputRounded: {
       padding: 0,
-      '&:focus': {
-        borderColor: theme.palette.primary.main,
-      },
       '&:after': {
         display: 'none',
       },
