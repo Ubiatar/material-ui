@@ -127,15 +127,23 @@ export const styles = theme => {
       width: '100%',
     },
     rounded: {
+      height: 50,
+      border: `1px solid ${theme.palette.borders.input}`,
+      borderRadius: 25,
+      padding: '15px 21px 14px',
       '&:after': {
         display: 'none',
       },
       '&:before': {
         display: 'none',
       },
+      '&:hover': {
+        borderWidth: 2,
+        padding: '14px 20px 13px',
+      },
     },
     multilineRounded: {
-      padding: 0,
+      padding: '15px 21px 14px',
       minHeight: 50,
     },
     input: {
@@ -200,13 +208,7 @@ export const styles = theme => {
       '-webkit-appearance': 'textfield',
     },
     inputRounded: {
-      border: `1px solid ${theme.palette.borders.input}`,
-      borderRadius: 25,
-      padding: '15px 21px 14px',
-      '&:hover': {
-        borderWidth: 2,
-        padding: '14px 20px 13px',
-      },
+      padding: 0,
       '&:focus': {
         borderColor: theme.palette.primary.main,
       },

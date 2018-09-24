@@ -125,7 +125,7 @@ function TextField(props) {
         InputElement
       )}
       {helperText && (
-        <FormHelperText id={helperTextId} {...FormHelperTextProps}>
+        <FormHelperText id={helperTextId} rounded={rounded} {...FormHelperTextProps}>
           {helperText}
         </FormHelperText>
       )}
