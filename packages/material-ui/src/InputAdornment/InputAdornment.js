@@ -16,10 +16,17 @@ export const styles = theme => ({
   positionEnd: {
     marginLeft: theme.spacing.unit,
   },
+  attachedLeft: {
+    marginLeft: '-20px',
+  },
+  attachedRight: {
+    marginRight: '-20px',
+  },
 });
 
 function InputAdornment(props) {
   const {
+    attachToBorder,
     children,
     component: Component,
     classes,
@@ -36,6 +43,8 @@ function InputAdornment(props) {
         {
           [classes.positionStart]: position === 'start',
           [classes.positionEnd]: position === 'end',
+          [classes.attachedLeft]: position === 'start' && attachToBorder,
+          [classes.attachedRight]: position === 'end' && attachToBorder,
         },
         className,
       )}
@@ -77,11 +86,13 @@ InputAdornment.propTypes = {
    * The position this adornment should appear relative to the `Input`.
    */
   position: PropTypes.oneOf(['start', 'end']),
+  attachToBorder: PropTypes.bool,
 };
 
 InputAdornment.defaultProps = {
   component: 'div',
   disableTypography: false,
+  attachToBorder: false,
 };
 
 export default withStyles(styles, { name: 'MuiInputAdornment' })(InputAdornment);

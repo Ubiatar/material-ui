@@ -9,6 +9,19 @@ import ButtonBase from '../ButtonBase';
 import { capitalize } from '../utils/helpers';
 
 export const styles = theme => {
+  const gradients = {
+    gradientPrimarySecondary: {
+      backgroundImage: `linear-gradient(to right, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+      color: theme.palette.primary.contrastText,
+      fontWeight: 500,
+    },
+    gradientSecondaryPrimary: {
+      backgroundImage: `linear-gradient(to right, ${theme.palette.secondary.main}, ${theme.palette.primary.main})`,
+      color: theme.palette.primary.contrastText,
+      fontWeight: 500,
+    },
+  }
+
   return {
     root: {
       ...theme.typography.button,
@@ -160,6 +173,7 @@ export const styles = theme => {
     rounded: {
       borderRadius: 25,
     },
+    ...gradients,
   };
 };
 
@@ -183,9 +197,11 @@ function Button(props) {
   const fab = variant === 'fab';
   const raised = variant === 'raised';
   const flat = !raised && !fab;
+  const gradient = color.length > 0 ? `gradient${capitalize(color[0])}${capitalize(color[1])}` : null
   const className = classNames(
     classes.root,
     {
+      [classes[gradient]]: !!gradient,
       [classes.raised]: raised || fab,
       [classes.fab]: fab,
       [classes.mini]: fab && mini,
@@ -233,7 +249,7 @@ Button.propTypes = {
   /**
    * The color of the component. It supports those theme colors that make sense for this component.
    */
-  color: PropTypes.oneOf(['default', 'inherit', 'primary', 'secondary']),
+  color: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   /**
    * The component used for the root node.
    * Either a string to use a DOM element or a component.

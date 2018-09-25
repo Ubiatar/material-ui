@@ -29,8 +29,6 @@ export const styles = theme => ({
   button: theme.typography.button,
   link: theme.typography.link,
   highbold: theme.typography.highbold,
-
-
   alignLeft: {
     textAlign: 'left',
   },
@@ -177,7 +175,6 @@ Typography.propTypes = {
     'button',
     'link',
     'highbold',
-
   ]),
 };
 

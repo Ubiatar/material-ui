@@ -5,6 +5,8 @@ import withStyles from '../styles/withStyles';
 
 export const styles = theme => ({
   root: {
+    position: 'absolute',
+    bottom: -14,
     color: theme.palette.text.hint,
     fontFamily: theme.typography.fontFamily,
     fontSize: theme.typography.pxToRem(12),
@@ -25,6 +27,9 @@ export const styles = theme => ({
   marginDense: {
     marginTop: theme.spacing.unit / 2,
   },
+  rounded: {
+    marginLeft: 20
+  },
 });
 
 function FormHelperText(props, context) {
@@ -35,6 +40,7 @@ function FormHelperText(props, context) {
     error: errorProp,
     margin: marginProp,
     component: Component,
+    rounded,
     ...other
   } = props;
   const { muiFormControl } = context;
@@ -63,6 +69,7 @@ function FormHelperText(props, context) {
       [classes.disabled]: disabled,
       [classes.error]: error,
       [classes.marginDense]: margin === 'dense',
+      [classes.rounded]: rounded,
     },
     classNameProp,
   );
@@ -102,10 +109,12 @@ FormHelperText.propTypes = {
    * FormControl.
    */
   margin: PropTypes.oneOf(['dense']),
+  rounded: PropTypes.bool,
 };
 
 FormHelperText.defaultProps = {
   component: 'p',
+  rounded: false,
 };
 
 FormHelperText.contextTypes = {

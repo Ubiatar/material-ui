@@ -9,7 +9,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from 'material-ui/Menu/MenuItem';
+import MenuItem from '@material-ui/core/MenuItem';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
@@ -79,7 +79,33 @@ class InputAdornments extends React.Component {
           }}
         />
         <TextField
+          rounded
+          label="With normal TextField"
+          id="simple-start-adornment"
+          className={classNames(classes.margin, classes.textField)}
+          InputProps={{
+            startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
+          }}
+        />
+        <TextField
           select
+          label="With Select"
+          className={classNames(classes.margin, classes.textField)}
+          value={this.state.weightRange}
+          onChange={this.handleChange('weightRange')}
+          InputProps={{
+            startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
+          }}
+        >
+          {ranges.map(option => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+        <TextField
+          select
+          rounded
           label="With Select"
           className={classNames(classes.margin, classes.textField)}
           value={this.state.weightRange}
@@ -127,6 +153,27 @@ class InputAdornments extends React.Component {
             onChange={this.handleChange('password')}
             endAdornment={
               <InputAdornment position="end">
+                <IconButton
+                  aria-label="Toggle password visibility"
+                  onClick={this.handleClickShowPassword}
+                  onMouseDown={this.handleMouseDownPassword}
+                >
+                  {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </FormControl>
+        <FormControl className={classNames(classes.margin, classes.textField)}>
+          <InputLabel rounded htmlFor="adornment-password">Password</InputLabel>
+          <Input
+            rounded
+            id="adornment-password"
+            type={this.state.showPassword ? 'text' : 'password'}
+            value={this.state.password}
+            onChange={this.handleChange('password')}
+            endAdornment={
+              <InputAdornment position="end" attachToBorder>
                 <IconButton
                   aria-label="Toggle password visibility"
                   onClick={this.handleClickShowPassword}

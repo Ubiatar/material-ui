@@ -2,9 +2,7 @@ import warning from 'warning';
 import deepmerge from 'deepmerge'; // < 1kb payload overhead when lodash/merge is > 3kb.
 import ubiatarPrimary from '../colors/ubiatarPrimary';
 import ubiatarDarkPrimary from '../colors/ubiatarDarkPrimary';
-import pink from '../colors/pink';
 import grey from '../colors/grey';
-import red from '../colors/red';
 import common from '../colors/common';
 import { getContrastRatio, darken, lighten } from './colorManipulator';
 
@@ -21,7 +19,7 @@ export const light = {
     link: '#6cccff',
     // Text hints.
     hint: 'rgba(0, 0, 0, 0.38)',
-    //Accept or Success
+    // Accept or Success
     success: '#53A182',
   },
   // The color used to divide different elements.
@@ -36,6 +34,9 @@ export const light = {
     chip: grey[300],
     avatar: grey[400],
     op30: 'rgba(0, 0, 0, .6)',
+  },
+  borders: {
+    input: 'rgba(0, 0, 0, 0.42)',
   },
   // The colors used to style the action elements.
   action: {
@@ -71,6 +72,9 @@ export const dark = {
     chip: grey[700],
     avatar: grey[600],
     op30: 'rgba(255, 255, 255, .6)',
+  },
+  borders: {
+    input: 'rgba(255, 255, 255, 0.7)',
   },
   action: {
     active: common.white,

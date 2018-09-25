@@ -3,11 +3,21 @@
 import React from 'react';
 import warning from 'warning';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Input from '../Input';
 import InputLabel from '../InputLabel';
 import FormControl from '../FormControl';
 import FormHelperText from '../FormHelperText';
 import Select from '../Select';
+import withStyles from '../styles/withStyles';
+
+export const styles = () => {
+  return {
+    root: {
+      marginBottom: 16,
+    },
+  };
+};
 
 /**
  * The `TextField` is a convenience wrapper for the most common cases (80%).
@@ -42,7 +52,8 @@ function TextField(props) {
     autoComplete,
     autoFocus,
     children,
-    className,
+    classes,
+    className: classNameProp,
     defaultValue,
     disabled,
     error,
@@ -62,6 +73,7 @@ function TextField(props) {
     onFocus,
     placeholder,
     required,
+    rounded,
     rows,
     rowsMax,
     select,
@@ -76,6 +88,8 @@ function TextField(props) {
     'Material-UI: `children` must be passed when using the `TextField` component with `select`.',
   );
 
+  const className = classNames(classNameProp, classes.root)
+
   const helperTextId = helperText && id ? `${id}-helper-text` : undefined;
   const InputElement = (
     <Input
@@ -86,6 +100,7 @@ function TextField(props) {
       fullWidth={fullWidth}
       multiline={multiline}
       name={name}
+      rounded={rounded}
       rows={rows}
       rowsMax={rowsMax}
       type={type}
@@ -111,7 +126,7 @@ function TextField(props) {
       {...other}
     >
       {label && (
-        <InputLabel htmlFor={id} {...InputLabelProps}>
+        <InputLabel htmlFor={id} rounded={rounded} {...InputLabelProps}>
           {label}
         </InputLabel>
       )}
@@ -123,7 +138,7 @@ function TextField(props) {
         InputElement
       )}
       {helperText && (
-        <FormHelperText id={helperTextId} {...FormHelperTextProps}>
+        <FormHelperText id={helperTextId} rounded={rounded} {...FormHelperTextProps}>
           {helperText}
         </FormHelperText>
       )}
@@ -150,6 +165,7 @@ TextField.propTypes = {
   /**
    * @ignore
    */
+  classes: PropTypes.object,
   className: PropTypes.string,
   /**
    * The default value of the `Input` element.
@@ -238,6 +254,7 @@ TextField.propTypes = {
   /**
    * Number of rows to display when multiline option is set to true.
    */
+  rounded: PropTypes.bool,
   rows: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /**
    * Maximum number of rows to display when multiline option is set to true.
@@ -268,7 +285,8 @@ TextField.propTypes = {
 
 TextField.defaultProps = {
   required: false,
+  rounded: false,
   select: false,
 };
 
-export default TextField;
+export default withStyles(styles, { name: 'TextField' })(TextField);

@@ -14,7 +14,6 @@ import common from '../colors/common';
 import withStyles from '../styles/withStyles';
 
 export const styles = theme => ({
-  // Will be gone once we drop React 15.x support.
   root: {
     display: 'inline-block',
     flexDirection: 'inherit', // Makes the wrapper more transparent.
@@ -83,6 +82,23 @@ export const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       margin: '14px 0',
     },
+  },
+  colorPrimary: {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+  },
+  colorSecondary: {
+    backgroundColor: theme.palette.secondary.main,
+    color: theme.palette.secondary.contrastText,
+  },
+  colorTerziary: {
+    backgroundColor: theme.palette.terziary.main,
+    color: theme.palette.secondary.contrastText,
+  },
+  sizeBig: {
+    padding: `${theme.spacing.unit / 2}px ${theme.spacing.unit * 1.5}px`,
+    fontSize: theme.typography.pxToRem(14),
+    lineHeight: `${theme.typography.round(18 / 10)}em`,
   },
 });
 
@@ -268,6 +284,7 @@ class Tooltip extends React.Component {
       children,
       classes,
       className,
+      color,
       disableFocusListener,
       disableHoverListener,
       disableTouchListener,
@@ -281,6 +298,7 @@ class Tooltip extends React.Component {
       open: openProp,
       placement: placementProp,
       PopperProps: { className: PopperClassName, ...PopperProps } = {},
+      size,
       theme,
       title,
       ...other
@@ -362,8 +380,12 @@ class Tooltip extends React.Component {
                     aria-hidden={!open}
                     className={classNames(
                       classes.tooltip,
-                      { [classes.open]: open },
-                      { [classes.touch]: this.ignoreNonTouchEvents },
+                      {
+                        [classes[`color${capitalize(color)}`]]: color !== 'inherit',
+                        [classes.open]: open,
+                        [classes.touch]: this.ignoreNonTouchEvents,
+                        [classes[`size${capitalize(size)}`]]: size !== 'default',
+                      },
                       classes[`tooltipPlacement${capitalize(actualPlacement)}`],
                     )}
                   >
@@ -393,6 +415,7 @@ Tooltip.propTypes = {
    * @ignore
    */
   className: PropTypes.string,
+  color: PropTypes.oneOf(['inherit', 'primary', 'secondary', 'terziary', 'error']),
   /**
    * Do not respond to focus events.
    */
@@ -465,6 +488,7 @@ Tooltip.propTypes = {
    * Properties applied to the `Popper` element.
    */
   PopperProps: PropTypes.object,
+  size: PropTypes.oneOf(['default', 'big']),
   /**
    * @ignore
    */
@@ -476,6 +500,7 @@ Tooltip.propTypes = {
 };
 
 Tooltip.defaultProps = {
+  color: 'inherit',
   disableFocusListener: false,
   disableHoverListener: false,
   disableTouchListener: false,
@@ -484,6 +509,7 @@ Tooltip.defaultProps = {
   leaveDelay: 0,
   leaveTouchDelay: 1500,
   placement: 'bottom',
+  size: 'default'
 };
 
 export default withStyles(styles, { name: 'MuiTooltip', withTheme: true })(Tooltip);

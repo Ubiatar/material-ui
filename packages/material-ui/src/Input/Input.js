@@ -54,7 +54,6 @@ export const styles = theme => {
   const placeholderVisible = {
     opacity: light ? 0.42 : 0.5,
   };
-  const bottomLineColor = light ? 'rgba(0, 0, 0, 0.42)' : 'rgba(255, 255, 255, 0.7)';
 
   return {
     root: {
@@ -100,7 +99,7 @@ export const styles = theme => {
         transform: 'scaleX(1)', // error is always underlined in red
       },
       '&:before': {
-        borderBottom: `1px solid ${bottomLineColor}`,
+        borderBottom: `1px solid ${theme.palette.borders.input}`,
         left: 0,
         bottom: 0,
         // Doing the other way around crash on IE11 "''" https://github.com/cssinjs/jss/issues/242
@@ -117,7 +116,7 @@ export const styles = theme => {
         borderBottom: `2px solid ${theme.palette.text.primary}`,
       },
       '&$disabled:before': {
-        borderBottom: `1px dotted ${bottomLineColor}`,
+        borderBottom: `1px dotted ${theme.palette.borders.input}`,
       },
     },
     error: {},
@@ -127,10 +126,33 @@ export const styles = theme => {
     fullWidth: {
       width: '100%',
     },
+    rounded: {
+      height: 50,
+      border: `1px solid ${theme.palette.borders.input}`,
+      borderRadius: 25,
+      padding: '15px 21px 14px',
+      '&:after': {
+        display: 'none',
+      },
+      '&:before': {
+        display: 'none',
+      },
+      '&:hover': {
+        borderWidth: 2,
+        padding: '14px 20px 13px',
+      },
+      '&:focus-within': {
+        borderColor: theme.palette.primary.main,
+      },
+    },
+    multilineRounded: {
+      padding: '15px 21px 14px',
+      minHeight: 50,
+    },
     input: {
       font: 'inherit',
       color: 'currentColor',
-      padding: `${theme.spacing.unit - 2}px 0 ${theme.spacing.unit - 1}px`,
+      padding: `${theme.spacing.unit - 2}px 0`,
       border: 0,
       boxSizing: 'content-box',
       verticalAlign: 'middle',
@@ -187,6 +209,19 @@ export const styles = theme => {
       // Improve type search style.
       '-moz-appearance': 'textfield',
       '-webkit-appearance': 'textfield',
+    },
+    inputRounded: {
+      padding: 0,
+      '&:after': {
+        display: 'none',
+      },
+      '&:before': {
+        display: 'none',
+      },
+    },
+    inputMultilineRounded: {
+      boxSizing: 'border-box',
+      minHeight: 50,
     },
   };
 };
@@ -380,6 +415,7 @@ class Input extends React.Component {
       onKeyUp,
       placeholder,
       readOnly,
+      rounded,
       rows,
       rowsMax,
       startAdornment,
@@ -401,6 +437,8 @@ class Input extends React.Component {
         [classes.formControl]: muiFormControl,
         [classes.multiline]: multiline,
         [classes.underline]: !disableUnderline,
+        [classes.rounded]: rounded,
+        [classes.multilineRounded]: rounded &&  multiline,
       },
       classNameProp,
     );
@@ -409,10 +447,12 @@ class Input extends React.Component {
       classes.input,
       {
         [classes.disabled]: disabled,
-        [classes.inputType]: type !== 'text',
+        [classes.inputType]: type !== 'text' && !rounded,
         [classes.inputTypeSearch]: type === 'search',
         [classes.inputMultiline]: multiline,
         [classes.inputMarginDense]: margin === 'dense',
+        [classes.inputRounded]: rounded,
+        [classes.inputMultilineRounded]: rounded &&  multiline,
       },
       inputPropsClassName,
     );
@@ -595,6 +635,7 @@ Input.propTypes = {
    * @ignore
    */
   readOnly: PropTypes.bool,
+  rounded: PropTypes.bool,
   /**
    * Number of rows to display when multiline option is set to true.
    */
@@ -627,6 +668,7 @@ Input.defaultProps = {
   disableUnderline: false,
   fullWidth: false,
   multiline: false,
+  rounded: false,
   type: 'text',
 };
 
