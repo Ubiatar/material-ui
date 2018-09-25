@@ -13,13 +13,15 @@ export const styles = theme => {
   return {
     container: {
       position: 'relative',
-      display: 'flex'
+      display: 'flex',
+      justifyContent: 'flex-end',
+      flexDirection: 'column'
   },
     mList: {
     display: 'block',
     overflow: 'auto',
     position: 'relative',
-    flex: 1
+    //flex: 1
   },
     downButton: {
     position: 'absolute',

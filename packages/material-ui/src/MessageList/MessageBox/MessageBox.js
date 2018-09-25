@@ -41,9 +41,9 @@ export const styles = theme => {
     },
     box: {
       position: 'relative',
-      background: 'white',
+      backgroundColor: theme.palette.background.messageBox.left,
       borderRadius: 8,
-      boxShadow: '1px 1px 1px 1px rgba(0, 0, 0, .2)',
+      //boxShadow: '1px 1px 1px 1px rgba(0, 0, 0, .2)',
       borderTopLeftRadius: 0,
       marginLeft: 15,
       marginRight: 5,
@@ -60,7 +60,7 @@ export const styles = theme => {
       marginTop: 5
     },
     boxRight: {
-      backgroundColor: theme.palette.primary.light,
+      backgroundColor: theme.palette.background.messageBox.right,
       float: 'right',
       marginLeft: 5,
       marginRight: 20,
@@ -88,7 +88,7 @@ export const styles = theme => {
       alignSelf: 'center',
       alignItems: 'center',
       justifyContent: 'center',
-      boxShadow: '0 0 5px 0 rgba(164, 164, 164, 1)',
+      //boxShadow: '0 0 5px 0 rgba(164, 164, 164, 1)',
       cursor: 'pointer',
       transition: 'all 0.3s ease',
       top: 0,
@@ -166,7 +166,7 @@ export const styles = theme => {
     top: 0,
     width: 9,
     height: 9,
-    fill: theme.palette.primary.light,
+    fill: theme.palette.background.messageBox.right,
     filter: 'drop-shadow( 2px 0px 1px rgba(0, 0, 0, .2))'
   },
   boxLeftNotch: {
@@ -175,7 +175,7 @@ export const styles = theme => {
     top: 0,
     width: 9,
     height: 9,
-    fill: 'white'
+    fill: theme.palette.background.messageBox.left,
   }
   };
 };

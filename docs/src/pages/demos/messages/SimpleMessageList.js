@@ -7,7 +7,8 @@ import moment from 'moment'
 const styles = {
   root: {
     flexGrow: 1,
-  },
+    height: 500
+  }
 };
 
 function SimpleMessageList(props) {
@@ -17,22 +18,21 @@ function SimpleMessageList(props) {
       <MessageList
         className='message-list'
         lockable={true}
-        toBottomHeight={'100%'}
+        //toBottomHeight={'100%'}
         avatar="/static/images/remy.jpg"
         dataSource={[
           {
             position: 'right',
             type: 'text',
             text: 'Lorem ipsum dolor sit amet',
-            date: new Date(),
+            dateString: moment().format('h:mm')
           },
           {
             position: 'left',
             type: 'text',
-            text: 'Consectetur adipisicing elit',
-            dateString: moment().format('h:mm')
-          },
-
+            text: 'Consectetur ',
+            date: new Date()
+          }
           ]}
       />
     </div>
