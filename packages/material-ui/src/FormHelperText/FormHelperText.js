@@ -5,6 +5,8 @@ import withStyles from '../styles/withStyles';
 
 export const styles = theme => ({
   root: {
+    position: 'absolute',
+    bottom: -14,
     color: theme.palette.text.hint,
     fontFamily: theme.typography.fontFamily,
     fontSize: theme.typography.pxToRem(12),

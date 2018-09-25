@@ -141,7 +141,7 @@ export const styles = theme => {
         borderWidth: 2,
         padding: '14px 20px 13px',
       },
-      '&:focus': {
+      '&:focus-within': {
         borderColor: theme.palette.primary.main,
       },
     },

@@ -8,6 +8,16 @@ import InputLabel from '../InputLabel';
 import FormControl from '../FormControl';
 import FormHelperText from '../FormHelperText';
 import Select from '../Select';
+import withStyles from "../styles/withStyles";
+import classNames from 'classnames';
+
+export const styles = () => {
+  return {
+    helperText: {
+      marginBottom: 16,
+    },
+  };
+};
 
 /**
  * The `TextField` is a convenience wrapper for the most common cases (80%).
@@ -42,7 +52,8 @@ function TextField(props) {
     autoComplete,
     autoFocus,
     children,
-    className,
+    classes,
+    className: classNameProp,
     defaultValue,
     disabled,
     error,
@@ -76,6 +87,10 @@ function TextField(props) {
     !select || Boolean(children),
     'Material-UI: `children` must be passed when using the `TextField` component with `select`.',
   );
+
+  const className = classNames(classNameProp, {
+    [classes.helperText]: helperText,
+  })
 
   const helperTextId = helperText && id ? `${id}-helper-text` : undefined;
   const InputElement = (
@@ -152,6 +167,7 @@ TextField.propTypes = {
   /**
    * @ignore
    */
+  classes: PropTypes.object,
   className: PropTypes.string,
   /**
    * The default value of the `Input` element.
@@ -275,4 +291,4 @@ TextField.defaultProps = {
   select: false,
 };
 
-export default TextField;
+export default withStyles(styles, { name: 'TextField' })(TextField);
