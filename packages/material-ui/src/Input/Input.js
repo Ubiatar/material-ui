@@ -154,6 +154,12 @@ export const styles = theme => {
         borderColor: theme.palette.error.main,
       },
     },
+    success: {
+      borderColor: theme.palette.success.main,
+      '&:focus-within': {
+        borderColor: theme.palette.success.main,
+      },
+    },
     input: {
       font: 'inherit',
       color: 'currentColor',
@@ -424,6 +430,7 @@ class Input extends React.Component {
       rows,
       rowsMax,
       startAdornment,
+      success,
       type,
       value,
       ...other
@@ -443,7 +450,8 @@ class Input extends React.Component {
         [classes.multiline]: multiline,
         [classes.underline]: !disableUnderline,
         [classes.rounded]: rounded,
-        [classes.multilineRounded]: rounded &&  multiline,
+        [classes.multilineRounded]: rounded && multiline,
+        [classes.success]: success,
       },
       classNameProp,
     );
@@ -649,6 +657,7 @@ Input.propTypes = {
    * Maximum number of rows to display when multiline option is set to true.
    */
   rowsMax: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  success: PropTypes.bool,
   /**
    * Start `InputAdornment` for this component.
    */
@@ -674,6 +683,7 @@ Input.defaultProps = {
   fullWidth: false,
   multiline: false,
   rounded: false,
+  success: false,
   type: 'text',
 };
 

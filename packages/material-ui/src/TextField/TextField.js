@@ -79,6 +79,7 @@ function TextField(props) {
     rowsMax,
     select,
     SelectProps,
+    success,
     type,
     value,
     ...other
@@ -113,6 +114,7 @@ function TextField(props) {
       onFocus={onFocus}
       placeholder={placeholder}
       inputProps={inputProps}
+      success={success}
       {...InputProps}
     />
   );
@@ -127,7 +129,7 @@ function TextField(props) {
       {...other}
     >
       {label && (
-        <InputLabel htmlFor={id} rounded={rounded} {...InputLabelProps}>
+        <InputLabel htmlFor={id} rounded={rounded} success={success} {...InputLabelProps}>
           {label}
         </InputLabel>
       )}
@@ -275,6 +277,7 @@ TextField.propTypes = {
    * Properties applied to the `Select` element.
    */
   SelectProps: PropTypes.object,
+  success: PropTypes.bool,
   /**
    * Type attribute of the `Input` element. It should be a valid HTML5 input type.
    */
@@ -294,6 +297,7 @@ TextField.defaultProps = {
   required: false,
   rounded: false,
   select: false,
+  success: false,
 };
 
 export default withStyles(styles, { name: 'TextField' })(TextField);
