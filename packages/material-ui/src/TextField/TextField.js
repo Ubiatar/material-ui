@@ -3,17 +3,17 @@
 import React from 'react';
 import warning from 'warning';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Input from '../Input';
 import InputLabel from '../InputLabel';
 import FormControl from '../FormControl';
 import FormHelperText from '../FormHelperText';
 import Select from '../Select';
-import withStyles from "../styles/withStyles";
-import classNames from 'classnames';
+import withStyles from '../styles/withStyles';
 
 export const styles = () => {
   return {
-    helperText: {
+    root: {
       marginBottom: 16,
     },
   };
@@ -88,9 +88,7 @@ function TextField(props) {
     'Material-UI: `children` must be passed when using the `TextField` component with `select`.',
   );
 
-  const className = classNames(classNameProp, {
-    [classes.helperText]: helperText,
-  })
+  const className = classNames(classNameProp, classes.root)
 
   const helperTextId = helperText && id ? `${id}-helper-text` : undefined;
   const InputElement = (
