@@ -66,7 +66,9 @@
     "scroll": "^2.0.3",
     "warning": "^3.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "moment": "^2.22.2"
+  },
   "sideEffects": false,
   "engines": {
     "node": ">=6.0.0"

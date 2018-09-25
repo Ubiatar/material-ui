@@ -34,6 +34,10 @@ export const light = {
     chip: grey[300],
     avatar: grey[400],
     op30: 'rgba(0, 0, 0, .6)',
+    messageBox: {
+      right: ubiatarPrimary[300],
+      left: grey[300],
+    }
   },
   borders: {
     input: 'rgba(0, 0, 0, 0.42)',

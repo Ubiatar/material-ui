@@ -1,10 +1,10 @@
 ---
-filename: /packages/material-ui/src/AppBar/AppBar.js
+filename: /packages/material-ui/src/MessageList
 ---
 
 <!--- This documentation is automatically generated, do not try to edit it. -->
 
-# AppBar
+# MessageList
 
 
 
@@ -33,7 +33,7 @@ This property accepts the following keys:
 - `colorSecondary`
 
 Have a look at [overriding with classes](/customization/overrides#overriding-with-classes) section
-and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/packages/material-ui/src/AppBar/AppBar.js)
+and the [implementation of the component](https://github.com/mui-org/material-ui/tree/v1-beta/packages/material-ui/src/MessageList)
 for more detail.
 
 If using the `overrides` key of the theme as documented
@@ -42,7 +42,7 @@ you need to use the following style sheet name: `MuiAppBar`.
 
 ## Inheritance
 
-The properties of the [Paper](/api/paper) component are also available.
+The properties of the [Messages](/api/messages) component are also available.
 
 ## Demos
 
