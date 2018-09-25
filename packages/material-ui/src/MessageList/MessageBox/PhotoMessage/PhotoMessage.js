@@ -2,14 +2,83 @@ import React, { Component } from 'react';
 
 import './PhotoMessage.css';
 
-import FaCloudDownload from 'react-icons/lib/fa/cloud-download';
+import FaCloudDownload from 'ubiatar-material-ui-icons/src/CloudDownload'
 
-const ProgressBar = require('react-progress-bar.js');
-const Circle = ProgressBar.Circle;
+/*const ProgressBar = require('react-progress-bar.js');
+const Circle = ProgressBar.Circle;*/
+import CircularProgress from '@material-ui/core/CircularProgress'
+import withStyles from "../../../styles/withStyles";
+
+
+export const styles = theme => {
+  return {
+    boxPhoto: {
+      marginTop: -3,
+      marginRight: -6,
+      marginLeft: -6,
+  },
+    boxText: {
+    padding: '5px 0px',
+    maxWidth: 300,
+    margin: 'auto'
+  },
+    boxImg: {
+    position: 'relative',
+    display: 'flex',
+    overflow: 'hidden',
+    justifyContent: 'center',
+    borderRadius: 5,
+    maxHeight: 300
+  },
+    boxImgBlock: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    left: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    borderRadius: 5,
+    display: 'flex'
+  },
+    boxImgImg: {
+    height: '100%',
+    minHeight: '100%',
+    userSelect: 'none'
+  },
+
+    boxImgBlockItem: {
+    margin: 'auto',
+    cursor: 'pointer',
+    width: 100,
+    height: 100
+  },
+
+  boxPhotoDownload: {
+    color: '#efe',
+    display: 'flex',
+    justifyContent: 'center',
+    background: 'none',
+    border: 'none',
+    fontSize: '3.2em',
+    outline: 'none',
+    border: '1px solid #eee',
+    borderRadius: '100%',
+    height: 100,
+    width: 100,
+    '&:hover' : {
+      opacity: '.7'
+    },
+    '&:active': {
+      opacity: '.3'
+    }
+  }
+  }
+}
 
 export class PhotoMessage extends Component {
     render() {
-        var progressOptions = {
+      const { classes } = this.props
+        let progressOptions = {
             strokeWidth: 2.3,
             color: '#efe',
             trailColor: '#aaa',
@@ -27,9 +96,9 @@ export class PhotoMessage extends Component {
         };
 
         return (
-            <div className="rce-mbox-photo">
+            <div className={classNames(classes.boxPhoto)}>
                 <div
-                    className="rce-mbox-photo--img"
+                    className={classNames(classes.boxImg)}
                     style={this.props.data.width && this.props.data.height && {
                         width: this.props.data.width,
                         height: this.props.data.height,
@@ -42,30 +111,30 @@ export class PhotoMessage extends Component {
                     {
                         this.props.data.status &&
                         !this.props.data.status.download &&
-                        <div className="rce-mbox-photo--img__block">
+                        <div className={classNames(classes.boxImgBlock)}>
                             {
                                 !this.props.data.status.click &&
                                 <button
                                     onClick={this.props.onDownload}
-                                    className="rce-mbox-photo--img__block-item rce-mbox-photo--download">
+                                  //className="rce-mbox-photo--img__block-item rce-mbox-photo--download">
+                                    className={classNames([classes.boxImgBlockItem, classes.boxPhotoDownload])}>
                                     <FaCloudDownload/>
                                 </button>
                             }
                             {
                                 typeof this.props.data.status.loading === 'number' &&
                                 this.props.data.status.loading !== 0 &&
-                                <Circle
-                                    progress={this.props.data.status.loading}
-                                    options={progressOptions}
-                                    initialAnimate={true}
-                                    containerClassName={'rce-mbox-photo--img__block-item'} />
+                                <CircularProgress
+                                    value={this.props.data.status.loading}
+                                    className={classNames(classes.boxImgBlockItem)}
+                                />
                             }
                         </div>
                     }
                 </div>
                 {
                     this.props.text &&
-                    <div className="rce-mbox-text">
+                    <div className={classNames(classes.boxText)}>
                         {this.props.text}
                     </div>
                 }
@@ -82,5 +151,4 @@ PhotoMessage.defaultProps = {
     onLoad: null,
 };
 
-
-export default PhotoMessage;
+export default withStyles(styles, { name: 'PhotoMessage' })(PhotoMessage);

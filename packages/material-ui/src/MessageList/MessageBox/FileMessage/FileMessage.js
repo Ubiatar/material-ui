@@ -1,11 +1,72 @@
 import React, { Component } from 'react';
 import './FileMessage.css';
 
-import FaCloudDownload from 'react-icons/lib/fa/cloud-download';
-import FaFile from 'react-icons/lib/fa/file';
+import FaCloudDownload from 'ubiatar-material-ui-icons/src/CloudDownload'
+import FaFile from 'ubiatar-material-ui-icons/src/InsertDriveFile'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import withStyles from "../../../styles/withStyles";
 
-const ProgressBar = require('react-progress-bar.js');
-const Circle = ProgressBar.Circle;
+import Button from '@material-ui/core/Button'
+
+/*const ProgressBar = require('react-progress-bar.js');
+const Circle = ProgressBar.Circle;*/
+
+export const styles = theme => {
+  return {
+    boxFile: {
+      paddingBottom: 13
+    },
+    button: {
+      background: '#e9e9e9',
+      display: 'flex',
+      borderRadius: 5,
+      marginTop: -3,
+      marginRight: -6,
+      marginLeft: -6,
+      alignItems: 'center',
+      minHeight: 52,
+      maxWidth: 500,
+      padding: '5px 0',
+      cursor: 'pointer',
+      userSelect: 'none',
+      outline: 'none',
+      border:'none'
+    },
+    boxFileIcon: {
+      fontSize: 30,
+      alignItems: 'center',
+      display: 'flex',
+      flexDirection: 'column'
+  },
+    boxFileSize: {
+      fontSize: 10,
+      marginTop: 3,
+      maxWidth: 52,
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis'
+  },
+    boxFileText: {
+      fontSize: 13.6,
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis'
+  },
+
+    boxFileButtons: {
+      fontSize: 30,
+      alignItems: 'center',
+      display: 'flex'
+  },
+
+    boxFileLoading:  {
+      fontSize: 15,
+      width: 40,
+      height: 40
+  }
+
+  }
+}
 
 export class FileMessage extends Component {
 
@@ -20,7 +81,8 @@ export class FileMessage extends Component {
     }
 
     render() {
-        var progressOptions = {
+      const {classes} = this.props
+        let progressOptions = {
             strokeWidth: 5,
             color: '#333',
             trailColor: '#aaa',
@@ -38,19 +100,20 @@ export class FileMessage extends Component {
         };
 
         return (
-            <div className='rce-mbox-file'>
-                <button onClick={this.onClick.bind(this)}>
-                    <div className="rce-mbox-file--icon">
+            <div className={classNames(classes.boxFile)}>
+                <Button className={classNames(classes.button)}
+                        onClick={this.onClick.bind(this)}>
+                    <div className={classNames(classes.boxFileIcon)}>
                         <FaFile
                             color='#aaa'/>
-                        <div className="rce-mbox-file--size">
+                        <div className={classNames(classes.boxFileSize)}>
                             {this.props.data.size}
                         </div>
                     </div>
-                    <div className="rce-mbox-file--text">
+                    <div className={classNames(classes.boxFileText)}>
                         {this.props.text}
                     </div>
-                    <div className="rce-mbox-file--buttons">
+                    <div className={classNames(classes.boxFileIcon)}>
                         {
                             this.props.data.status &&
                             !this.props.data.status.download &&
@@ -62,14 +125,14 @@ export class FileMessage extends Component {
                             this.props.data.status &&
                             typeof this.props.data.status.loading === 'number' &&
                             this.props.data.status.loading !== 0 &&
-                            <Circle
-                                progress={this.props.data.status.loading}
-                                options={progressOptions}
-                                initialAnimate={true}
-                                containerClassName={'rce-mbox-file--loading'} />
+                            <CircularProgress
+                                value={this.props.data.status.loading}
+                                // options={progressOptions}
+                                // containerClassName={'rce-mbox-file--loading'} />
+                                className={classNames(classes.boxFileLoading)}/>
                         }
                     </div>
-                </button>
+                </Button>
             </div>
         );
     }
@@ -83,5 +146,4 @@ FileMessage.defaultProps = {
     onOpen: null,
 };
 
-
-export default FileMessage;
+export default withStyles(styles, { name: 'FileMessage' })(FileMessage);

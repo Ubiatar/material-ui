@@ -3,9 +3,62 @@ import './MessageList.css'
 
 import MessageBox from './MessageBox'
 
-import FaChevronDown from 'react-icons/lib/fa/chevron-down'
+//import FaChevronDown from 'react-icons/lib/fa/chevron-down'
+import KeyboardArrowDown from 'ubiatar-material-ui-icons/src/KeyboardArrowDown'
 
-const classNames = require('classnames')
+import classNames from 'classnames'
+import withStyles from "../styles/withStyles";
+
+export const styles = theme => {
+  return {
+    container: {
+      position: 'relative',
+      display: 'flex'
+  },
+    mList: {
+    display: 'block',
+    overflow: 'auto',
+    position: 'relative',
+    flex: 1
+  },
+    downButton: {
+    position: 'absolute',
+    right: 10,
+    bottom: 15,
+    width: 40,
+    height: 40,
+    background: '#fff',
+    boxShadow: ' 0 1px 1px 0 rgba(0,0,0,0.05), 0 2px 5px 0 rgba(0,0,0,0.1)',
+    borderRadius: '100%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: '#333',
+    cursor: 'pointer',
+    transition: '200ms',
+      '&hovwer': {
+        opacity: '0.7'
+      }
+  },
+    downButtonBadge: {
+    position: 'absolute',
+    right: -5,
+    top: -5,
+    background: 'red',
+    width: 20,
+    height: 20,
+    borderRadius: '100%',
+    fontSize: 12,
+    display: 'flex',
+    textAlign: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'center',
+    fontWeight: '700'
+  }
+
+};
+};
 
 export class MessageList extends Component {
   constructor(props) {
@@ -108,18 +161,20 @@ export class MessageList extends Component {
   }
 
   render() {
+    const {classes, ...other} = this.props
     return (
       <div
-        className={classNames(['rce-container-mlist', this.props.className])}>
+        className={classNames([classes.container, this.props.className])}>
         <div
           ref={this.loadRef.bind(this)
           }
           onScroll={this.onScroll.bind(this)
           }
-          className='rce-mlist'>
+          className={classNames(classes.mList)}>
           {
             this.props.dataSource.map((x, i) => (
               <MessageBox
+                {...other}
                 key={i}
                 {...
                   x
@@ -143,14 +198,14 @@ export class MessageList extends Component {
           this.state.downButton &&
           this.props.toBottomHeight !== '100%' &&
           <div
-            className='rce-mlist-down-button'
+            className={classNames(classes.downButton)}
             onClick={this.toBottom.bind(this)
             }>
-            <FaChevronDown/>
+            <KeyboardArrowDown/>
             {
               this.props.downButtonBadge &&
               <span
-                className='rce-mlist-down-button--badge'>
+                className={classNames(classes.downButtonBadge)}>
         {this.props.downButtonBadge
         }
                   </span>
@@ -175,6 +230,7 @@ MessageList.defaultProps = {
   toBottomHeight: 300,
   downButton: true,
   downButtonBadge: null,
+  avatar: ""
 }
 
-export default MessageList
+export default withStyles(styles, { name: 'MessageList' })(MessageList);

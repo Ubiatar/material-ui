@@ -1,27 +1,191 @@
 import React, { Component } from 'react';
-import './MessageBox.css';
 
 import PhotoMessage from './PhotoMessage/PhotoMessage';
 import FileMessage from './FileMessage/FileMessage';
 import SystemMessage from './SystemMessage/SystemMessage';
 import LocationMessage from './LocationMessage/LocationMessage';
 
-import Avatar from './Avatar/Avatar'
-import FaForward from 'react-icons/lib/fa/mail-forward';
-import FaReply from 'react-icons/lib/fa/mail-reply';
+import {
+  Avatar,
+  Typography
+} from '@material-ui/core'
 
-import IoDoneAll from 'react-icons/lib/io/android-done-all';
-import MdIosTime from 'react-icons/lib/md/access-time';
-import MdCheck from 'react-icons/lib/md/check';
+import FaForward from 'ubiatar-material-ui-icons/src/Mail'
 
-const moment = import('moment')
+import IoDoneAll from 'ubiatar-material-ui-icons/src/DoneAll'
+import MdIosTime from 'ubiatar-material-ui-icons/src/AccessTime'
+import MdCheck from 'ubiatar-material-ui-icons/src/Check'
 
-const classNames = require('classnames');
+import moment from 'moment'
+import classNames from 'classnames'
+import withStyles from "../../styles/withStyles";
+
+export const styles = theme => {
+  return {
+    container: {
+      flexDirection: 'row',
+      display: 'flex',
+      overflow: 'hidden',
+      minWidth: 200,
+      '&:hover .boxForwardRight': {
+        opacity: 1,
+        visibility: 'visible',
+      },
+      '&:hover .boxForwardLeft': {
+        opacity: 1,
+        visibility: 'visible',
+      },
+    },
+    flexEnd: {
+      justifyContent: 'flex-end'
+    },
+    box: {
+      position: 'relative',
+      background: 'white',
+      borderRadius: 8,
+      boxShadow: '1px 1px 1px 1px rgba(0, 0, 0, .2)',
+      borderTopLeftRadius: 0,
+      marginLeft: 15,
+      marginRight: 5,
+      marginTop: 3,
+      flexDirection: 'column',
+      marginBottom: 3,
+      padding: '6px 9px 8px 9px',
+      float: 'left',
+      minWidth: 140
+    },
+    avatarContainer: {
+      width: 30,
+      height: 30,
+      marginTop: 5
+    },
+    boxRight: {
+      backgroundColor: theme.palette.primary.light,
+      float: 'right',
+      marginLeft: 5,
+      marginRight: 20,
+      borderTopRightRadius: 0,
+      borderTopLeftRadius: 5
+    },
+    boxClearPadding: {
+      paddingBottom: 3
+  },
+    boxClearNotch: {
+    borderRadius: '5px 5px 5px 5px !important'
+  },
+    boxBody: {
+      margin: 0,
+      padding: 0,
+      position: 'relative'
+    },
+    boxForward: {
+      width: 30,
+      height: 30,
+      borderRadius: 20,
+      background: '#fff',
+      position: 'absolute',
+      flexDirection: 'row',
+      alignSelf: 'center',
+      alignItems: 'center',
+      justifyContent: 'center',
+      boxShadow: '0 0 5px 0 rgba(164, 164, 164, 1)',
+      cursor: 'pointer',
+      transition: 'all 0.3s ease',
+      top: 0,
+      bottom: 0,
+      margin: 'auto'
+    },
+    boxForwardLeft: {
+      display: 'flex',
+      opacity: 0,
+      visibility: 'hidden',
+      left: -50,
+  },
+    boxForwardRight: {
+      display: 'flex',
+      opacity: 0,
+      visibility: 'hidden',
+      right: -50
+  },
+    boxTitle: {
+      margin: 0,
+      marginBottom: 8,
+      fontWeight: 500,
+      fontSize: 13,
+      color: '#4f81a1',
+      userSelect: 'none',
+      cursor: 'pointer',
+      display: 'flex',
+      alignItems: 'center',
+      '&hover': {
+        textDecoration: 'underline'
+      }
+  },
+    boxTitleClear: {
+      marginBottom: 5
+    },
+    boxText: {
+      wordBreak: 'break-word',
+  },
+    boxTimeNonCopiable: {
+      '&before': {
+        content: 'attr(data-text)'
+      }
+    },
+    boxTime: {
+    textAlign:'right',
+    color: 'rgba(0, 0, 0, 0.45)',
+    fontSize: 12,
+    // position: 'absolute',
+    right: -4,
+    bottom: -5,
+    marginTop: 5
+  },
+    boxTimeBlock: {
+    /*position: relative;*/
+    right: 0,
+    bottom: 0,
+    left: 0,
+    marginRight: -6,
+    marginLeft: -6,
+    paddingTop: 5,
+    paddingRight: 3,
+    paddingBottom: 2,
+    background: 'linear-gradient(to top, rgba(0,0,0,0.33), transparent)',
+    borderBottomLeftRadius: 5,
+    borderBottomRightRadius: 5,
+    color: '#fff'
+  },
+    boxStatus: {
+    marginLefteft: 3,
+    fontSize: 15
+  },
+  boxRightNotch: {
+    position: 'absolute',
+    right: -9,
+    top: 0,
+    width: 9,
+    height: 9,
+    fill: theme.palette.primary.light,
+    filter: 'drop-shadow( 2px 0px 1px rgba(0, 0, 0, .2))'
+  },
+  boxLeftNotch: {
+    position: 'absolute',
+    left: -9,
+    top: 0,
+    width: 9,
+    height: 9,
+    fill: 'white'
+  }
+  };
+};
 
 export class MessageBox extends Component {
     render() {
-        var positionCls = classNames('rce-mbox', { 'rce-mbox-right': this.props.position === 'right' });
-        var thatAbsoluteTime = this.props.type !== 'text' && this.props.type !== 'file' && !(this.props.type === 'location' && this.props.text);
+      const { classes } = this.props;
+
+        let positionCls = classNames(classes.box, { [classes.boxRight]: this.props.position === 'right' });
+        let thatAbsoluteTime = this.props.type !== 'text' && this.props.type !== 'file' && !(this.props.type === 'location' && this.props.text);
 
 
         const dateText = this.props.date && !isNaN(this.props.date) && (
@@ -29,14 +193,19 @@ export class MessageBox extends Component {
             moment(this.props.date).fromNow()
         );
 
+        const className = classNames(classes.container, this.props.className, {[classes.flexEnd]: this.props.position === 'right'})
         return (
             <div
-                className={classNames('rce-container-mbox', this.props.className)}
+                className={className}
                 onClick={this.props.onClick}>
                 {
                     this.props.renderAddCmp instanceof Function &&
                     this.props.renderAddCmp()
                 }
+              {
+                (this.props.position === 'left' && this.props.avatar) &&
+                <Avatar alt="User" src={this.props.avatar} className={classNames(classes.avatarContainer)}/>
+              }
                 {
                     this.props.type === 'system' ?
                         <SystemMessage
@@ -45,17 +214,17 @@ export class MessageBox extends Component {
                         <div
                             className={classNames(
                                 positionCls,
-                                {'rce-mbox--clear-padding': thatAbsoluteTime},
-                                {'rce-mbox--clear-notch': !this.props.notch}
+                                {[classes.boxClearPadding]: thatAbsoluteTime},
+                                {[classes.boxClearNotch]: !this.props.notch}
                             )}>
-                            <div className='rce-mbox-body'>
+                            <div className={classNames(classes.boxBody)}>
                                 {
                                     this.props.forwarded === true &&
                                     <div
                                         className={classNames(
-                                            'rce-mbox-forward',
-                                            { 'rce-mbox-forward-right': this.props.position === 'left' },
-                                            { 'rce-mbox-forward-left': this.props.position === 'right' }
+                                            classes.boxForward,
+                                            { [classes.boxForwardRight]: this.props.position === 'left' },
+                                            { [classes.boxForwardLeft]: this.props.position === 'right' }
                                         )}
                                         onClick={this.props.onForwardClick}>
                                             <FaForward />
@@ -63,18 +232,13 @@ export class MessageBox extends Component {
                                 }
 
                                 {
-                                    (this.props.title || this.props.avatar) &&
+                                    (this.props.title) &&
                                     <div
                                         style={this.props.titleColor && { color: this.props.titleColor }}
                                         onClick={this.props.onTitleClick}
-                                        className={classNames('rce-mbox-title', {
-                                            'rce-mbox-title--clear': this.props.type === 'text',
+                                        className={classNames(classes.boxTitle, {
+                                            [classes.boxTitleClear]: this.props.type === 'text',
                                         })}>
-                                        {
-                                            this.props.avatar &&
-                                            <Avatar
-                                                src={this.props.avatar}/>
-                                        }
                                         {
                                             this.props.title &&
                                             <span>{this.props.title}</span>
@@ -84,9 +248,9 @@ export class MessageBox extends Component {
 
                                 {
                                     this.props.type === 'text' &&
-                                    <div className="rce-mbox-text">
+                                    <Typography className={classNames(classes.boxText)}>
                                         {this.props.text}
-                                    </div>
+                                    </Typography>
                                 }
 
                                 {
@@ -125,15 +289,14 @@ export class MessageBox extends Component {
                                 }
 
 
-                                <div
+                                <Typography
                                     className={classNames(
-                                        'rce-mbox-time',
-                                        { 'rce-mbox-time-block': thatAbsoluteTime },
-                                        { 'non-copiable': !this.props.copiableDate },
+                                        classes.boxTime,
+                                        { [classes.boxTimeBlock]: thatAbsoluteTime },
+                                        { [classes.boxTimeNonCopiable]: !this.props.copiableDate },
                                     )}
                                     data-text={this.props.copiableDate ? undefined : dateText}>
                                     {
-                                        this.props.copiableDate &&
                                         this.props.date &&
                                         !isNaN(this.props.date) &&
                                         (
@@ -143,7 +306,7 @@ export class MessageBox extends Component {
                                     }
                                     {
                                         this.props.status &&
-                                        <span className='rce-mbox-status'>
+                                        <span className={classNames(classes.boxStatus)}>
                                             {
                                                 this.props.status === 'waiting' &&
                                                 <MdIosTime />
@@ -165,18 +328,18 @@ export class MessageBox extends Component {
                                             }
                                         </span>
                                     }
-                                </div>
+                                </Typography>
                             </div>
 
                             {
                                 this.props.notch &&
                                 (this.props.position === 'right' ?
-                                    <svg className="rce-mbox-right-notch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <svg className={classNames(classes.boxRightNotch)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                         <path d="M0 0v20L20 0" />
                                     </svg>
                                     :
                                     <div>
-                                        <svg className="rce-mbox-left-notch" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                        <svg className={classNames(classes.boxLeftNotch)} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                             <defs>
                                                 <filter id="filter1" x="0" y="0">
                                                     <feOffset result="offOut" in="SourceAlpha" dx="-2" dy="-5" />
@@ -214,10 +377,10 @@ MessageBox.defaultProps = {
     status: null,
     dateString: null,
     notch: true,
-    avatar: null,
+    avatar: "",
     renderAddCmp: null,
     copiableDate: false,
 };
 
+export default withStyles(styles, { name: 'MessageBox' })(MessageBox);
 
-export default MessageBox;
