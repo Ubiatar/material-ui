@@ -119,7 +119,6 @@ export const styles = theme => {
         borderBottom: `1px dotted ${theme.palette.borders.input}`,
       },
     },
-    error: {},
     multiline: {
       padding: `${theme.spacing.unit - 2}px 0 ${theme.spacing.unit - 1}px`,
     },
@@ -148,6 +147,12 @@ export const styles = theme => {
     multilineRounded: {
       padding: '15px 21px 14px',
       minHeight: 50,
+    },
+    error: {
+      borderColor: theme.palette.error.main,
+      '&:focus-within': {
+        borderColor: theme.palette.error.main,
+      },
     },
     input: {
       font: 'inherit',

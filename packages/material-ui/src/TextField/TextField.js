@@ -13,8 +13,8 @@ import withStyles from '../styles/withStyles';
 
 export const styles = () => {
   return {
-    root: {
-      marginBottom: 16,
+    helperContainer: {
+      height: 28,
     },
   };
 };
@@ -59,6 +59,7 @@ function TextField(props) {
     error,
     FormHelperTextProps,
     fullWidth,
+    hasHelper,
     helperText,
     id,
     InputLabelProps,
@@ -137,10 +138,14 @@ function TextField(props) {
       ) : (
         InputElement
       )}
-      {helperText && (
-        <FormHelperText id={helperTextId} rounded={rounded} {...FormHelperTextProps}>
-          {helperText}
-        </FormHelperText>
+      {hasHelper && (
+        <div className={classes.helperContainer}>
+          {helperText && (
+            <FormHelperText id={helperTextId} rounded={rounded} {...FormHelperTextProps}>
+              {helperText}
+            </FormHelperText>
+          )}
+        </div>
       )}
     </FormControl>
   );
@@ -187,6 +192,7 @@ TextField.propTypes = {
    * If `true`, the input will take up the full width of its container.
    */
   fullWidth: PropTypes.bool,
+  hasHelper: PropTypes.bool,
   /**
    * The helper text content.
    */
@@ -284,6 +290,7 @@ TextField.propTypes = {
 };
 
 TextField.defaultProps = {
+  hasHelper: true,
   required: false,
   rounded: false,
   select: false,

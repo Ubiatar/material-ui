@@ -5,8 +5,6 @@ import withStyles from '../styles/withStyles';
 
 export const styles = theme => ({
   root: {
-    position: 'absolute',
-    bottom: -14,
     color: theme.palette.text.hint,
     fontFamily: theme.typography.fontFamily,
     fontSize: theme.typography.pxToRem(12),
@@ -28,7 +26,8 @@ export const styles = theme => ({
     marginTop: theme.spacing.unit / 2,
   },
   rounded: {
-    marginLeft: 20
+    marginLeft: 20,
+    marginTop: 3,
   },
 });
 
