@@ -15,7 +15,10 @@ export const styles = theme => {
       position: 'relative',
       display: 'flex',
       justifyContent: 'flex-end',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      height: '100%',
+      width: '100%',
+      overflow: 'auto'
   },
     mList: {
     display: 'block',

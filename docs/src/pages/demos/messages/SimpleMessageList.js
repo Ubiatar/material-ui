@@ -6,8 +6,25 @@ import moment from 'moment'
 
 const styles = {
   root: {
-    flexGrow: 1,
-    height: 500
+    width: '100%',
+    flex: 1,
+  },
+  container1: {
+    width: '100%',
+    flex: 1,
+    position: 'relative',
+    height: '400px',
+  },
+  container2: {
+    width: '100%',
+    flex: 1,
+    position: 'relative',
+    height: '400px',
+  },
+  messagesList: {
+    width: '100%',
+    height: '100%',
+    overflow: 'auto'
   }
 };
 
@@ -15,26 +32,98 @@ function SimpleMessageList(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <MessageList
-        className='message-list'
-        lockable={true}
-        //toBottomHeight={'100%'}
-        avatar="/static/images/remy.jpg"
-        dataSource={[
-          {
-            position: 'right',
-            type: 'text',
-            text: 'Lorem ipsum dolor sit amet',
-            dateString: moment().format('h:mm')
-          },
-          {
-            position: 'left',
-            type: 'text',
-            text: 'Consectetur ',
-            date: new Date()
-          }
+      <div className={classes.container1}>
+        <MessageList
+          className='message-list'
+          lockable={true}
+          toBottomHeight={'100%'}
+          avatar="/static/images/remy.jpg"
+          dataSource={[
+            {
+              position: 'right',
+              type: 'text',
+              text: 'Lorem ipsum dolor sit amet',
+              dateString: moment().format('h:mm')
+            },
+            {
+              position: 'left',
+              type: 'text',
+              text: 'Consectetur ',
+              date: new Date()
+            },
+            {
+              position: 'right',
+              type: 'text',
+              text: 'Lorem ipsum dolor sit amet',
+              dateString: moment().format('h:mm')
+            },
+            {
+              position: 'left',
+              type: 'text',
+              text: 'Consectetur ',
+              date: new Date()
+            },
+            {
+              position: 'right',
+              type: 'text',
+              text: 'Lorem ipsum dolor sit amet',
+              dateString: moment().format('h:mm')
+            },
+            {
+              position: 'left',
+              type: 'text',
+              text: 'Consectetur ',
+              date: new Date()
+            },
+            {
+              position: 'right',
+              type: 'text',
+              text: 'Lorem ipsum dolor sit amet',
+              dateString: moment().format('h:mm')
+            },
+            {
+              position: 'left',
+              type: 'text',
+              text: 'Consectetur ',
+              date: new Date()
+            },
+            {
+              position: 'right',
+              type: 'text',
+              text: 'Lorem ipsum dolor sit amet',
+              dateString: moment().format('h:mm')
+            },
+            {
+              position: 'left',
+              type: 'text',
+              text: 'Consectetur ',
+              date: new Date()
+            },
+            ]}
+        />
+      </div>
+      <div className={classes.container2}>
+        <MessageList
+          className='message-list'
+          lockable={true}
+          toBottomHeight={'100%'}
+          avatar="/static/images/remy.jpg"
+          dataSource={[
+            {
+              position: 'right',
+              type: 'text',
+              text: 'Lorem ipsum dolor sit amet',
+              dateString: moment().format('h:mm')
+            },
+            {
+              position: 'left',
+              type: 'text',
+              text: 'Consectetur ',
+              date: new Date()
+            },
           ]}
-      />
+        />
+      </div>
     </div>
   );
 }
