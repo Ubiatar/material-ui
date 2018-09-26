@@ -43,6 +43,21 @@ function OutlinedButtons(props) {
           Upload
         </Button>
       </label>
+      <Button rounded variant="outlined" className={classes.button}>
+        Default
+      </Button>
+      <Button rounded variant="outlined" color="primary" className={classes.button}>
+        Primary
+      </Button>
+      <Button rounded variant="outlined" color="secondary" className={classes.button}>
+        Secondary
+      </Button>
+      <Button rounded variant="outlined" disabled className={classes.button}>
+        Disabled
+      </Button>
+      <Button rounded variant="outlined" href="#outlined-buttons" className={classes.button}>
+        Link
+      </Button>
     </div>
   );
 }
