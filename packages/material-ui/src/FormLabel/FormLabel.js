@@ -19,10 +19,14 @@ export const styles = theme => ({
     '&$error': {
       color: theme.palette.error.main,
     },
+    '&$success': {
+      color: theme.palette.success.main,
+    },
   },
   focused: {},
   disabled: {},
   error: {},
+  success: {},
   asterisk: {
     '&$error': {
       color: theme.palette.error.main,
@@ -40,6 +44,7 @@ function FormLabel(props, context) {
     error: errorProp,
     focused: focusedProp,
     required: requiredProp,
+    success,
     ...other
   } = props;
 
@@ -71,6 +76,7 @@ function FormLabel(props, context) {
       [classes.focused]: focused,
       [classes.disabled]: disabled,
       [classes.error]: error,
+      [classes.success]: success,
     },
     classNameProp,
   );
@@ -127,6 +133,7 @@ FormLabel.propTypes = {
    * If `true`, the label will indicate that the input is required.
    */
   required: PropTypes.bool,
+  success: PropTypes.bool,
 };
 
 FormLabel.defaultProps = {

@@ -13,8 +13,8 @@ import withStyles from '../styles/withStyles';
 
 export const styles = () => {
   return {
-    root: {
-      marginBottom: 16,
+    helperContainer: {
+      height: 28,
     },
   };
 };
@@ -59,6 +59,7 @@ function TextField(props) {
     error,
     FormHelperTextProps,
     fullWidth,
+    hasHelper,
     helperText,
     id,
     InputLabelProps,
@@ -78,6 +79,7 @@ function TextField(props) {
     rowsMax,
     select,
     SelectProps,
+    success,
     type,
     value,
     ...other
@@ -112,6 +114,7 @@ function TextField(props) {
       onFocus={onFocus}
       placeholder={placeholder}
       inputProps={inputProps}
+      success={success}
       {...InputProps}
     />
   );
@@ -126,7 +129,7 @@ function TextField(props) {
       {...other}
     >
       {label && (
-        <InputLabel htmlFor={id} rounded={rounded} {...InputLabelProps}>
+        <InputLabel htmlFor={id} rounded={rounded} success={success} {...InputLabelProps}>
           {label}
         </InputLabel>
       )}
@@ -137,10 +140,14 @@ function TextField(props) {
       ) : (
         InputElement
       )}
-      {helperText && (
-        <FormHelperText id={helperTextId} rounded={rounded} {...FormHelperTextProps}>
-          {helperText}
-        </FormHelperText>
+      {hasHelper && (
+        <div className={classes.helperContainer}>
+          {helperText && (
+            <FormHelperText id={helperTextId} rounded={rounded} {...FormHelperTextProps}>
+              {helperText}
+            </FormHelperText>
+          )}
+        </div>
       )}
     </FormControl>
   );
@@ -187,6 +194,7 @@ TextField.propTypes = {
    * If `true`, the input will take up the full width of its container.
    */
   fullWidth: PropTypes.bool,
+  hasHelper: PropTypes.bool,
   /**
    * The helper text content.
    */
@@ -269,6 +277,7 @@ TextField.propTypes = {
    * Properties applied to the `Select` element.
    */
   SelectProps: PropTypes.object,
+  success: PropTypes.bool,
   /**
    * Type attribute of the `Input` element. It should be a valid HTML5 input type.
    */
@@ -284,9 +293,11 @@ TextField.propTypes = {
 };
 
 TextField.defaultProps = {
+  hasHelper: true,
   required: false,
   rounded: false,
   select: false,
+  success: false,
 };
 
 export default withStyles(styles, { name: 'TextField' })(TextField);

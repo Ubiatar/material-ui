@@ -84,6 +84,15 @@ export const styles = theme => {
         }`,
       borderRadius: 4,
     },
+    outlinedPrimary: {
+      borderColor: theme.palette.primary.main,
+    },
+    outlinedSecondary: {
+      borderColor: theme.palette.secondary.main,
+    },
+    outlinedTerziary: {
+      borderColor: theme.palette.terziary.main,
+    },
     colorInherit: {
       color: 'inherit',
     },
@@ -211,6 +220,9 @@ function Button(props) {
       [classes.raisedPrimary]: !flat && color === 'primary',
       [classes.raisedSecondary]: !flat && color === 'secondary',
       [classes.outlined]: variant === 'outlined',
+      [classes.outlinedPrimary]: variant === 'outlined' && color === 'primary',
+      [classes.outlinedSecondary]: variant === 'outlined' && color === 'secondary',
+      [classes.outlinedTerziary]: variant === 'outlined' && color === 'terziary',
       [classes[`size${capitalize(size)}`]]: size !== 'medium',
       [classes.disabled]: disabled,
       [classes.fullWidth]: fullWidth,

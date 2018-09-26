@@ -47,6 +47,24 @@ function Inputs(props) {
           'aria-label': 'Description',
         }}
       />
+      <Input
+        rounded
+        defaultValue="Error"
+        className={classes.input}
+        error
+        inputProps={{
+          'aria-label': 'Description',
+        }}
+      />
+      <Input
+        rounded
+        defaultValue="Success"
+        className={classes.input}
+        success
+        inputProps={{
+          'aria-label': 'Description',
+        }}
+      />
     </div>
   );
 }

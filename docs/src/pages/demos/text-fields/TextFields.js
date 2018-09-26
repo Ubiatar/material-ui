@@ -387,6 +387,32 @@ class TextFields extends React.Component {
           margin="normal"
           rounded
         />
+        <TextField
+          success
+          id="full-width"
+          label="Label"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          placeholder="Placeholder"
+          helperText="Full width!"
+          fullWidth
+          margin="normal"
+          rounded
+        />
+        <TextField
+          error
+          id="full-width"
+          label="Label"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          placeholder="Placeholder"
+          helperText="Full width!"
+          fullWidth
+          margin="normal"
+          rounded
+        />
       </form>
     );
   }

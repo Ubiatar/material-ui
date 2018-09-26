@@ -133,11 +133,13 @@ InputLabel.propTypes = {
    * If `true`, the label is shrunk.
    */
   shrink: PropTypes.bool,
+  success: PropTypes.bool,
 };
 
 InputLabel.defaultProps = {
   disableAnimation: false,
   rounded: false,
+  success: false,
 };
 
 InputLabel.contextTypes = {
