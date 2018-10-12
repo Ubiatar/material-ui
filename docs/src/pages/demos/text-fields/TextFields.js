@@ -216,7 +216,7 @@ class TextFields extends React.Component {
           style={{ width: '100%', marginTop: 20 }}
           variant="headline"
         >
-          Rounded version
+          Outlined version
         </Typography>
         <TextField
           id="name"
@@ -225,7 +225,8 @@ class TextFields extends React.Component {
           value={this.state.name}
           onChange={this.handleChange('name')}
           margin="normal"
-          rounded
+          outlined
+          radius={0}
         />
         <TextField
           id="uncontrolled"
@@ -233,7 +234,8 @@ class TextFields extends React.Component {
           defaultValue="foo"
           className={classes.textField}
           margin="normal"
-          rounded
+          outlined
+          radius={4}
         />
         <TextField
           required
@@ -242,7 +244,8 @@ class TextFields extends React.Component {
           defaultValue="Hello World"
           className={classes.textField}
           margin="normal"
-          rounded
+          outlined
+          radius={8}
         />
         <TextField
           error
@@ -251,7 +254,8 @@ class TextFields extends React.Component {
           defaultValue="Hello World"
           className={classes.textField}
           margin="normal"
-          rounded
+          outlined
+          radius={25}
         />
         <TextField
           id="password-input"
@@ -260,7 +264,8 @@ class TextFields extends React.Component {
           type="password"
           autoComplete="current-password"
           margin="normal"
-          rounded
+          outlined
+          radius={25}
         />
         <TextField
           id="multiline-flexible"
@@ -271,7 +276,8 @@ class TextFields extends React.Component {
           onChange={this.handleChange('multiline')}
           className={classes.textField}
           margin="normal"
-          rounded
+          outlined
+          radius={25}
         />
         <TextField
           id="multiline-static"
@@ -281,7 +287,8 @@ class TextFields extends React.Component {
           defaultValue="Default Value"
           className={classes.textField}
           margin="normal"
-          rounded
+          outlined
+          radius={25}
         />
         <TextField
           id="helperText"
@@ -290,7 +297,8 @@ class TextFields extends React.Component {
           className={classes.textField}
           helperText="Some important text"
           margin="normal"
-          rounded
+          outlined
+          radius={25}
         />
         <TextField
           id="with-placeholder"
@@ -298,7 +306,8 @@ class TextFields extends React.Component {
           placeholder="Placeholder"
           className={classes.textField}
           margin="normal"
-          rounded
+          outlined
+          radius={25}
         />
         <TextField
           id="textarea"
@@ -307,7 +316,8 @@ class TextFields extends React.Component {
           multiline
           className={classes.textField}
           margin="normal"
-          rounded
+          outlined
+          radius={25}
         />
         <TextField
           id="number"
@@ -320,7 +330,8 @@ class TextFields extends React.Component {
             shrink: true,
           }}
           margin="normal"
-          rounded
+          outlined
+          radius={25}
         />
         <TextField
           id="search"
@@ -328,7 +339,8 @@ class TextFields extends React.Component {
           type="search"
           className={classes.textField}
           margin="normal"
-          rounded
+          outlined
+          radius={25}
         />
         <TextField
           id="select-currency"
@@ -344,7 +356,8 @@ class TextFields extends React.Component {
           }}
           helperText="Please select your currency"
           margin="normal"
-          rounded
+          outlined
+          radius={25}
         >
           {currencies.map(option => (
             <MenuItem key={option.value} value={option.value}>
@@ -367,7 +380,8 @@ class TextFields extends React.Component {
           }}
           helperText="Please select your currency"
           margin="normal"
-          rounded
+          outlined
+          radius={25}
         >
           {currencies.map(option => (
             <option key={option.value} value={option.value}>
@@ -385,7 +399,8 @@ class TextFields extends React.Component {
           helperText="Full width!"
           fullWidth
           margin="normal"
-          rounded
+          outlined
+          radius={25}
         />
         <TextField
           success
@@ -398,7 +413,8 @@ class TextFields extends React.Component {
           helperText="Full width!"
           fullWidth
           margin="normal"
-          rounded
+          outlined
+          radius={25}
         />
         <TextField
           error
@@ -411,7 +427,8 @@ class TextFields extends React.Component {
           helperText="Full width!"
           fullWidth
           margin="normal"
-          rounded
+          outlined
+          radius={25}
         />
       </form>
     );

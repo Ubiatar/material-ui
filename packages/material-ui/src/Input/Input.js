@@ -125,11 +125,10 @@ export const styles = theme => {
     fullWidth: {
       width: '100%',
     },
-    rounded: {
+    outlined: {
       height: 50,
       border: `1px solid ${theme.palette.borders.input}`,
-      borderRadius: 25,
-      padding: '15px 21px 14px',
+      padding: 0,
       '&:after': {
         display: 'none',
       },
@@ -138,15 +137,14 @@ export const styles = theme => {
       },
       '&:hover': {
         borderWidth: 2,
-        padding: '14px 20px 13px',
       },
       '&:focus-within': {
         borderColor: theme.palette.primary.main,
       },
     },
-    multilineRounded: {
-      padding: '15px 21px 14px',
+    multilineOutlined: {
       minHeight: 50,
+      height: 'auto',
     },
     error: {
       borderColor: theme.palette.error.main,
@@ -161,9 +159,9 @@ export const styles = theme => {
       },
     },
     input: {
+      padding: `${theme.spacing.unit - 2}px 0`,
       font: 'inherit',
       color: 'currentColor',
-      padding: `${theme.spacing.unit - 2}px 0`,
       border: 0,
       boxSizing: 'content-box',
       verticalAlign: 'middle',
@@ -221,16 +219,19 @@ export const styles = theme => {
       '-moz-appearance': 'textfield',
       '-webkit-appearance': 'textfield',
     },
-    inputRounded: {
-      padding: 0,
+    inputOutlined: {
+      padding: '15px 0 14px',
       '&:after': {
         display: 'none',
       },
       '&:before': {
         display: 'none',
       },
+      '&:hover': {
+        padding: '14px 20px 13px',
+      },
     },
-    inputMultilineRounded: {
+    inputMultilineOutlined: {
       boxSizing: 'border-box',
       minHeight: 50,
     },
@@ -426,10 +427,12 @@ class Input extends React.Component {
       onKeyUp,
       placeholder,
       readOnly,
-      rounded,
+      outlined,
+      radius,
       rows,
       rowsMax,
       startAdornment,
+      style,
       success,
       type,
       value,
@@ -449,8 +452,8 @@ class Input extends React.Component {
         [classes.formControl]: muiFormControl,
         [classes.multiline]: multiline,
         [classes.underline]: !disableUnderline,
-        [classes.rounded]: rounded,
-        [classes.multilineRounded]: rounded && multiline,
+        [classes.outlined]: outlined,
+        [classes.multilineOutlined]: outlined && multiline,
         [classes.success]: success,
       },
       classNameProp,
@@ -460,12 +463,12 @@ class Input extends React.Component {
       classes.input,
       {
         [classes.disabled]: disabled,
-        [classes.inputType]: type !== 'text' && !rounded,
+        [classes.inputType]: type !== 'text' && !outlined,
         [classes.inputTypeSearch]: type === 'search',
         [classes.inputMultiline]: multiline,
         [classes.inputMarginDense]: margin === 'dense',
-        [classes.inputRounded]: rounded,
-        [classes.inputMultilineRounded]: rounded &&  multiline,
+        [classes.inputOutlined]: outlined,
+        [classes.inputMultilineOutlined]: outlined && multiline,
       },
       inputPropsClassName,
     );
@@ -500,9 +503,16 @@ class Input extends React.Component {
         InputComponent = Textarea;
       }
     }
+    const rootStyle = Object.assign({}, style, {
+      borderRadius: outlined ? radius : undefined,
+    })
+    const inputStyle = Object.assign({}, inputProps.style, {
+      paddingLeft: outlined ? Math.max(radius, 8) : undefined,
+      paddingRight: outlined ? Math.max(radius, 8) : undefined,
+    })
 
     return (
-      <div className={className} {...other}>
+      <div className={className} style={rootStyle} {...other}>
         {startAdornment}
         <InputComponent
           aria-invalid={error}
@@ -523,6 +533,7 @@ class Input extends React.Component {
           readOnly={readOnly}
           required={required ? true : undefined}
           rows={rows}
+          style={inputStyle}
           type={type}
           value={value}
           {...inputProps}
@@ -640,6 +651,7 @@ Input.propTypes = {
    * @ignore
    */
   onKeyUp: PropTypes.func,
+  outlined: PropTypes.bool,
   /**
    * The short hint displayed in the input before the user enters a value.
    */
@@ -647,8 +659,8 @@ Input.propTypes = {
   /**
    * @ignore
    */
+  radius: PropTypes.number,
   readOnly: PropTypes.bool,
-  rounded: PropTypes.bool,
   /**
    * Number of rows to display when multiline option is set to true.
    */
@@ -657,11 +669,12 @@ Input.propTypes = {
    * Maximum number of rows to display when multiline option is set to true.
    */
   rowsMax: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  success: PropTypes.bool,
   /**
    * Start `InputAdornment` for this component.
    */
   startAdornment: PropTypes.node,
+  style: PropTypes.object,
+  success: PropTypes.bool,
   /**
    * Type of the input element. It should be a valid HTML5 input type.
    */
@@ -682,7 +695,8 @@ Input.defaultProps = {
   disableUnderline: false,
   fullWidth: false,
   multiline: false,
-  rounded: false,
+  outlined: false,
+  radius: 4,
   success: false,
   type: 'text',
 };

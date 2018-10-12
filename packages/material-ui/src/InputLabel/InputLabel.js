@@ -21,7 +21,7 @@ export const styles = theme => ({
     // Compensation for the `Input.inputDense` style.
     transform: `translate(0, ${theme.spacing.unit * 2.5 + 1}px) scale(1)`,
   },
-  rounded: {
+  radius: {
     transform: 'translate(20px, 33px) scale(1)',
   },
   shrinkRounded: {
@@ -48,7 +48,8 @@ function InputLabel(props, context) {
     disableAnimation,
     FormLabelClasses,
     margin: marginProp,
-    rounded,
+    marginLeft,
+    style,
     shrink: shrinkProp,
     ...other
   } = props;
@@ -70,16 +71,23 @@ function InputLabel(props, context) {
     {
       [classes.formControl]: muiFormControl,
       [classes.animated]: !disableAnimation,
-      [classes.rounded]: rounded,
-      [classes.shrink]: !rounded && shrink,
-      [classes.shrinkRounded]: rounded && shrink,
+      [classes.shrink]: shrink,
+      [classes.shrinkRounded]: shrink,
       [classes.marginDense]: margin === 'dense',
     },
     classNameProp,
   );
 
+  const rootStyle = Object.assign({}, style, {
+    transform: marginLeft
+      ? shrink
+        ? `translate(${marginLeft}px, 1.5px) scale(0.75)`
+        : `translate(${marginLeft}px, 33px) scale(1)`
+      : undefined,
+  })
+
   return (
-    <FormLabel data-shrink={shrink} className={className} classes={FormLabelClasses} {...other}>
+    <FormLabel data-shrink={shrink} className={className} classes={FormLabelClasses} style={rootStyle} {...other}>
       {children}
     </FormLabel>
   );
@@ -124,11 +132,12 @@ InputLabel.propTypes = {
    * FormControl.
    */
   margin: PropTypes.oneOf(['dense']),
+  marginLeft: PropTypes.number,
   /**
    * if `true`, the label will indicate that the input is required.
    */
   required: PropTypes.bool,
-  rounded: PropTypes.bool,
+  style: PropTypes.object,
   /**
    * If `true`, the label is shrunk.
    */
@@ -138,7 +147,7 @@ InputLabel.propTypes = {
 
 InputLabel.defaultProps = {
   disableAnimation: false,
-  rounded: false,
+  marginLeft: 0,
   success: false,
 };
 

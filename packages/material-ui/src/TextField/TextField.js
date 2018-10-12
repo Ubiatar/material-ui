@@ -72,9 +72,10 @@ function TextField(props) {
     onBlur,
     onChange,
     onFocus,
+    outlined,
     placeholder,
     required,
-    rounded,
+    radius,
     rows,
     rowsMax,
     select,
@@ -102,7 +103,8 @@ function TextField(props) {
       fullWidth={fullWidth}
       multiline={multiline}
       name={name}
-      rounded={rounded}
+      radius={radius}
+      outlined={outlined}
       rows={rows}
       rowsMax={rowsMax}
       type={type}
@@ -129,7 +131,7 @@ function TextField(props) {
       {...other}
     >
       {label && (
-        <InputLabel htmlFor={id} rounded={rounded} success={success} {...InputLabelProps}>
+        <InputLabel htmlFor={id} outlined={outlined} marginLeft={Math.max(radius, 8)} success={success} {...InputLabelProps}>
           {label}
         </InputLabel>
       )}
@@ -143,7 +145,7 @@ function TextField(props) {
       {hasHelper && (
         <div className={classes.helperContainer}>
           {helperText && (
-            <FormHelperText id={helperTextId} rounded={rounded} {...FormHelperTextProps}>
+            <FormHelperText id={helperTextId} radius={radius} {...FormHelperTextProps}>
               {helperText}
             </FormHelperText>
           )}
@@ -251,6 +253,7 @@ TextField.propTypes = {
    * @ignore
    */
   onFocus: PropTypes.func,
+  outlined: PropTypes.bool,
   /**
    * The short hint displayed in the input before the user enters a value.
    */
@@ -262,7 +265,7 @@ TextField.propTypes = {
   /**
    * Number of rows to display when multiline option is set to true.
    */
-  rounded: PropTypes.bool,
+  radius: PropTypes.bool,
   rows: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /**
    * Maximum number of rows to display when multiline option is set to true.
@@ -295,7 +298,7 @@ TextField.propTypes = {
 TextField.defaultProps = {
   hasHelper: true,
   required: false,
-  rounded: false,
+  outlined: false,
   select: false,
   success: false,
 };

@@ -48,6 +48,7 @@ function Inputs(props) {
         }}
       />
       <Input
+        outlined
         rounded
         defaultValue="Error"
         className={classes.input}
@@ -57,6 +58,7 @@ function Inputs(props) {
         }}
       />
       <Input
+        outlined
         rounded
         defaultValue="Success"
         className={classes.input}
