@@ -60,6 +60,7 @@ function InputAdornment(props) {
 }
 
 InputAdornment.propTypes = {
+  attachToBorder: PropTypes.bool,
   /**
    * The content of the component, normally an `IconButton` or string.
    */
@@ -86,7 +87,6 @@ InputAdornment.propTypes = {
    * The position this adornment should appear relative to the `Input`.
    */
   position: PropTypes.oneOf(['start', 'end']),
-  attachToBorder: PropTypes.bool,
 };
 
 InputAdornment.defaultProps = {
