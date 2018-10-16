@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './SystemMessage.css';
-import withStyles from "../../../styles/withStyles";
+import withStyles from "../../styles/withStyles";
 
 import classNames from 'classnames'
 

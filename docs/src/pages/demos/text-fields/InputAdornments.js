@@ -165,6 +165,28 @@ class InputAdornments extends React.Component {
           />
         </FormControl>
         <FormControl className={classNames(classes.margin, classes.textField)}>
+          <Input
+            id="adornment-password"
+            type={this.state.showPassword ? 'text' : 'password'}
+            value={this.state.password}
+            outlined
+            radius={25}
+            onChange={this.handleChange('password')}
+            startAdornment={<InputAdornment position="start">$</InputAdornment>}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="Toggle password visibility"
+                  onClick={this.handleClickShowPassword}
+                  onMouseDown={this.handleMouseDownPassword}
+                >
+                  {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+          />
+        </FormControl>
+        <FormControl className={classNames(classes.margin, classes.textField)}>
           <InputLabel rounded htmlFor="adornment-password">Password</InputLabel>
           <Input
             rounded

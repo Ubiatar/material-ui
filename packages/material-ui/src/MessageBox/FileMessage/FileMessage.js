@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './FileMessage.css';
 
-import FaCloudDownload from 'ubiatar-material-ui-icons/src/CloudDownload'
-import FaFile from 'ubiatar-material-ui-icons/src/InsertDriveFile'
-import CircularProgress from '@material-ui/core/CircularProgress'
-import withStyles from "../../../styles/withStyles";
+import FaCloudDownload from 'ubiatar-material-ui-icons/CloudDownload'
+import FaFile from 'ubiatar-material-ui-icons/InsertDriveFile'
+import CircularProgress from '../../CircularProgress'
+import withStyles from "../../styles/withStyles";
 
 import Button from '@material-ui/core/Button'
 

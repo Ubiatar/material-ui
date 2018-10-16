@@ -10,15 +10,14 @@ import {
   Typography
 } from '@material-ui/core'
 
-import FaForward from 'ubiatar-material-ui-icons/src/Mail'
-
-import IoDoneAll from 'ubiatar-material-ui-icons/src/DoneAll'
-import MdIosTime from 'ubiatar-material-ui-icons/src/AccessTime'
-import MdCheck from 'ubiatar-material-ui-icons/src/Check'
+import FaForward from 'ubiatar-material-ui-icons/Mail'
+import IoDoneAll from 'ubiatar-material-ui-icons/DoneAll'
+import MdIosTime from 'ubiatar-material-ui-icons/AccessTime'
+import MdCheck from 'ubiatar-material-ui-icons/Check'
 
 import moment from 'moment'
 import classNames from 'classnames'
-import withStyles from "../../styles/withStyles";
+import withStyles from "../styles/withStyles";
 
 export const styles = theme => {
   return {

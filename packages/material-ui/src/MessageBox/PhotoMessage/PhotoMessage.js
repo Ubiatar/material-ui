@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 import './PhotoMessage.css';
 
-import FaCloudDownload from 'ubiatar-material-ui-icons/src/CloudDownload'
+import FaCloudDownload from 'ubiatar-material-ui-icons/CloudDownload'
 
 /*const ProgressBar = require('react-progress-bar.js');
 const Circle = ProgressBar.Circle;*/
 import CircularProgress from '@material-ui/core/CircularProgress'
-import withStyles from "../../../styles/withStyles";
+import withStyles from "../../styles/withStyles";
 
 
 export const styles = theme => {

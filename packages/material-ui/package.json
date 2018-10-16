@@ -1,7 +1,7 @@
 {
   "name": "ubiatar-material-ui",
   "author": "Material-UI Team",
-  "version": "1.0.0-beta.146",
+  "version": "1.0.0-beta.150",
   "description": "React components that implement Google's Material Design.",
   "keywords": [
     "react",
@@ -67,7 +67,8 @@
     "warning": "^3.0.0"
   },
   "devDependencies": {
-    "moment": "^2.22.2"
+    "moment": "^2.22.2",
+    "ubiatar-material-ui-icons": "^1.0.0-beta.150"
   },
   "sideEffects": false,
   "engines": {

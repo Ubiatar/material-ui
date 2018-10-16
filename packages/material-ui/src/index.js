@@ -73,6 +73,8 @@ export { default as Menu } from './Menu';
 export { default as MenuItem } from './MenuItem';
 export { default as MenuList } from './MenuList';
 export { default as MobileStepper } from './MobileStepper';
+export { default as MessageList } from './MessageList';
+export { default as MessageBox } from './MessageBox';
 export { default as Modal, ModalManager } from './Modal';
 export { default as Paper } from './Paper';
 export { default as Popover } from './Popover';

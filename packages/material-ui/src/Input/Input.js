@@ -128,7 +128,8 @@ export const styles = theme => {
     outlined: {
       height: 50,
       border: `1px solid ${theme.palette.borders.input}`,
-      padding: 0,
+      padding: '0 1px',
+      alignItems: 'center',
       '&:after': {
         display: 'none',
       },
@@ -137,6 +138,7 @@ export const styles = theme => {
       },
       '&:hover': {
         borderWidth: 2,
+        padding: 0,
       },
       '&:focus-within': {
         borderColor: theme.palette.primary.main,
@@ -507,7 +509,7 @@ class Input extends React.Component {
       borderRadius: outlined ? radius : undefined,
     })
     const inputStyle = Object.assign({}, inputProps.style, {
-      paddingLeft: outlined ? Math.max(radius, 8) : undefined,
+      paddingLeft: outlined ? (startAdornment ? 2 : Math.max(radius, 8)) : undefined,
       paddingRight: outlined ? Math.max(radius, 8) : undefined,
     })
 

@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import './MessageList.css'
 
-import MessageBox from './MessageBox'
+import MessageBox from '../MessageBox'
 
 //import FaChevronDown from 'react-icons/lib/fa/chevron-down'
-import KeyboardArrowDown from 'ubiatar-material-ui-icons/src/KeyboardArrowDown'
+import KeyboardArrowDown from 'ubiatar-material-ui-icons/KeyboardArrowDown'
 
 import classNames from 'classnames'
 import withStyles from "../styles/withStyles";
