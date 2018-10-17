@@ -10,7 +10,7 @@ import FileMessage from './FileMessage';
 import SystemMessage from './SystemMessage';
 import LocationMessage from './LocationMessage';
 import { Avatar, Typography } from '../';
-import withStyles from '../styles';
+import { withStyles } from '../styles';
 
 export const styles = theme => {
   return {
@@ -35,7 +35,7 @@ export const styles = theme => {
       position: 'relative',
       backgroundColor: theme.palette.background.messageBox.left,
       borderRadius: 8,
-      boxShadow: '0px 0px 6px 0px rgba(0, 0, 0, .2)',
+      boxShadow: '-1px 1px 7px 0px rgba(0, 0, 0, .2)',
       borderTopLeftRadius: 0,
       marginLeft: 15,
       marginRight: 5,
@@ -127,11 +127,10 @@ export const styles = theme => {
     boxTime: {
       textAlign: 'right',
       color: 'rgba(0, 0, 0, 0.45)',
-      fontSize: 12,
+      fontSize: 10,
       // position: 'absolute',
       right: -4,
       bottom: -5,
-      marginTop: 5,
     },
     boxTimeBlock: {
       /* position: relative; */
@@ -168,6 +167,7 @@ export const styles = theme => {
       width: 9,
       height: 9,
       fill: theme.palette.background.messageBox.left,
+      filter: 'drop-shadow( -1px -1px 1px rgba(0, 0, 0, .05))',
     },
   };
 };

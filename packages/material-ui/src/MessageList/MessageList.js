@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { KeyboardArrowDown } from 'ubiatar-material-ui-icons';
 import MessageBox from '../MessageBox';
-import withStyles from '../styles';
+import { withStyles } from '../styles';
 
 export const styles = theme => {
   return {
