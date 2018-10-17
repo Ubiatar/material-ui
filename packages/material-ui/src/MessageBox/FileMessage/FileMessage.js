@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './FileMessage.css';
+// import './FileMessage.css';
 
 import FaCloudDownload from 'ubiatar-material-ui-icons/CloudDownload'
 import FaFile from 'ubiatar-material-ui-icons/InsertDriveFile'
 import CircularProgress from '../../CircularProgress'
 import withStyles from "../../styles/withStyles";
 
-import Button from '@material-ui/core/Button'
+import Button from '../../Button'
 
 /*const ProgressBar = require('react-progress-bar.js');
 const Circle = ProgressBar.Circle;*/

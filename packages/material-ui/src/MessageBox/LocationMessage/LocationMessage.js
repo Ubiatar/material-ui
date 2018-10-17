@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import './LocationMessage.css';
+// import './LocationMessage.css';
 import withStyles from "../../styles/withStyles";
-import {MessageBox} from "../MessageBox";
 
 const classNames = require('classnames');
 

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-import './PhotoMessage.css';
+// import './PhotoMessage.css';
 
 import FaCloudDownload from 'ubiatar-material-ui-icons/CloudDownload'
 
 /*const ProgressBar = require('react-progress-bar.js');
 const Circle = ProgressBar.Circle;*/
-import CircularProgress from '@material-ui/core/CircularProgress'
+import CircularProgress from '../../CircularProgress'
 import withStyles from "../../styles/withStyles";
 
 
