@@ -125,12 +125,14 @@ export const styles = theme => {
       },
     },
     boxTime: {
-      textAlign: 'right',
       color: 'rgba(0, 0, 0, 0.45)',
       fontSize: 10,
       // position: 'absolute',
       right: -4,
       bottom: -5,
+      display: 'flex',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
     },
     boxTimeBlock: {
       /* position: relative; */
@@ -148,8 +150,15 @@ export const styles = theme => {
       color: '#fff',
     },
     boxStatus: {
-      marginLefteft: 3,
+      marginLeft: 3,
       fontSize: 15,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      '& svg': {
+        width: '.5em',
+        height: '.5em',
+      },
     },
     boxRightNotch: {
       position: 'absolute',
@@ -288,7 +297,7 @@ export function MessageBox(props) {
 
                   {props.status === 'received' && <IoDoneAll />}
 
-                  {props.status === 'read' && <IoDoneAll color="#4FC3F7" />}
+                  {props.status === 'read' && <IoDoneAll color="primary" />}
                 </span>
               )}
             </Typography>
