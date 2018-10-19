@@ -33,7 +33,7 @@ export const styles = theme => {
     },
     box: {
       position: 'relative',
-      backgroundColor: theme.palette.background.messageBox.left,
+      background: theme.palette.background.messageBox.left,
       borderRadius: 8,
       boxShadow: '-1px 1px 7px 0px rgba(0, 0, 0, .2)',
       borderTopLeftRadius: 0,
@@ -52,7 +52,7 @@ export const styles = theme => {
       marginTop: 5,
     },
     boxRight: {
-      backgroundColor: theme.palette.background.messageBox.right,
+      background: theme.palette.background.messageBox.right,
       float: 'right',
       marginLeft: 5,
       marginRight: 20,
