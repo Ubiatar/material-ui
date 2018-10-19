@@ -47,6 +47,20 @@ function SimpleMessageList(props) {
               status: 'waiting',
             },
             {
+              position: 'right',
+              type: 'text',
+              text: 'Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet',
+              dateString: moment().format('h:mm'),
+              status: 'waiting',
+            },
+            {
+              position: 'right',
+              type: 'text',
+              text: 'Lorem ipsum dolor sit amet',
+              dateString: moment().format('h:mm'),
+              status: 'waiting',
+            },
+            {
               position: 'left',
               type: 'text',
               text: 'Consectetur ',
@@ -58,6 +72,30 @@ function SimpleMessageList(props) {
               text: 'Lorem ipsum dolor sit amet',
               dateString: moment().format('h:mm'),
               status: 'sent',
+            },
+            {
+              position: 'left',
+              type: 'text',
+              text: 'Consectetur ',
+              date: new Date(),
+            },
+            {
+              position: 'left',
+              type: 'text',
+              text: 'Consectetur ',
+              date: new Date(),
+            },
+            {
+              position: 'left',
+              type: 'text',
+              text: 'Consectetur ',
+              date: new Date(),
+            },
+            {
+              position: 'left',
+              type: 'text',
+              text: 'Consectetur ',
+              date: new Date(),
             },
             {
               position: 'left',

@@ -156,7 +156,7 @@ export class MessageList extends Component {
   }
 
   render() {
-    const { classes, ...other } = this.props;
+    const { classes, dataSource, ...other } = this.props;
     return (
       <div className={classNames([classes.container, this.props.className])}>
         <div
@@ -164,11 +164,13 @@ export class MessageList extends Component {
           onScroll={this.onScroll.bind(this)}
           className={classNames(classes.mList)}
         >
-          {this.props.dataSource.map((x, i) => (
+          {dataSource.map((x, i) => (
             <MessageBox
               {...other}
               key={x._id || i}
               {...x}
+              hasAfter={dataSource[i + 1] && dataSource[i + 1].position === x.position}
+              hasBefore={dataSource[i - 1] && dataSource[i - 1].position === x.position}
               onOpen={this.props.onOpen && (e => this.onOpen(x, i, e))}
               onDownload={this.props.onDownload && (e => this.onDownload(x, i, e))}
               onTitleClick={this.props.onDownload && (e => this.onTitleClick(x, i, e))}

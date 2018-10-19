@@ -57,7 +57,17 @@ export const styles = theme => {
       marginLeft: 5,
       marginRight: 20,
       borderTopRightRadius: 0,
-      borderTopLeftRadius: 5,
+      borderTopLeftRadius: 8,
+    },
+    boxHasAfter: {
+      borderBottomRightRadius: 4,
+      borderBottomLeftRadius: 4,
+      marginBottom: 1,
+    },
+    boxHasBefore: {
+      borderTopRightRadius: 4,
+      borderTopLeftRadius: 4,
+      marginTop: 1,
     },
     boxClearPadding: {
       paddingBottom: 3,
@@ -186,6 +196,8 @@ export function MessageBox(props) {
 
   const positionCls = classNames(classes.box, {
     [classes.boxRight]: props.position === 'right',
+    [classes.boxHasBefore]: props.hasBefore,
+    [classes.boxHasAfter]: props.hasAfter,
   });
   const thatAbsoluteTime =
     props.type !== 'text' && props.type !== 'file' && !(props.type === 'location' && props.text);
@@ -304,6 +316,7 @@ export function MessageBox(props) {
           </div>
 
           {props.notch &&
+            !props.hasBefore &&
             (props.position === 'right' ? (
               <svg
                 className={classNames(classes.boxRightNotch)}
@@ -338,6 +351,8 @@ export function MessageBox(props) {
 
 MessageBox.defaultProps = {
   position: 'left',
+  hasAfter: false,
+  hasBefore: false,
   type: 'text',
   text: '',
   title: null,
