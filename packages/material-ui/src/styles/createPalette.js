@@ -36,8 +36,10 @@ export const light = {
     op30: 'rgba(0, 0, 0, .6)',
     messageBox: {
       right: ubiatarPrimary[300],
+      rightNotch: ubiatarPrimary[300],
       left: grey[300],
-    }
+      leftNotch: grey[300],
+    },
   },
   borders: {
     input: 'rgba(0, 0, 0, 0.42)',

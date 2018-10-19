@@ -166,7 +166,7 @@ export const styles = theme => {
       top: 0,
       width: 9,
       height: 9,
-      fill: theme.palette.background.messageBox.right,
+      fill: theme.palette.background.messageBox.rightNotch,
       filter: 'drop-shadow( 2px 0px 1px rgba(0, 0, 0, .2))',
     },
     boxLeftNotch: {
@@ -175,7 +175,7 @@ export const styles = theme => {
       top: 0,
       width: 9,
       height: 9,
-      fill: theme.palette.background.messageBox.left,
+      fill: theme.palette.background.messageBox.leftNotch,
       filter: 'drop-shadow( -1px -1px 1px rgba(0, 0, 0, .05))',
     },
   };
