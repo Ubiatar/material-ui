@@ -39,7 +39,7 @@ export const styles = theme => ({
     }),
     minHeight: 0,
     padding: `${theme.spacing.unit / 2}px ${theme.spacing.unit}px`,
-    fontSize: theme.typography.pxToRem(10),
+    fontSize: theme.typography.pxToRem(12),
     lineHeight: `${theme.typography.round(14 / 10)}em`,
     '&$open': {
       opacity: 0.9,

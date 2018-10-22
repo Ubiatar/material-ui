@@ -265,7 +265,7 @@ TextField.propTypes = {
   /**
    * Number of rows to display when multiline option is set to true.
    */
-  radius: PropTypes.bool,
+  radius: PropTypes.number,
   rows: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /**
    * Maximum number of rows to display when multiline option is set to true.
