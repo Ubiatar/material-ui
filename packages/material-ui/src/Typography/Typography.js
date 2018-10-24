@@ -83,7 +83,9 @@ function Typography(props) {
     headlineMapping,
     noWrap,
     paragraph,
+    size,
     variant,
+    weight,
     ...other
   } = props;
 
@@ -101,8 +103,12 @@ function Typography(props) {
   );
 
   const Component = componentProp || (paragraph ? 'p' : headlineMapping[variant]) || 'span';
+  const style = {
+    fontSize: size,
+    fontWeight: weight,
+  }
 
-  return <Component className={className} {...other} />;
+  return <Component className={className} style={style} {...other} />;
 }
 
 Typography.propTypes = {
@@ -151,6 +157,7 @@ Typography.propTypes = {
    * If `true`, the text will have a bottom margin.
    */
   paragraph: PropTypes.bool,
+  size: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /**
    * Applies the theme typography styles.
    */
@@ -176,6 +183,7 @@ Typography.propTypes = {
     'link',
     'highbold',
   ]),
+  weight: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 Typography.defaultProps = {
