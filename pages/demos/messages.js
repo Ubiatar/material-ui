@@ -15,6 +15,13 @@ module.exports = require('fs')
   .readFileSync(require.resolve('docs/src/pages/demos/messages/SimpleMessageList'), 'utf8')
 `,
         },
+        'pages/demos/messages/SimplePhotoMessage.js': {
+          js: require('docs/src/pages/demos/messages/SimplePhotoMessage').default,
+          raw: preval`
+module.exports = require('fs')
+  .readFileSync(require.resolve('docs/src/pages/demos/messages/SimplePhotoMessage'), 'utf8')
+`,
+        },
       }}
     />
   );
