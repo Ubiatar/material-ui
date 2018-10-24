@@ -29,9 +29,10 @@ function SimplePhotoMessage(props) {
         {
           position: 'right',
           type: 'photo',
-          text: null,
+          text: 'ok ok ok ',
           data: {
-          uri: "/static/images/remy.jpg",
+          uri: "http://hdwpro.com/wp-content/uploads/2017/07/Widescreen-1080p-Image.jpg",
+          status: 'waiting'
         },
           date: new Date()
         }

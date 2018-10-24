@@ -144,21 +144,6 @@ export const styles = theme => {
       justifyContent: 'flex-end',
       alignItems: 'center',
     },
-    boxTimeBlock: {
-      /* position: relative; */
-      right: 0,
-      bottom: 0,
-      left: 0,
-      marginRight: -6,
-      marginLeft: -6,
-      paddingTop: 5,
-      paddingRight: 3,
-      paddingBottom: 2,
-      //background: 'linear-gradient(to top, rgba(0,0,0,0.33), transparent)',
-      borderBottomLeftRadius: 5,
-      borderBottomRightRadius: 5,
-      color: '#fff',
-    },
     boxStatus: {
       marginLeft: 3,
       fontSize: 15,
@@ -295,7 +280,6 @@ export function MessageBox(props) {
             <Typography
               className={classNames(
                 classes.boxTime,
-                { [classes.boxTimeBlock]: thatAbsoluteTime },
                 { [classes.boxTimeNonCopiable]: !props.copiableDate },
               )}
               data-text={props.copiableDate ? undefined : dateText}

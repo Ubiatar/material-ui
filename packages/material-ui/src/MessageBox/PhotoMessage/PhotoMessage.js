@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import FaCloudDownload from 'ubiatar-material-ui-icons/CloudDownload';
-import CircularProgress from '../../CircularProgress';
+import { CircularProgress, Typography } from '../../';
 import withStyles from '../../styles/withStyles';
 
 export const styles = theme => {
@@ -10,6 +10,9 @@ export const styles = theme => {
       marginTop: -3,
       marginRight: -6,
       marginLeft: -6,
+      padding: '6px 9px 8px 9px',
+      maxWidth: 300,
+      margin: 'auto'
     },
     boxText: {
       padding: '5px 0px',
@@ -17,15 +20,13 @@ export const styles = theme => {
       margin: 'auto',
     },
     boxImg: {
-      height: '100%',
-      width: '100%',
       position: 'relative',
       display: 'flex',
       overflow: 'hidden',
       justifyContent: 'center',
+      flexDirection: 'column',
       borderRadius: 5,
       maxHeight: 300,
-      maxWidth: 300
     },
     boxImgBlock: {
       position: 'absolute',
@@ -39,7 +40,7 @@ export const styles = theme => {
     },
     boxImgImg: {
       height: '100%',
-      minHeight: '100%',
+      minHeight: 100,
       userSelect: 'none',
     },
 
@@ -49,11 +50,6 @@ export const styles = theme => {
       width: 100,
       height: 100,
     },
-    boxImgContent: {
-      minWidth: '100%',
-      maxWidth: '100%'
-    },
-
     boxPhotoDownload: {
       color: '#efe',
       display: 'flex',
@@ -110,7 +106,7 @@ export class PhotoMessage extends Component {
           }
         >
           <img
-            className={classNames(classes.boxImgContent)}
+            className={classNames(classes.boxImgImg)}
             //style={{maxWidth: '100%', maxHeight: '100%'}}
             src={this.props.data.uri}
             alt={this.props.data.alt}
@@ -139,7 +135,7 @@ export class PhotoMessage extends Component {
               </div>
             )}
         </div>
-        {this.props.text && <div className={classNames(classes.boxText)}>{this.props.text}</div>}
+        {this.props.text && <Typography className={classNames(classes.boxText)}>{this.props.text}</Typography>}
       </div>
     );
   }
