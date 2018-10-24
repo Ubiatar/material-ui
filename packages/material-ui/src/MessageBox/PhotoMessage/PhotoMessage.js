@@ -49,6 +49,10 @@ export const styles = theme => {
       width: 100,
       height: 100,
     },
+    boxImgContent: {
+      minWidth: '100%',
+      maxWidth: '100%'
+    },
 
     boxPhotoDownload: {
       color: '#efe',
@@ -106,6 +110,8 @@ export class PhotoMessage extends Component {
           }
         >
           <img
+            className={classNames(classes.boxImgContent)}
+            //style={{maxWidth: '100%', maxHeight: '100%'}}
             src={this.props.data.uri}
             alt={this.props.data.alt}
             onClick={this.props.onOpen}
@@ -117,7 +123,7 @@ export class PhotoMessage extends Component {
                 {!this.props.data.status.click && (
                   <button
                     onClick={this.props.onDownload}
-                    className="rce-mbox-photo--img__block-item rce-mbox-photo--download">
+                    //className="rce-mbox-photo--img__block-item rce-mbox-photo--download">
                     className={classNames([classes.boxImgBlockItem, classes.boxPhotoDownload])}
                   >
                     <FaCloudDownload />
