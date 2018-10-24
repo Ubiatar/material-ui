@@ -9,4 +9,5 @@ components: Message List
 Add description here
 
 {{"demo": "pages/demos/messages/SimpleMessageList.js"}}
+{{"demo": "pages/demos/messages/SimplePhotoMessage.js"}}
 

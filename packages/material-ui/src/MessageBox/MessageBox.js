@@ -154,7 +154,7 @@ export const styles = theme => {
       paddingTop: 5,
       paddingRight: 3,
       paddingBottom: 2,
-      background: 'linear-gradient(to top, rgba(0,0,0,0.33), transparent)',
+      //background: 'linear-gradient(to top, rgba(0,0,0,0.33), transparent)',
       borderBottomLeftRadius: 5,
       borderBottomRightRadius: 5,
       color: '#fff',
@@ -208,6 +208,8 @@ export function MessageBox(props) {
   const className = classNames(classes.container, props.className, {
     [classes.flexEnd]: props.position === 'right',
   });
+
+
   return (
     <div className={className} onClick={props.onClick}>
       {props.renderAddCmp instanceof Function && props.renderAddCmp()}

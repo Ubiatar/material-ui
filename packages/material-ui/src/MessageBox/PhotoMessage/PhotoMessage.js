@@ -17,12 +17,15 @@ export const styles = theme => {
       margin: 'auto',
     },
     boxImg: {
+      height: '100%',
+      width: '100%',
       position: 'relative',
       display: 'flex',
       overflow: 'hidden',
       justifyContent: 'center',
       borderRadius: 5,
       maxHeight: 300,
+      maxWidth: 300
     },
     boxImgBlock: {
       position: 'absolute',
@@ -114,7 +117,7 @@ export class PhotoMessage extends Component {
                 {!this.props.data.status.click && (
                   <button
                     onClick={this.props.onDownload}
-                    // className="rce-mbox-photo--img__block-item rce-mbox-photo--download">
+                    className="rce-mbox-photo--img__block-item rce-mbox-photo--download">
                     className={classNames([classes.boxImgBlockItem, classes.boxPhotoDownload])}
                   >
                     <FaCloudDownload />

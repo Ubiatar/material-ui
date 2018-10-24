@@ -68,7 +68,7 @@
   },
   "devDependencies": {
     "moment": "^2.22.2",
-    "ubiatar-material-ui-icons": "^1.0.0-beta.150"
+    "ubiatar-material-ui-icons": "^1.0.0-beta.160"
   },
   "sideEffects": false,
   "engines": {
