@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '../styles/withStyles';
 
+import _ from 'lodash'
 import Moment from 'moment';
 import { extendMoment } from 'moment-range';
 import EventListener from 'react-event-listener';
@@ -18,11 +19,13 @@ const moment = extendMoment(Moment);
 /* eslint-disable no-unused-expressions */
 export class Calendar extends Component {
   static propTypes = {
-    date: PropTypes.object.isRequired,
+    date: PropTypes.object,
     minDate: DomainPropTypes.date,
     maxDate: DomainPropTypes.date,
     classes: PropTypes.object.isRequired,
     onChange: PropTypes.func.isRequired,
+    disableBefore: PropTypes.object,
+    disableAfter: PropTypes.object,
     disablePast: PropTypes.bool,
     disableFuture: PropTypes.bool,
     leftArrowIcon: PropTypes.node,
@@ -32,6 +35,8 @@ export class Calendar extends Component {
     theme: PropTypes.object.isRequired,
     utils: PropTypes.object,
     shouldDisableDate: PropTypes.func,
+
+    dates: PropTypes.array,
   };
 
   static defaultProps = {
@@ -47,7 +52,9 @@ export class Calendar extends Component {
   };
 
   state = {
-    currentMonth: this.props.utils.getStartOfMonth(this.props.date),
+    currentMonth: this.props.utils.getStartOfMonth(
+      this.props.dates ? this.props.dates[0] : this.props.date
+    ),
   };
 
   componentWillReceiveProps(nextProps) {
@@ -81,10 +88,12 @@ export class Calendar extends Component {
   };
 
   shouldDisableDate = (day) => {
-    const { disablePast, disableFuture, shouldDisableDate } = this.props;
+    const { disablePast, disableFuture, disableBefore, disableAfter, shouldDisableDate } = this.props;
     return (
       (disableFuture && day.isAfter(moment(), 'day')) ||
       (disablePast && day.isBefore(moment(), 'day')) ||
+      (disableAfter && day.isAfter(disableAfter, 'day')) ||
+      (disableBefore && day.isBefore(disableBefore, 'day')) ||
       this.validateMinMaxDate(day) ||
       shouldDisableDate(day)
     );
@@ -126,25 +135,28 @@ export class Calendar extends Component {
   };
 
   renderWeeks = () => {
-    const { utils } = this.props;
+    const { utils, dates, date } = this.props;
     const { currentMonth } = this.state;
     const weeks = utils.getWeekArray(currentMonth);
+
+    const selectedDates = dates
+      ? dates.map( date => date.clone().startOf('day') )
+      : [date.clone().startOf('day')];
 
     return weeks.map(week => (
       <div
         key={`week-${week[0].toString()}`}
         className={this.props.classes.week}
       >
-        {this.renderDays(week)}
+        {this.renderDays(week, selectedDates)}
       </div>
     ));
   };
 
 
-  renderDays = (week) => {
-    const { date, renderDay, utils } = this.props;
+  renderDays = (week, selectedDates) => {
+    const { renderDay, utils } = this.props;
 
-    const selectedDate = date.clone().startOf('day');
     const currentMonthNumber = utils.getMonthNumber(this.state.currentMonth);
     const now = moment();
 
@@ -158,7 +170,7 @@ export class Calendar extends Component {
           current={day.isSame(now, 'day')}
           hidden={!dayInCurrentMonth}
           disabled={disabled}
-          selected={selectedDate.isSame(day, 'day')}
+          selected={_.findIndex(selectedDates, date => date.isSame(day, 'day')) >= 0}
         >
           {utils.getDayText(day)}
         </Day>
@@ -189,11 +201,12 @@ export class Calendar extends Component {
 
   render() {
     const { currentMonth } = this.state;
-    const { classes, utils } = this.props;
-
+    const { classes, utils, dates } = this.props;
     return (
       <Fragment>
-        <EventListener target="window" onKeyDown={this.handleKeyDown} />
+        {
+          dates ? null : ( <EventListener target="window" onKeyDown={this.handleKeyDown} /> )
+        }
 
         <CalendarHeader
           currentMonth={currentMonth}
