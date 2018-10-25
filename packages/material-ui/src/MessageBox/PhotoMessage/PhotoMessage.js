@@ -26,7 +26,7 @@ export const styles = theme => {
       justifyContent: 'center',
       flexDirection: 'column',
       borderRadius: 5,
-      maxHeight: 300,
+      height: 300,
     },
     boxImgBlock: {
       position: 'absolute',
@@ -40,7 +40,6 @@ export const styles = theme => {
     },
     boxImgImg: {
       height: '100%',
-      minHeight: 100,
       userSelect: 'none',
     },
 
@@ -55,7 +54,6 @@ export const styles = theme => {
       display: 'flex',
       justifyContent: 'center',
       background: 'none',
-      border: 'none',
       fontSize: '3.2em',
       outline: 'none',
       border: '1px solid #eee',
@@ -107,7 +105,6 @@ export class PhotoMessage extends Component {
         >
           <img
             className={classNames(classes.boxImgImg)}
-            //style={{maxWidth: '100%', maxHeight: '100%'}}
             src={this.props.data.uri}
             alt={this.props.data.alt}
             onClick={this.props.onOpen}
