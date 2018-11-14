@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { KeyboardArrowDown } from 'ubiatar-material-ui-icons';
@@ -87,14 +87,16 @@ export class MessageList extends Component {
     const e = this.mlistRef;
     if (!e) return;
 
-    if (
-      this.props.toBottomHeight === '100%' ||
-      this.state.scrollBottom < this.props.toBottomHeight
-    ) {
-      // scroll to bottom
-      e.scrollTop = e.scrollHeight;
-    } else if (this.props.lockable === true) {
-      e.scrollTop = e.scrollHeight - e.offsetHeight - this.state.scrollBottom;
+    if (!this.props.disableAutoScroll) {
+      if (
+        this.props.toBottomHeight === '100%' ||
+        this.state.scrollBottom < this.props.toBottomHeight
+      ) {
+        // scroll to bottom
+        e.scrollTop = e.scrollHeight;
+      } else if (this.props.lockable === true) {
+        e.scrollTop = e.scrollHeight - e.offsetHeight - this.state.scrollBottom;
+      }
     }
   }
 
@@ -125,17 +127,14 @@ export class MessageList extends Component {
 
   onScroll(e) {
     const bottom = this.getBottom(e.target);
-    this.state.scrollBottom = bottom;
     if (this.props.toBottomHeight === '100%' || bottom > this.props.toBottomHeight) {
       if (this.state.downButton !== true) {
-        this.state.downButton = true;
         this.setState({
           downButton: true,
           scrollBottom: bottom,
         });
       }
     } else if (this.state.downButton !== false) {
-      this.state.downButton = false;
       this.setState({
         downButton: false,
         scrollBottom: bottom,
@@ -156,7 +155,7 @@ export class MessageList extends Component {
   }
 
   render() {
-    const { classes, dataSource, ...other } = this.props;
+    const { classes, dataSource, newMessagesComp, newMessagesIndex, ...other } = this.props;
     return (
       <div className={classNames([classes.container, this.props.className])}>
         <div
@@ -164,20 +163,28 @@ export class MessageList extends Component {
           onScroll={this.onScroll.bind(this)}
           className={classNames(classes.mList)}
         >
-          {dataSource.map((x, i) => (
-            <MessageBox
-              {...other}
-              key={x._id || i}
-              {...x}
-              hasAfter={dataSource[i + 1] && dataSource[i + 1].position === x.position}
-              hasBefore={dataSource[i - 1] && dataSource[i - 1].position === x.position}
-              onOpen={this.props.onOpen && (e => this.onOpen(x, i, e))}
-              onDownload={this.props.onDownload && (e => this.onDownload(x, i, e))}
-              onTitleClick={this.props.onDownload && (e => this.onTitleClick(x, i, e))}
-              onForwardClick={this.props.onForwardClick && (e => this.onForwardClick(x, i, e))}
-              onClick={this.props.onClick && (e => this.onClick(x, i, e))}
-            />
-          ))}
+          {
+            dataSource.map((x, i) => {
+              const hasNewMessageLabel = !!newMessagesIndex && newMessagesIndex === i
+              return (
+                <Fragment>
+                  {hasNewMessageLabel && newMessagesComp}
+                  <MessageBox
+                    {...other}
+                    key={x._id || i}
+                    {...x}
+                    hasAfter={dataSource[i + 1] && dataSource[i + 1].position === x.position}
+                    hasBefore={!hasNewMessageLabel && dataSource[i - 1] && dataSource[i - 1].position === x.position}
+                    onOpen={this.props.onOpen && (e => this.onOpen(x, i, e))}
+                    onDownload={this.props.onDownload && (e => this.onDownload(x, i, e))}
+                    onTitleClick={this.props.onDownload && (e => this.onTitleClick(x, i, e))}
+                    onForwardClick={this.props.onForwardClick && (e => this.onForwardClick(x, i, e))}
+                    onClick={this.props.onClick && (e => this.onClick(x, i, e))}
+                  />
+                </Fragment>
+              );
+            })
+          }
         </div>
         {this.props.downButton === true &&
           this.state.downButton &&
@@ -199,9 +206,15 @@ export class MessageList extends Component {
 MessageList.propTypes = {
   classes: PropTypes.object,
   className: PropTypes.string,
+  dataSource: PropTypes.array,
+  disableAutoScroll: PropTypes.bool,
+  newMessagesComp: PropTypes.element,
+  newMessagesIndex: PropTypes.number,
 };
 
 MessageList.defaultProps = {
+  newMessagesComp: null,
+  newMessagesIndex: null,
   onClick: null,
   onTitleClick: null,
   onForwardClick: null,
@@ -209,6 +222,7 @@ MessageList.defaultProps = {
   onOpen: null,
   onDownload: null,
   dataSource: [],
+  disableAutoScroll: false,
   lockable: false,
   toBottomHeight: 300,
   downButton: true,

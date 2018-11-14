@@ -35,9 +35,9 @@ function SimpleMessageList(props) {
       <div className={classes.container1}>
         <MessageList
           className='message-list'
-          lockable={true}
-          toBottomHeight={'100%'}
           avatar="/static/images/remy.jpg"
+          newMessagesIndex={7}
+          newMessagesComp={<div>nuovi messaggi</div>}
           dataSource={[
             {
               position: 'right',

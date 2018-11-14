@@ -11,8 +11,7 @@ export const styles = theme => {
       marginRight: -6,
       marginLeft: -6,
       padding: '6px 9px 8px 9px',
-      maxWidth: 300,
-      margin: 'auto'
+      margin: 'auto',
     },
     boxText: {
       padding: '5px 0px',
@@ -21,12 +20,10 @@ export const styles = theme => {
     },
     boxImg: {
       position: 'relative',
-      display: 'flex',
       overflow: 'hidden',
-      justifyContent: 'center',
-      flexDirection: 'column',
       borderRadius: 5,
-      height: 300,
+      maxHeight: 320,
+      maxWidth: 320,
     },
     boxImgBlock: {
       position: 'absolute',
@@ -37,17 +34,15 @@ export const styles = theme => {
       backgroundColor: 'rgba(0,0,0,0.5)',
       borderRadius: 5,
       display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     boxImgImg: {
-      height: '100%',
+      maxHeight: 320,
+      maxWidth: 320,
       userSelect: 'none',
-    },
-
-    boxImgBlockItem: {
-      margin: 'auto',
-      cursor: 'pointer',
-      width: 100,
-      height: 100,
+      borderRadius: 5,
+      display: 'block',
     },
     boxPhotoDownload: {
       color: '#efe',
@@ -110,27 +105,13 @@ export class PhotoMessage extends Component {
             onClick={this.props.onOpen}
             onLoad={this.props.onLoad}
           />
-          {this.props.data.status &&
-            !this.props.data.status.download && (
-              <div className={classNames(classes.boxImgBlock)}>
-                {!this.props.data.status.click && (
-                  <button
-                    onClick={this.props.onDownload}
-                    //className="rce-mbox-photo--img__block-item rce-mbox-photo--download">
-                    className={classNames([classes.boxImgBlockItem, classes.boxPhotoDownload])}
-                  >
-                    <FaCloudDownload />
-                  </button>
-                )}
-                {typeof this.props.data.status.loading === 'number' &&
-                  this.props.data.status.loading !== 0 && (
-                    <CircularProgress
-                      value={this.props.data.status.loading}
-                      className={classNames(classes.boxImgBlockItem)}
-                    />
-                  )}
-              </div>
-            )}
+          {this.props.data.status &&(
+            <div className={classNames(classes.boxImgBlock)}>
+              {this.props.data.status === 'loading' && (
+                <CircularProgress />
+              )}
+            </div>
+          )}
         </div>
         {this.props.text && <Typography className={classNames(classes.boxText)}>{this.props.text}</Typography>}
       </div>

@@ -62,7 +62,7 @@ export const styles = theme => {
     boxHasAfter: {
       borderBottomRightRadius: 4,
       borderBottomLeftRadius: 4,
-      marginBottom: 1,
+      marginBottom: 3,
     },
     boxHasBefore: {
       borderTopRightRadius: 4,
