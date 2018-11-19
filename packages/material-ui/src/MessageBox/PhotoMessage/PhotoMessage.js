@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
-import FaCloudDownload from 'ubiatar-material-ui-icons/CloudDownload';
-import { CircularProgress, Typography } from '../../';
+import { LinearProgress, Typography } from '../../';
 import withStyles from '../../styles/withStyles';
+import Fullscreen from 'ubiatar-material-ui-icons/Fullscreen';
 
 export const styles = theme => {
   return {
@@ -15,15 +15,16 @@ export const styles = theme => {
     },
     boxText: {
       padding: '5px 0px',
-      maxWidth: 300,
       margin: 'auto',
     },
     boxImg: {
       position: 'relative',
       overflow: 'hidden',
       borderRadius: 5,
-      maxHeight: 320,
-      maxWidth: 320,
+      height: 240,
+      '&:hover $hover': {
+        opacity: 1,
+      },
     },
     boxImgBlock: {
       position: 'absolute',
@@ -38,8 +39,8 @@ export const styles = theme => {
       justifyContent: 'center',
     },
     boxImgImg: {
-      maxHeight: 320,
-      maxWidth: 320,
+      height: '100%',
+      width: 'auto',
       userSelect: 'none',
       borderRadius: 5,
       display: 'block',
@@ -62,29 +63,37 @@ export const styles = theme => {
         opacity: '.3',
       },
     },
+    progress: {
+      width: '100%',
+      position: 'absolute',
+      left: 0,
+      bottom: 0,
+    },
+    hover: {
+      cursor: 'pointer',
+      opacity: 0,
+      transition: 'opacity ease-in .2s',
+    },
+    fullscreen: {
+      fill: 'white',
+      width: '3em',
+      height: '3em',
+      animation: 'mui-zoom-in-out 1.5s infinite linear',
+    },
+    '@keyframes mui-zoom-in-out': {
+      '50%': {
+        transform: 'scale(1.4)',
+      },
+      '100%': {
+        transform: 'scale(1)',
+      },
+    },
   };
 };
 
 export class PhotoMessage extends Component {
   render() {
     const { classes } = this.props;
-    const progressOptions = {
-      strokeWidth: 2.3,
-      color: '#efe',
-      trailColor: '#aaa',
-      trailWidth: 1,
-      step: (state, circle) => {
-        circle.path.setAttribute('trail', state.color);
-        circle.path.setAttribute('trailwidth-width', state.width);
-
-        const value = Math.round(circle.value() * 100);
-        if (value === 0) {
-          circle.setText('');
-        } else {
-          circle.setText(value);
-        }
-      },
-    };
 
     return (
       <div className={classNames(classes.boxPhoto)}>
@@ -102,18 +111,25 @@ export class PhotoMessage extends Component {
             className={classNames(classes.boxImgImg)}
             src={this.props.data.uri}
             alt={this.props.data.alt}
-            onClick={this.props.onOpen}
             onLoad={this.props.onLoad}
           />
-          {this.props.data.status &&(
+          {this.props.data.status === 'download' && (
+            <div
+              className={classNames(classes.boxImgBlock, classes.hover)}
+              onClick={this.props.onOpen}
+            >
+              <Fullscreen className={classes.fullscreen} />
+            </div>
+          )}
+          {this.props.data.status === 'loading' && (
             <div className={classNames(classes.boxImgBlock)}>
-              {this.props.data.status === 'loading' && (
-                <CircularProgress />
-              )}
+              <LinearProgress className={classes.progress} />
             </div>
           )}
         </div>
-        {this.props.text && <Typography className={classNames(classes.boxText)}>{this.props.text}</Typography>}
+        {this.props.text && (
+          <Typography className={classNames(classes.boxText)}>{this.props.text}</Typography>
+        )}
       </div>
     );
   }
