@@ -17,6 +17,10 @@ export const styles = theme => ({
       duration: theme.transitions.duration.shorter,
     }),
   },
+  outlined: {
+    fill: 'none',
+    stroke: 'currentColor',
+  },
   colorPrimary: {
     color: theme.palette.primary.main,
   },
@@ -44,6 +48,7 @@ function SvgIcon(props) {
     className: classNameProp,
     color,
     nativeColor,
+    outlined,
     titleAccess,
     viewBox,
     ...other
@@ -53,6 +58,7 @@ function SvgIcon(props) {
     classes.root,
     {
       [classes[`color${capitalize(color)}`]]: color !== 'inherit',
+      [classes.outlined]: outlined,
     },
     classNameProp,
   );
@@ -100,6 +106,7 @@ SvgIcon.propTypes = {
    * https://www.w3.org/TR/SVG-access/#Equivalent
    */
   titleAccess: PropTypes.string,
+  outlined: PropTypes.bool,
   /**
    * Allows you to redefine what the coordinates without units mean inside an SVG element.
    * For example, if the SVG element is 500 (width) by 200 (height),
