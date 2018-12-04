@@ -123,14 +123,14 @@ export default function createTypography(palette: Object, typography: Object | F
         fontSize: pxToRem(18),
         fontWeight: fontWeightRegular,
         fontFamily,
-        lineHeight: `${round(52.5 / 50)}em`,
+        lineHeight: `${round(41 / 34)}em`,
         color: palette.text.primary,
       },
       body5: {
         fontSize: pxToRem(16),
         fontWeight: fontWeightMedium,
         fontFamily,
-        lineHeight: `${round(52.5 / 50)}em`,
+        lineHeight: `${round(41 / 34)}em`,
         color: palette.text.primary,
       },
       body4: {
