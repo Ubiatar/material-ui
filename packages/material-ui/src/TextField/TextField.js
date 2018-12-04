@@ -131,7 +131,7 @@ function TextField(props) {
       {...other}
     >
       {label && (
-        <InputLabel htmlFor={id} outlined={outlined} marginLeft={Math.max(radius, 8)} success={success} {...InputLabelProps}>
+        <InputLabel htmlFor={id} marginLeft={Math.max(radius, 8)} success={success} {...InputLabelProps}>
           {label}
         </InputLabel>
       )}
