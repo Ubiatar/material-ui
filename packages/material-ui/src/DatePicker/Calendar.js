@@ -69,10 +69,10 @@ export class Calendar extends Component {
 
   onDateSelect = (day) => {
     const { date } = this.props;
-    const updatedDate = day
+    const updatedDate = date ? day
       .clone()
       .hours(date.hours())
-      .minutes(date.minutes());
+      .minutes(date.minutes()) : day.clone()
 
     this.props.onChange(updatedDate);
   };
@@ -195,7 +195,7 @@ export class Calendar extends Component {
           value={day}
           dayInCurrentMonth={dayInCurrentMonth}
           disabled={disabled}
-          onSelect={this.onDateSelect}
+          onSelect={this.onDateSelect.bind(this)}
         >
           {dayComponent}
         </DayWrapper>
