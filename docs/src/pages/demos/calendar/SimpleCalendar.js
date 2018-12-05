@@ -29,11 +29,6 @@ function SimpleCalendar(props) {
   return (
     <div className={classes.root}>
       <div className={classes.container}>
-        <DatePicker
-          date={single}
-          leftArrowIcon={<KeyboardArrowLeft/>}
-          rightArrowIcon={<KeyboardArrowRight/>}
-        />
         <Calendar
           date={single}
           leftArrowIcon={<KeyboardArrowLeft/>}
@@ -46,6 +41,11 @@ function SimpleCalendar(props) {
           leftArrowIcon={<KeyboardArrowLeft/>}
           rightArrowIcon={<KeyboardArrowRight/>}
         />
+        <Calendar>
+          date={single}
+          leftArrowIcon={<KeyboardArrowLeft/>}
+          rightArrowIcon={<KeyboardArrowRight/>}
+        </Calendar>
       </div>
     </div>
   );

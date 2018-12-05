@@ -52,14 +52,18 @@ export class Calendar extends Component {
   };
 
   state = {
-    currentMonth: this.props.utils.getStartOfMonth(
+    currentMonth: this.getStartOfMonth(
       this.props.dates ? this.props.dates[0] : this.props.date
     ),
   };
 
+  getStartOfMonth( date ) {
+    return this.props.utils.getStartOfMonth( date ? date : moment() )
+  }
+
   componentWillReceiveProps(nextProps) {
     this.setState({
-      currentMonth: this.props.utils.getStartOfMonth(nextProps.dates ? nextProps.dates[0] : nextProps.date),
+      currentMonth: this.getStartOfMonth(nextProps.dates ? nextProps.dates[0] : nextProps.date),
     });
   }
 
@@ -141,7 +145,7 @@ export class Calendar extends Component {
 
     const selectedDates = dates
       ? dates.map( date => date.clone().startOf('day') )
-      : [date.clone().startOf('day')];
+      : date ? [date.clone().startOf('day')] : [];
 
     return weeks.map(week => (
       <div
