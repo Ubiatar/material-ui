@@ -59,7 +59,7 @@ export class Calendar extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({
-      currentMonth: this.props.utils.getStartOfMonth(nextProps.date),
+      currentMonth: this.props.utils.getStartOfMonth(nextProps.dates ? nextProps.dates[0] : nextProps.date),
     });
   }
 
