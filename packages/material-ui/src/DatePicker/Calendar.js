@@ -23,6 +23,8 @@ export class Calendar extends Component {
     minDate: DomainPropTypes.date,
     maxDate: DomainPropTypes.date,
     classes: PropTypes.object.isRequired,
+    dayClasses: PropTypes.object,
+    headerClasses: PropTypes.object,
     onChange: PropTypes.func.isRequired,
     disableBefore: PropTypes.object,
     disableAfter: PropTypes.object,
@@ -155,7 +157,7 @@ export class Calendar extends Component {
 
 
   renderDays = (week, selectedDates) => {
-    const { renderDay, utils } = this.props;
+    const { dayClasses, renderDay, utils } = this.props;
 
     const currentMonthNumber = utils.getMonthNumber(this.state.currentMonth);
     const now = moment();
@@ -167,6 +169,7 @@ export class Calendar extends Component {
 
       let dayComponent = (
         <Day
+          classes={dayClasses}
           current={day.isSame(now, 'day')}
           hidden={!dayInCurrentMonth}
           disabled={disabled}
@@ -179,7 +182,6 @@ export class Calendar extends Component {
       if (renderDay) {
         dayComponent = renderDay(
           day,
-          selectedDate,
           dayInCurrentMonth,
           dayComponent,
         );
@@ -201,7 +203,7 @@ export class Calendar extends Component {
 
   render() {
     const { currentMonth } = this.state;
-    const { classes, utils, dates } = this.props;
+    const { classes, headerClasses, utils, dates } = this.props;
     return (
       <Fragment>
         {
@@ -209,6 +211,7 @@ export class Calendar extends Component {
         }
 
         <CalendarHeader
+          classes={headerClasses}
           currentMonth={currentMonth}
           onMonthChange={this.handleChangeMonth}
           leftArrowIcon={this.props.leftArrowIcon}
