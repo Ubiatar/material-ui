@@ -24,20 +24,16 @@ const styles = {
 function SimpleCalendar(props) {
   const { classes } = props;
   const format = 'YYYY-MM-DD'
-  const multiple = [moment('2018-10-24', format), moment('2018-10-29', format), moment('2018-10-26', format)]
+  const multiple = [moment('2018-12-24', format), moment('2018-12-29', format), moment('2018-12-26', format)]
   const single = moment()
   return (
     <div className={classes.root}>
       <div className={classes.container}>
-        <DatePicker
-          date={single}
-          leftArrowIcon={<KeyboardArrowLeft/>}
-          rightArrowIcon={<KeyboardArrowRight/>}
-        />
         <Calendar
-          date={single}
+          date={single.clone()}
           leftArrowIcon={<KeyboardArrowLeft/>}
           rightArrowIcon={<KeyboardArrowRight/>}
+          onChange={date => console.log(date.format(format))}
         />
         <Calendar
           dates={multiple}
@@ -45,6 +41,12 @@ function SimpleCalendar(props) {
           disableAfter={moment().add(18, 'days')}
           leftArrowIcon={<KeyboardArrowLeft/>}
           rightArrowIcon={<KeyboardArrowRight/>}
+          onChange={date => console.log(date.format(format))}
+        />
+        <Calendar
+          leftArrowIcon={<KeyboardArrowLeft/>}
+          rightArrowIcon={<KeyboardArrowRight/>}
+          onChange={date => console.log(date.format(format))}
         />
       </div>
     </div>

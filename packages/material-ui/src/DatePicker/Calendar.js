@@ -54,23 +54,27 @@ export class Calendar extends Component {
   };
 
   state = {
-    currentMonth: this.props.utils.getStartOfMonth(
+    currentMonth: this.getStartOfMonth(
       this.props.dates ? this.props.dates[0] : this.props.date
     ),
   };
 
+  getStartOfMonth( date ) {
+    return this.props.utils.getStartOfMonth( date ? date : moment() )
+  }
+
   componentWillReceiveProps(nextProps) {
     this.setState({
-      currentMonth: this.props.utils.getStartOfMonth(nextProps.date),
+      currentMonth: this.getStartOfMonth(nextProps.dates ? nextProps.dates[0] : nextProps.date),
     });
   }
 
   onDateSelect = (day) => {
     const { date } = this.props;
-    const updatedDate = day
+    const updatedDate = date ? day
       .clone()
       .hours(date.hours())
-      .minutes(date.minutes());
+      .minutes(date.minutes()) : day.clone()
 
     this.props.onChange(updatedDate);
   };
@@ -143,7 +147,7 @@ export class Calendar extends Component {
 
     const selectedDates = dates
       ? dates.map( date => date.clone().startOf('day') )
-      : [date.clone().startOf('day')];
+      : date ? [date.clone().startOf('day')] : [];
 
     return weeks.map(week => (
       <div
@@ -193,7 +197,7 @@ export class Calendar extends Component {
           value={day}
           dayInCurrentMonth={dayInCurrentMonth}
           disabled={disabled}
-          onSelect={this.onDateSelect}
+          onSelect={this.onDateSelect.bind(this)}
         >
           {dayComponent}
         </DayWrapper>
