@@ -12,18 +12,24 @@ class Day extends PureComponent {
     disabled: PropTypes.bool,
     hidden: PropTypes.bool,
     selected: PropTypes.bool,
-  }
+  };
 
   static defaultProps = {
     disabled: false,
     hidden: false,
     current: false,
     selected: false,
-  }
+  };
 
   render() {
     const {
-      children, classes, disabled, hidden, current, selected, ...other
+      children,
+      classes,
+      disabled,
+      hidden,
+      current,
+      selected,
+      ...other
     } = this.props;
 
     const className = classnames(classes.day, {
@@ -34,11 +40,7 @@ class Day extends PureComponent {
     });
 
     return (
-      <IconButton
-        className={className}
-        tabIndex={hidden || disabled ? -1 : 0}
-        {...other}
-      >
+      <IconButton className={className} tabIndex={hidden || disabled ? -1 : 0} {...other}>
         <span> {children} </span>
       </IconButton>
     );
@@ -63,9 +65,9 @@ const styles = theme => ({
     fontWeight: 600,
   },
   selected: {
-    color: theme.palette.common.white,
-    backgroundColor: theme.palette.primary.main,
-    fontWeight: theme.typography.fontWeightMedium,
+    color: theme.palette.primary.main,
+    backgroundColor: theme.palette.common.white,
+    fontWeight: theme.typography.fontWeightBold,
   },
   disabled: {
     pointerEvents: 'none',
