@@ -38,7 +38,7 @@ export const styles = theme => ({
       easing: theme.transitions.easing.easeIn,
     }),
     minHeight: 0,
-    padding: `${theme.spacing.unit / 2}px ${theme.spacing.unit}px`,
+    padding: `${theme.spacing.unit / 4}px ${theme.spacing.unit}px`,
     fontSize: theme.typography.pxToRem(12),
     lineHeight: `${theme.typography.round(14 / 10)}em`,
     '&$open': {
