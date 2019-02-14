@@ -46,10 +46,12 @@ export const styles = theme => {
         },
         '&$disabled': {
           backgroundColor: 'transparent',
+          opacity: '.4',
         },
       },
       '&$disabled': {
         color: theme.palette.action.disabled,
+        opacity: '.4',
       },
     },
     label: {
@@ -112,6 +114,7 @@ export const styles = theme => {
         color: theme.palette.action.disabled,
         boxShadow: theme.shadows[0],
         backgroundColor: theme.palette.action.disabledBackground,
+        opacity: '.4',
       },
       '&:hover': {
         backgroundColor: theme.palette.grey.A100,
@@ -168,13 +171,13 @@ export const styles = theme => {
       padding: `${theme.spacing.unit - 1}px ${theme.spacing.unit}px`,
       minWidth: theme.spacing.unit * 8,
       minHeight: 32,
-      fontSize: theme.typography.pxToRem(13),
+      fontSize: theme.typography.pxToRem(12),
     },
     sizeLarge: {
       padding: `${theme.spacing.unit}px ${theme.spacing.unit * 5}px`,
       minWidth: theme.spacing.unit * 18,
       minHeight: 40,
-      fontSize: theme.typography.pxToRem(15),
+      fontSize: theme.typography.pxToRem(14),
     },
     fullWidth: {
       width: '100%',
