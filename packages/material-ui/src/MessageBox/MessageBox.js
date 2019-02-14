@@ -14,7 +14,7 @@ import { withStyles } from '../styles';
 
 export const styles = theme => {
   return {
-    container: {
+    boxContainer: {
       flexDirection: 'row',
       display: 'flex',
       overflow: 'hidden',
@@ -190,7 +190,7 @@ export function MessageBox(props) {
   const dateText =
     props.date && !isNaN(props.date) && (props.dateString || moment(props.date).fromNow());
 
-  const className = classNames(classes.container, props.className, {
+  const className = classNames(classes.boxContainer, props.className, {
     [classes.flexEnd]: props.position === 'right',
   });
 
