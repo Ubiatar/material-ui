@@ -56,7 +56,9 @@
     "react": "*",
     "react-dom": "*"
   },
-  "dependencies": {},
+  "dependencies": {
+    "yarn": "^1.13.0"
+  },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.42",
     "@babel/core": "7.0.0-beta.42",
