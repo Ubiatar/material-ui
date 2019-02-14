@@ -163,6 +163,7 @@ export class MessageList extends Component {
           onScroll={this.onScroll.bind(this)}
           className={classNames(classes.mList)}
         >
+
           {
             dataSource.map((x, i) => {
               const hasNewMessageLabel = !!newMessagesIndex && newMessagesIndex === i
@@ -170,6 +171,7 @@ export class MessageList extends Component {
                 <Fragment>
                   {hasNewMessageLabel && newMessagesComp}
                   <MessageBox
+                    classes={classes}
                     {...other}
                     key={x._id || i}
                     {...x}

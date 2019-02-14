@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles'
-import MessageList from "@material-ui/core/MessageList"
-import moment from 'moment'
+import { withStyles } from '@material-ui/core/styles';
+import MessageList from '@material-ui/core/MessageList';
+import moment from 'moment';
 
 const styles = {
   root: {
@@ -25,7 +25,10 @@ const styles = {
     width: '100%',
     height: '100%',
     overflow: 'auto'
-  }
+  },
+  boxText: {
+    color: 'blue',
+  },
 };
 
 function SimpleMessageList(props) {
@@ -34,6 +37,9 @@ function SimpleMessageList(props) {
     <div className={classes.root}>
       <div className={classes.container1}>
         <MessageList
+          classes={{
+            boxText: classes.boxText,
+          }}
           className='message-list'
           avatar="/static/images/remy.jpg"
           newMessagesIndex={7}
